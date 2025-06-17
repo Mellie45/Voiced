@@ -1,0 +1,85 @@
+name: voiced
+description: "A new Flutter project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.6
+  image_picker: ^1.1.2
+  permission_handler: ^12.0.0+1
+  shared_preferences: ^2.5.3
+  country_flags: ^3.3.0
+  flutter_translate: ^4.1.0
+  speech_to_text: ^7.0.0
+  file_picker: ^10.2.0
+  flutter_tts: ^4.2.3
+  provider: ^6.1.5
+  flutter_spinkit: ^5.2.1
+  flutter_image_compress: ^2.3.0
+  path_provider: ^2.1.4
+  path: ^1.9.0
+  flutter_native_splash: ^2.4.6
+  flutter_launcher_icons: ^0.14.4
+  fluttertoast: ^8.2.7
+  firebase_core: ^3.14.0
+  firebase_app_check: ^0.3.2+7
+  #firebase_vertexai: ^1.5.0
+  firebase_ai: ^2.1.0
+
+flutter_native_splash:
+  android: true
+  ios: true
+  web: false
+  color: "#001a33"
+  image: "assets/launcher_icon_ver.png"
+  android_12:
+    color: "#001a33"
+    image: "assets/launcher_icon_ver.png"
+
+flutter_launcher_icons:
+  ios: true
+  android: true
+  image_path: "assets/icon_foreground_small.png"
+  adaptive_icon_background: "#ff4000"
+  adaptive_icon_foreground: "assets/icon_foreground_small.png"
+  min_sdk_android: 21
+  remove_alpha_ios: true
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/sounds/placeholder_sound.wav
+    - assets/sounds/placeholder.mp3
+    - assets/languages/
+    - assets/sounds/speech_to_text_listening.m4r
+    - assets/sounds/speech_to_text_cancel.m4r
+    - assets/sounds/speech_to_text_stop.m4r
+  fonts:
+    - family: PTSans
+      fonts:
+        - asset: assets/fonts/PTSansNarrow-Regular.ttf
+        - asset: assets/fonts/PTSansNarrow-Bold.ttf
+    - family: NotoSans
+      fonts:
+        - asset: assets/fonts/NotoSans-Italic-VariableFont_wdth,wght.ttf
+        - asset: assets/fonts/NotoSans-VariableFont_wdth,wght.ttf
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Italic-VariableFont_opsz,wght.ttf
+        - asset: assets/fonts/Inter-VariableFont_opsz,wght.ttf
+

@@ -1,0 +1,2 @@
+/Users/melcolton/Documents/voiced/android/app/.cxx/Debug/84a5r4mp/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/melcolton/Documents/voiced/android/app/.cxx/Debug/84a5r4mp/armeabi-v7a/CMakeFiles/rebuild_cache.dir

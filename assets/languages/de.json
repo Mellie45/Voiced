@@ -1,0 +1,19 @@
+{
+  "home_screen": {
+    "top_message": "Tippen, um die Sprache einzustellen",
+    "main_button": "Drücken, um ein Foto aufzunehmen",
+    "selected_language": "Deutsch",
+    "changed": "Sprache zu Deutsch geändert"
+  },
+  "alert_messages": {
+    "title": "Fertig!",
+    "body": "Ihre Sprache wurde auf Deutsch eingestellt"
+  },
+  "select_image_screen": {
+    "top_nav_back": "Zurück",
+    "working_text": "Wird bearbeitet",
+    "ready_text": "bereit",
+    "show_text_btn": "Drücken, um als Text anzuzeigen",
+    "close_button": "Schließen"
+  }
+}

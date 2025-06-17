@@ -1,0 +1,19 @@
+{
+  "home_screen": {
+    "top_message": "भाषा सेट करने के लिए टैप करें",
+    "main_button": "फोटो लेने के लिए दबाएं",
+    "selected_language": "हिंदी",
+    "changed": "भाषा हिंदी में बदल दी गई है"
+  },
+  "alert_messages": {
+    "title": "हो गया!",
+    "body": "आपकी भाषा हिंदी पर सेट कर दी गई है"
+  },
+  "select_image_screen": {
+    "top_nav_back": "वापस",
+    "working_text": "काम हो रहा है",
+    "ready_text": "तैयार",
+    "show_text_btn": "टेक्स्ट के रूप में देखने के लिए दबाएं",
+    "close_button": "बंद करें"
+  }
+}
