@@ -1,0 +1,101 @@
+{
+  "@@locale": "hi",
+
+  "homeScreenTopMessage": "भाषा सेट करने के लिए टैप करें",
+  "homeScreenMainButton": "फोटो लेने के लिए दबाएं",
+  "homeScreenSelectedLanguage": "हिंदी",
+  "homeScreenChanged": "भाषा बदलकर हिंदी कर दी गई है",
+  "homeScreenSubscriptionPrompt": "अपनी सदस्यता बनाने के लिए यहाँ क्लिक करें।",
+  "homeScreenFreeUsesRemaining": "{count, plural, =1{1 उपयोग शेष} other{{count} मुफ्त उपयोग शेष}}",
+  "@homeScreenFreeUsesRemaining": {
+    "placeholders": {
+      "count": { "type": "int", "format": "compact" }
+    }
+  },
+  "homeGreeting": "नमस्ते {userName}",
+  "@homeGreeting": {
+    "placeholders": {
+      "userName": { "type": "String", "example": "Mel" }
+    }
+  },
+  "languageSelectTitle": "अपनी पसंदीदा भाषा चुनें",
+  "languageError": "भाषा बदलने में त्रुटि: {error}",
+
+  "alertMessagesTitle": "हो गया!",
+  "alertMessagesBody": "आपकी भाषा हिंदी सेट कर दी गई है",
+
+  "selectImageScreenTopNavBack": "पीछे",
+  "selectImageScreenWorkingText": "काम चल रहा है",
+  "selectImageScreenReadyText": "तैयार",
+  "selectImageScreenShowTextBtn": "टेक्स्ट के रूप में देखने के लिए दबाएं",
+  "selectImageScreenCloseButton": "बंद करें",
+
+  "paywallSuccess": "सफलता! असीमित एक्सेस अनलॉक हो गया।",
+  "paywallPurchaseError": "आपकी खरीदारी को संसाधित करने में त्रुटि हुई थी।",
+  "paywallRestoreError": "हम आपकी खरीदारी बहाल नहीं कर सके।",
+  "paywallNoProducts": "इस समय कोई सदस्यता उत्पाद उपलब्ध नहीं हैं।",
+  "paywallHeadline": "अपने कानों को अपनी आँखें बनाएँ।",
+  "paywallSubHeadline": "हमारी शानदार सदस्यता के साथ असीमित एक्सेस प्राप्त करें।",
+  "paywallRestoreButton": "खरीदें बहाल करें",
+  "paywallTermsOfUse": "उपयोग की शर्तें",
+  "paywallPrivacyPolicy": "गोपनीयता नीति",
+
+  "walkthroughTitleHow": "यह कैसे काम करता है",
+  "walkthroughBodyHow": "Wolpz छोटे, पढ़ने में कठिन टेक्स्ट को ऑडियो प्रारूप में बदलने का एक सरल और विश्वसनीय तरीका है।",
+  "walkthroughTitleStep1": "चरण 1",
+  "walkthroughBodyStep1": "बस उस टेक्स्ट की फोटो लें जिसे आप बेहतर बनाना चाहते हैं।",
+  "walkthroughTitleStep2": "चरण 2",
+  "walkthroughBodyStep2": "ऐप को इमेज प्रोसेस करने के लिए कुछ क्षण दें।",
+  "walkthroughTitleStep3": "चरण 3",
+  "walkthroughBodyStep3": "प्ले दबाएं और आपका टेक्स्ट ज़ोर से पढ़ा जाएगा।",
+  "walkthroughDone": "हो गया",
+  "walkthroughSkip": "छोड़ें",
+
+  "drawerAbout": "Wolpz के बारे में",
+  "drawerHow": "Wolpz कैसे काम करता है",
+  "drawerSubscribe": "सदस्यता लें",
+  "drawerLanguage": "भाषा",
+  "drawerLogin": "लॉग इन करें",
+  "drawerLogout": "लॉग आउट करें",
+  "drawerSupport": "सहायता और प्रतिक्रिया",
+  "drawerRemove": "खाता हटाएँ",
+  "drawerInvite": "मित्र को आमंत्रित करें",
+  "drawerTerms": "शर्तें और गोपनीयता",
+
+  "loginTitle": "लॉग इन करें",
+  "loginEmailHint": "अपना ईमेल दर्ज करें",
+  "loginPasswordHint": "अपना पासवर्ड दर्ज करें",
+  "loginButton": "साइन इन करें",
+  "loginLoadingProfile": "आपका प्रोफ़ाइल लोड हो रहा है...",
+
+  "removeAccountTitle": "खाता हटाएँ",
+  "removeAccountHeading": "महत्वपूर्ण सदस्यता सूचना",
+  "removeAccMessage": "अपना खाता हटाने से आपकी सदस्यता अपने आप रद्द नहीं होती है।\\nApple/Google द्वारा आपसे शुल्क लिया जाता रहेगा। यदि आप सुनिश्चित हैं कि आप छोड़ना चाहते हैं, तो कृपया नीचे दिए गए बटन का उपयोग करें।",
+  "removeAccountConfirm": "क्या आप वाकई अपना खाता स्थायी रूप से हटाना चाहते हैं?",
+  "removeAccountConfirmBtn": "पुष्टि करें",
+  "removeAccountCancelBtn": "सदस्यता रद्द करें",
+  "removeAccountSuccess": "खाता सफलतापूर्वक हटा दिया गया। अलविदा!",
+
+  "registerTitle": "अपना खाता बनाएँ",
+  "registerButton": "खाता बनाएँ",
+
+  "deviceLimitTitle": "डिवाइस सीमा समाप्त",
+  "deviceLimitMessage": "यह डिवाइस पहले ही अपने 5 मुफ्त क्रेडिट का उपयोग कर चुका है। जारी रखने के लिए, कृपया सदस्यता लें।",
+  "deviceLimitButton": "सदस्यता देखें",
+
+  "photosPermission": "हमें आपकी तस्वीरों तक पहुँचने के लिए अनुमति चाहिए",
+  "permissionBtn": "ठीक है",
+  "permissionGrantBtn": "अनुमति दें",
+  "permissionCameraReq": "आपको अपने कैमरे का उपयोग करने की आवश्यकता होगी",
+
+  "subscriptionRestored": "सदस्यता बहाल हो गई!",
+  "subscriptionStatusActive": "प्रो स्थिति: सक्रिय",
+  "subscriptionStatusInactive": "प्रो स्थिति: निष्क्रिय",
+
+  "inviteMessage": "Wolpz देखें! यह मुझे अपने कानों से दुनिया को \"देखने\" में मदद करता है। यहाँ प्राप्त करें: ",
+  "inviteTitle": "Wolpz पर आमंत्रित करें",
+
+  "supportEmailBody": "कृपया अपनी समस्या यहाँ लिखें...\n\n",
+  "supportEmailSubject": "Wolpz सहायता अनुरोध",
+  "iosVoiceInstruction": "iPhone पर बेहतरीन अनुभव के लिए, Settings > Accessibility > Spoken Content > Voices पर जाएं और अपनी पसंदीदा भाषा का 'Enhanced' या 'Premium' संस्करण डाउनलोड करें।"
+}

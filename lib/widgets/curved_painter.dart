@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:voiced/support_files/constants.dart';
+import 'package:wolpz/support_files/constants.dart';
 
 class CurvedPainter extends CustomPainter {
   @override

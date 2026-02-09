@@ -1,0 +1,100 @@
+{
+  "@@locale": "pa",
+
+  "homeScreenTopMessage": "ਭਾਸ਼ਾ ਸੈੱਟ ਕਰਨ ਲਈ ਟੈਪ ਕਰੋ",
+  "homeScreenMainButton": "ਫੋਟੋ ਖਿੱਚਣ ਲਈ ਦਬਾਓ",
+  "homeScreenSelectedLanguage": "ਪੰਜਾਬੀ",
+  "homeScreenChanged": "ਭਾਸ਼ਾ ਬਦਲ ਕੇ ਪੰਜਾਬੀ ਕਰ ਦਿੱਤੀ ਗਈ ਹੈ",
+  "homeScreenSubscriptionPrompt": "ਆਪਣੀ ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਬਣਾਉਣ ਲਈ ਇੱਥੇ ਕਲਿੱਕ ਕਰੋ।",
+  "homeScreenFreeUsesRemaining": "{count, plural, =1{1 ਵਰਤੋਂ ਬਾਕੀ} other{{count} ਮੁਫ਼ਤ ਵਰਤੋਂ ਬਾਕੀ}}",
+  "@homeScreenFreeUsesRemaining": {
+    "placeholders": {
+      "count": { "type": "int", "format": "compact" }
+    }
+  },
+  "homeGreeting": "ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ {userName}",
+  "@homeGreeting": {
+    "placeholders": {
+      "userName": { "type": "String", "example": "Mel" }
+    }
+  },
+  "languageSelectTitle": "ਆਪਣੀ ਪਸੰਦੀਦਾ ਭਾਸ਼ਾ ਚੁਣੋ",
+  "languageError": "ਭਾਸ਼ਾ ਬਦਲਣ ਵਿੱਚ ਤਰੁੱਟੀ: {error}",
+
+  "alertMessagesTitle": "ਹੋ ਗਿਆ!",
+  "alertMessagesBody": "ਤੁਹਾਡੀ ਭਾਸ਼ਾ ਪੰਜਾਬੀ ਸੈੱਟ ਕਰ ਦਿੱਤੀ ਗਈ ਹੈ",
+
+  "selectImageScreenTopNavBack": "ਪਿੱਛੇ",
+  "selectImageScreenWorkingText": "ਕੰਮ ਚੱਲ ਰਿਹਾ ਹੈ",
+  "selectImageScreenReadyText": "ਤਿਆਰ",
+  "selectImageScreenShowTextBtn": "ਟੈਕਸਟ ਵਜੋਂ ਦੇਖਣ ਲਈ ਦਬਾਓ",
+  "selectImageScreenCloseButton": "ਬੰਦ ਕਰੋ",
+
+  "paywallSuccess": "ਸਫਲਤਾ! ਅਸੀਮਤ ਐਕਸੈਸ ਅਨਲੌਕ ਹੋ ਗਿਆ।",
+  "paywallPurchaseError": "ਤੁਹਾਡੀ ਖਰੀਦ ਦੀ ਪ੍ਰਕਿਰਿਆ ਵਿੱਚ ਤਰੁੱਟੀ ਆਈ ਸੀ।",
+  "paywallRestoreError": "ਅਸੀਂ ਤੁਹਾਡੀਆਂ ਖਰੀਦਾਂ ਨੂੰ ਬਹਾਲ ਨਹੀਂ ਕਰ ਸਕੇ।",
+  "paywallNoProducts": "ਇਸ ਸਮੇਂ ਕੋਈ ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਉਤਪਾਦ ਉਪਲਬਧ ਨਹੀਂ ਹਨ।",
+  "paywallHeadline": "ਆਪਣੇ ਕੰਨਾਂ ਨੂੰ ਆਪਣੀਆਂ ਅੱਖਾਂ ਬਣਾਓ।",
+  "paywallSubHeadline": "ਸਾਡੀ ਸ਼ਾਨਦਾਰ ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਨਾਲ ਅਸੀਮਤ ਐਕਸੈਸ ਪ੍ਰਾਪਤ ਕਰੋ।",
+  "paywallRestoreButton": "ਖਰੀਦਾਂ ਬਹਾਲ ਕਰੋ",
+  "paywallTermsOfUse": "ਵਰਤੋਂ ਦੀਆਂ ਸ਼ਰਤਾਂ",
+  "paywallPrivacyPolicy": "ਪ੍ਰਾਈਵੇਸੀ ਪਾਲਿਸੀ",
+
+  "walkthroughTitleHow": "ਇਹ ਕਿਵੇਂ ਕੰਮ ਕਰਦਾ ਹੈ",
+  "walkthroughBodyHow": "Wolpz ਛੋਟੇ, ਪੜ੍ਹਨ ਵਿੱਚ ਮੁਸ਼ਕਲ ਟੈਕਸਟ ਨੂੰ ਆਡੀਓ ਫਾਰਮੈਟ ਵਿੱਚ ਬਦਲਣ ਦਾ ਇੱਕ ਸਰਲ ਅਤੇ ਭਰੋਸੇਮੰਦ ਤਰੀਕਾ ਹੈ।",
+  "walkthroughTitleStep1": "ਕਦਮ 1",
+  "walkthroughBodyStep1": "ਬੱਸ ਉਸ ਟੈਕਸਟ ਦੀ ਫੋਟੋ ਖਿੱਚੋ ਜਿਸ ਨੂੰ ਤੁਸੀਂ ਬਿਹਤਰ ਬਣਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ।",
+  "walkthroughTitleStep2": "ਕਦਮ 2",
+  "walkthroughBodyStep2": "ਐਪ ਨੂੰ ਚਿੱਤਰ ਦੀ ਪ੍ਰਕਿਰਿਆ ਕਰਨ ਲਈ ਕੁਝ ਪਲ ਦਿਓ।",
+  "walkthroughTitleStep3": "ਕਦਮ 3",
+  "walkthroughBodyStep3": "ਪਲੇ ਦਬਾਓ ਅਤੇ ਤੁਹਾਡਾ ਟੈਕਸਟ ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਪੜ੍ਹਿਆ ਜਾਵੇਗਾ।",
+  "walkthroughDone": "ਹੋ ਗਿਆ",
+  "walkthroughSkip": "ਛੱਡੋ",
+
+  "drawerAbout": "Wolpz ਬਾਰੇ",
+  "drawerHow": "Wolpz ਕਿਵੇਂ ਕੰਮ ਕਰਦਾ ਹੈ",
+  "drawerSubscribe": "ਸਬਸਕ੍ਰਾਈਬ ਕਰੋ",
+  "drawerLanguage": "ਭਾਸ਼ਾ",
+  "drawerLogin": "ਲੌਗਇਨ ਕਰੋ",
+  "drawerLogout": "ਲੌਗਆਉਟ ਕਰੋ",
+  "drawerSupport": "ਸਹਾਇਤਾ ਅਤੇ ਫੀਡਬੈਕ",
+  "drawerRemove": "ਖਾਤਾ ਹਟਾਓ",
+  "drawerInvite": "ਕਿਸੇ ਦੋਸਤ ਨੂੰ ਸੱਦਾ ਦਿਓ",
+  "drawerTerms": "ਸ਼ਰਤਾਂ ਅਤੇ ਪ੍ਰਾਈਵੇਸੀ",
+
+  "loginTitle": "ਸਾਈਨ ਇਨ ਕਰੋ",
+  "loginEmailHint": "ਆਪਣੀ ਈਮੇਲ ਦਰਜ ਕਰੋ",
+  "loginPasswordHint": "ਆਪਣਾ ਪਾਸਵਰਡ ਦਰਜ ਕਰੋ",
+  "loginButton": "ਸਾਈਨ ਇਨ ਕਰੋ",
+  "loginLoadingProfile": "ਤੁਹਾਡੀ ਪ੍ਰੋਫਾਈਲ ਲੋਡ ਹੋ ਰਹੀ ਹੈ...",
+
+  "removeAccountTitle": "ਖਾਤਾ ਹਟਾਓ",
+  "removeAccountHeading": "ਮਹੱਤਵਪੂਰਨ ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਨੋਟਿਸ",
+  "removeAccMessage": "ਤੁਹਾਡਾ ਖਾਤਾ ਮਿਟਾਉਣ ਨਾਲ ਤੁਹਾਡੀ ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਆਪਣੇ ਆਪ ਰੱਦ ਨਹੀਂ ਹੁੰਦੀ।\\nApple/Google ਵੱਲੋਂ ਤੁਹਾਡੇ ਤੋਂ ਚਾਰਜ ਲਿਆ ਜਾਂਦਾ ਰਹੇਗਾ। ਜੇਕਰ ਤੁਸੀਂ ਛੱਡਣਾ ਚਾਹੁੰਦੇ ਹੋ, ਤਾਂ ਕਿਰਪਾ ਕਰਕੇ ਹੇਠਾਂ ਦਿੱਤੇ ਬਟਨ ਦੀ ਵਰਤੋਂ ਕਰੋ।",
+  "removeAccountConfirm": "ਕੀ ਤੁਸੀਂ ਸੱਚਮੁੱਚ ਆਪਣਾ ਖਾਤਾ ਸਥਾਈ ਤੌਰ 'ਤੇ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+  "removeAccountConfirmBtn": "ਪੁਸ਼ਟੀ ਕਰੋ",
+  "removeAccountCancelBtn": "ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਰੱਦ ਕਰੋ",
+  "removeAccountSuccess": "ਖਾਤਾ ਸਫਲਤਾਪੂਰਵਕ ਹਟਾਇਆ ਗਿਆ। ਅਲਵਿਦਾ!",
+
+  "registerTitle": "ਆਪਣਾ ਖਾਤਾ ਬਣਾਓ",
+  "registerButton": "ਖਾਤਾ ਬਣਾਓ",
+
+  "deviceLimitTitle": "ਡਿਵਾਈਸ ਸੀਮਾ ਪੂਰੀ ਹੋ ਗਈ",
+  "deviceLimitMessage": "ਇਹ ਡਿਵਾਈਸ ਪਹਿਲਾਂ ਹੀ ਆਪਣੇ 5 ਮੁਫ਼ਤ ਕ੍ਰੈਡਿਟ ਵਰਤ ਚੁੱਕਾ ਹੈ। ਜਾਰੀ ਰੱਖਣ ਲਈ, ਕਿਰਪਾ ਕਰਕੇ ਸਬਸਕ੍ਰਾਈਬ ਕਰੋ।",
+  "deviceLimitButton": "ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਦੇਖੋ",
+
+  "photosPermission": "ਸਾਨੂੰ ਤੁਹਾਡੀਆਂ ਫੋਟੋਆਂ ਤੱਕ ਪਹੁੰਚਣ ਲਈ ਇਜਾਜ਼ਤ ਚਾਹੀਦੀ ਹੈ",
+  "permissionBtn": "ਠੀਕ ਹੈ",
+  "permissionGrantBtn": "ਇਜਾਜ਼ਤ ਦਿਓ",
+  "permissionCameraReq": "ਤੁਹਾਨੂੰ ਆਪਣੇ ਕੈਮਰੇ ਦੀ ਵਰਤੋਂ ਕਰਨ ਦੀ ਲੋੜ ਹੋਵੇਗੀ",
+
+  "subscriptionRestored": "ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਬਹਾਲ ਹੋ ਗਈ!",
+  "subscriptionStatusActive": "ਪ੍ਰੋ ਸਥਿਤੀ: ਸਰਗਰਮ",
+  "subscriptionStatusInactive": "ਪ੍ਰੋ ਸਥਿਤੀ: ਨਿਸ਼ਕਿਰਿਆ",
+
+  "inviteMessage": "Wolpz ਦੇਖੋ! ਇਹ ਮੈਨੂੰ ਆਪਣੇ ਕੰਨਾਂ ਰਾਹੀਂ ਦੁਨੀਆ ਨੂੰ \"ਦੇਖਣ\" ਵਿੱਚ ਮਦਦ ਕਰਦਾ ਹੈ। ਇੱਥੇ ਪ੍ਰਾਪਤ ਕਰੋ: ",
+  "inviteTitle": "Wolpz 'ਤੇ ਸੱਦਾ ਦਿਓ",
+
+  "supportEmailBody": "ਕਿਰਪਾ ਕਰਕੇ ਆਪਣੀ ਸਮੱਸਿਆ ਇੱਥੇ ਲਿਖੋ...\n\n",
+  "supportEmailSubject": "Wolpz ਸਹਾਇਤਾ ਬੇਨਤੀ",
+  "iosVoiceInstruction": "iPhone पर बेहतरीन अनुभव के लिए, Settings > Accessibility > Spoken Content > Voices पर जाएं और अपनी पसंदीदा भाषा का 'Enhanced' या 'Premium' संस्करण डाउनलोड करें।"}

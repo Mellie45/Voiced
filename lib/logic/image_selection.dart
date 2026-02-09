@@ -2,34 +2,41 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_translate/flutter_translate.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:path/path.dart' as path;
 import 'package:provider/provider.dart';
-import 'package:voiced/logic/main_ai_query.dart';
-import 'package:voiced/support_files/constants.dart';
+import 'package:wolpz/logic/main_ai_query.dart';
+import 'package:wolpz/support_files/constants.dart';
+import '../data_classes/voicedUser.dart';
+import '../l10n/app_localizations.dart';
 import '../providers/locale_provider.dart';
+import '../display/paywall_screen.dart';
+import 'device_service.dart';
 import 'text_to_speech_function.dart';
 
 
 class ImageSelection extends StatefulWidget {
-  const ImageSelection({super.key});
+  final VoicedUser user;
+  const ImageSelection({super.key, required this.user});
 
   @override
   State<ImageSelection> createState() => _ImageSelectionState();
 }
 
 class _ImageSelectionState extends State<ImageSelection> {
+  final ScrollController _modalScrollController = ScrollController();
   late TextToSpeechFunc textToSpeech;
   File? image;
   final picker = ImagePicker();
   bool responseComplete = false;
   String responseTextValue = '';
   bool _isAnimating = true;
-  String languageCode = 'en_GB';
+  String languageCode = 'en';
+  late DeviceService deviceService;
+
 
   void setLanguageCode() {
     final localeProvider = Provider.of<LocaleProvider>(context, listen: false).locale;
@@ -45,9 +52,15 @@ class _ImageSelectionState extends State<ImageSelection> {
 
 
   Future _selectImage() async {
+    final localizations = AppLocalizations.of(context)!;
+    final String errorTitle = localizations.basicError;
+    final String photoPermission = localizations.photosPermission;
+    final String btnText = localizations.permissionBtn;
+    final grantPermission = localizations.permissionGrantBtn;
+    final String cameraPermission = localizations.permissionCameraReq;
+
     try {
-      //TODO: Change image source back to camera after film made
-      final selectedImage = await picker.pickImage(source: ImageSource.gallery);
+      final selectedImage = await picker.pickImage(source: ImageSource.camera);
       if (selectedImage != null) {
         setState(() {
           _saveImageAndInitialize(selectedImage);
@@ -68,17 +81,17 @@ class _ImageSelectionState extends State<ImageSelection> {
               borderRadius: BorderRadius.circular(16.0),
             ),
             backgroundColor: kAlertDialogBackground,
-            title: const Text('Error'),
-            content: const Text('We need permission to access your photos'),
+            title: Text(errorTitle),
+            content: Text(photoPermission),
             actions: [
               TextButton(
-                child: const Text('OK'),
+                child: Text(btnText),
                 onPressed: () {
                   Navigator.pop(context);
                 },
               ),
               TextButton(
-                child: const Text('Grant Permission'),
+                child: Text(grantPermission),
                 onPressed: () async {
                   Navigator.pop(context);
                   final status = await Permission.photos.request();
@@ -86,7 +99,7 @@ class _ImageSelectionState extends State<ImageSelection> {
                     _selectImage();
                   } else {
                     Fluttertoast.showToast(
-                      msg: 'You will need to use your camera',
+                      msg: cameraPermission,
                       toastLength: Toast.LENGTH_LONG,
                       gravity: ToastGravity.CENTER,
                       backgroundColor: Colors.red,
@@ -127,6 +140,13 @@ class _ImageSelectionState extends State<ImageSelection> {
       return;
     }
     File compressedImageFile = File(result.path);
+    // We only tag the device if the user is NOT a subscriber.
+    if (!widget.user.isSubscribed) {
+      // We await this to ensure the record is sent to Firestore
+      // before the AI results potentially trigger a navigation change.
+      await deviceService.tagDeviceAsUsed();
+    }
+
     MainAiQuery mainAiQuery = MainAiQuery(
         imageFile: compressedImageFile, languageCode: languageCode,
 
@@ -138,18 +158,25 @@ class _ImageSelectionState extends State<ImageSelection> {
               responseTextValue = responseText;
             }
           });
-        });
+        }, onPaywallTrigger: () {
+      // Navigate to Paywall when uses run out
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const PaywallScreen()),
+      );
+    });
     mainAiQuery.initializeVertex(compressedImageFile);
   }
 
   @override
   void initState() {
     super.initState();
+    deviceService = DeviceService();
     debugPrint('ImageSelection: initState called');
     debugPrint('ImageSelection: calling setLanguageCode');
     setLanguageCode();
     debugPrint('ImageSelection: calling _selectImage');
-    _selectImage();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _selectImage());
     debugPrint('ImageSelection: initializing textToSpeech');
     textToSpeech = TextToSpeechFunc(context);
     debugPrint('ImageSelection: initState finished');
@@ -188,7 +215,10 @@ class _ImageSelectionState extends State<ImageSelection> {
                         width: 60,
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(35), color: kBackgroundTint),
                         child: GestureDetector(
-                            onTap: () => Navigator.pop(context),
+                            onTap: () {
+                              textToSpeech.stopPlayback();
+                              Navigator.pop(context);
+                            },
                             child: const Icon(
                               Icons.arrow_back_ios_new_rounded,
                               color: kDarkOrange,
@@ -197,7 +227,7 @@ class _ImageSelectionState extends State<ImageSelection> {
 
                       ),
                       const SizedBox(width: 12.0),
-                      Text(translate('select_image_screen.top_nav_back'),
+                      Text(AppLocalizations.of(context)!.selectImageScreenTopNavBack,
                         style: kBasicTextAlt.copyWith(fontSize: 34, color: kBackgroundTint),),
                     ],
                   ),
@@ -209,12 +239,12 @@ class _ImageSelectionState extends State<ImageSelection> {
                 children: [
                   SizedBox(
                     width: width,
-                    height: height * 0.78,
+                    height: height * 0.74,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          translate('select_image_screen.ready_text'),
+                          AppLocalizations.of(context)!.selectImageScreenReadyText,
                           style: kBasicTextAlt,
                         ),
                         const Spacer(),
@@ -293,10 +323,15 @@ class _ImageSelectionState extends State<ImageSelection> {
                                               trackColor: WidgetStateProperty.all<Color>(Colors.white),
                                               trackBorderColor: WidgetStateProperty.all<Color>(kDarkOrange),
                                               radius: const Radius.circular(12.0),
+                                              thickness: WidgetStateProperty.all(12.0),
                                             ),
                                             child: Scrollbar(
-                                              thickness: 12.0,
+                                              controller: _modalScrollController,
+                                              thumbVisibility: true,
+                                              trackVisibility: true,
+                                              interactive: true,
                                               child: SingleChildScrollView(
+                                                controller: _modalScrollController,
                                                 padding: const EdgeInsets.only(right: 16.0),
                                                 child: Text(
                                                   responseTextValue,
@@ -328,7 +363,7 @@ class _ImageSelectionState extends State<ImageSelection> {
                                                             Icons.close_rounded, color: kDarkOrange, size: 34.0, weight: 900
                                                         ),
                                                         onPressed: () => Navigator.pop(context),
-                                                        label:  Text(translate('select_image_screen.close_button'),
+                                                        label:  Text(AppLocalizations.of(context)!.selectImageScreenCloseButton,
                                                           style: const TextStyle(color: kDarkOrange, fontSize: 24, letterSpacing: 1.6),
                                                         )),
                                                   ],
@@ -352,7 +387,7 @@ class _ImageSelectionState extends State<ImageSelection> {
                           ),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(vertical: 22.0),
-                              child: Text(translate('select_image_screen.show_text_btn'),
+                              child: Text(AppLocalizations.of(context)!.selectImageScreenShowTextBtn,
                                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: kBackgroundTint),
                               ),
                             ),
@@ -370,7 +405,7 @@ class _ImageSelectionState extends State<ImageSelection> {
                     curve: Curves.easeInOut,
                     opacity: _isAnimating ? 1.0 : 0.2,
                     child:  Text(
-                      translate('select_image_screen.working_text'),
+                      AppLocalizations.of(context)!.selectImageScreenWorkingText,
                       style: kBasicTextAlt,
                     ),
                     onEnd: () {

@@ -1,0 +1,177 @@
+{
+  "@@locale": "el",
+
+  "homeScreenTopMessage": "Πατήστε για να ορίσετε τη γλώσσα",
+  "homeScreenMainButton": "Πατήστε για λήψη φωτογραφίας",
+  "homeScreenSelectedLanguage": "Ελληνικά",
+  "homeScreenChanged": "Η γλώσσα άλλαξε στα Ελληνικά",
+  "homeScreenSubscriptionPrompt": "Κάντε κλικ εδώ για να δημιουργήσετε τη συνδρομή σας.",
+  "homeScreenFreeUsesRemaining": "{count, plural, =1{Απομένει 1 χρήση} other{Απομένουν {count} δωρεάν χρήσεις}}",
+  "@homeScreenFreeUsesRemaining": {
+    "description": "Κείμενο που δείχνει πόσες δωρεάν χρήσεις έχουν απομείνει σε έναν δοκιμαστικό χρήστη",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "compact"
+      }
+    }
+  },
+  "homeGreeting": "Γεια σου {userName}",
+  "@homeGreeting": {
+    "description": "Ένα μήνυμα καλωσορίσματος για τον χρήστη στην αρχική οθόνη",
+    "placeholders": {
+      "userName": {
+        "type": "String",
+        "example": "Mel"
+      }
+    }
+  },
+  "languageSelectTitle": "Επιλέξτε τη γλώσσα που προτιμάτε",
+  "languageError": "Σφάλμα κατά την αλλαγή γλώσσας: {error}",
+  "@languageError": {
+    "placeholders": {
+      "error": { "type": "String" }
+    }
+  },
+
+  "alertMessagesTitle": "Έτοιμο!",
+  "alertMessagesBody": "Η γλώσσα σας έχει οριστεί στα Ελληνικά",
+
+  "selectImageScreenTopNavBack": "Πίσω",
+  "selectImageScreenWorkingText": "Επεξεργασία",
+  "selectImageScreenReadyText": "έτοιμο",
+  "selectImageScreenShowTextBtn": "Πατήστε για προβολή ως κείμενο",
+  "selectImageScreenCloseButton": "Κλείσιμο",
+
+  "paywallSuccess": "Επιτυχία! Ξεκλειδώθηκε η απεριόριστη πρόσβαση.",
+  "paywallPurchaseError": "Παρουσιάστηκε σφάλμα κατά την επεξεργασία της αγοράς σας.",
+  "paywallRestoreError": "Δεν μπορέσαμε να επαναφέρουμε τις αγορές σας.",
+  "paywallNoProducts": "Δεν υπάρχουν διαθέσιμα προϊόντα συνδρομής αυτή τη στιγμή.",
+  "paywallHeadline": "Μετατρέψτε τα αυτιά σας σε μάτια.",
+  "paywallSubHeadline": "Αποκτήστε απεριόριστη πρόσβαση με μία από τις εξαιρετικές συνδρομές μας.",
+  "paywallMonthlyFlex": "'Monthly Flex':",
+  "paywallYearlySaver": "'Yearly Saver':",
+  "paywallRestoreButton": "ΕΠΑΝΑΦΟΡΑ ΑΓΟΡΩΝ",
+  "paywallDisclaimer": "Το πρόγραμμα ανανεώνεται αυτόματα. Ακυρώστε ανά πάσα στιγμή στις ρυθμίσεις της συσκευής σας τουλάχιστον 24 ώρες πριν από τη λήξη της τρέχουσας περιόδου για να αποφύγετε την ανανέωση. Οποιοδήποτε αχρησιμοποίητο τμήμα μιας δωρεάν δοκιμής χάνεται κατά την αγορά.",
+  "paywallTermsOfUse": "Όροι Χρήσης",
+  "paywallPrivacyPolicy": "Πολιτική Απορρήτου",
+  "paywallMonthlyDescription": "Απεριόριστη πρόσβαση.\nΕυέλικτη ακύρωση ανά πάσα στιγμή",
+  "paywallYearlyDescription": "Η καλύτερη επιλογή μας.\nΕξοικονομήστε 20% με μία ετήσια πληρωμή",
+  "paywallLaunchError": "Δεν ήταν δυνατή η εκκίνηση της διεύθυνσης URL",
+  "paywallGeneralError": "Σφάλμα: {message}",
+  "@paywallGeneralError": {
+    "placeholders": { "message": { "type": "String" } }
+  },
+  "paywallUnexpectedError": "Παρουσιάστηκε ένα απροσδόκητο σφάλμα: {error}",
+  "@paywallUnexpectedError": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+
+  "walkthroughTitleHow": "Πώς λειτουργεί",
+  "walkthroughBodyHow": "Το Wolpz είναι ένας απλός και αξιόπιστος τρόπος για να μετατρέψετε μικρό, δυσανάγνωστο κείμενο σε μορφή ήχου.",
+  "walkthroughTitleStep1": "Βήμα 1",
+  "walkthroughBodyStep1": "Απλώς τραβήξτε μια φωτογραφία του κειμένου που θέλετε να βελτιώσετε.",
+  "walkthroughTitleStep2": "Βήμα 2",
+  "walkthroughBodyStep2": "Δώστε στην εφαρμογή μερικές στιγμές για να επεξεργαστεί την εικόνα.",
+  "walkthroughTitleStep3": "Βήμα 3",
+  "walkthroughBodyStep3": "Πατήστε το play και το κείμενό σας θα διαβαστεί δυνατά.",
+  "walkthroughDone": "ΤΕΛΟΣ",
+  "walkthroughSkip": "ΠΑΡΑΛΕΙΨΗ",
+
+  "drawerAbout": "Σχετικά με το Wolpz",
+  "drawerHow": "Πώς λειτουργεί το Wolpz",
+  "drawerSubscribe": "Εγγραφή",
+  "drawerLanguage": "Γλώσσα",
+  "drawerLogin": "Σύνδεση",
+  "drawerLogout": "Αποσύνδεση",
+  "drawerSupport": "Υποστήριξη & Σχόλια",
+  "drawerRemove": "Διαγραφή λογαριασμού",
+  "drawerInvite": "Προσκαλέστε έναν φίλο",
+  "drawerTerms": "Όροι & Απόρρητο",
+  "drawerYourWolpz": "Το Wolpz σου",
+
+  "loginTitle": "Σύνδεση",
+  "loginEmailHint": "Εισαγάγετε το email σας",
+  "loginPasswordHint": "Εισαγάγετε τον κωδικό πρόσβασής σας",
+  "loginButton": "ΣΥΝΔΕΣΗ",
+  "loginLoadingProfile": "Φόρτωση του προφίλ σας...",
+
+  "aboutTitle": "Καλώς ήρθατε στο Wolpz",
+  "aboutHeader": "Σχετικά με το Wolpz",
+  "aboutDescription": "Η οπτική αναπηρία μπορεί να κάνει ακόμα και τις πιο απλές εργασίες να φαίνονται σχεδόν αδύνατες. Γι' αυτό δημιουργήσαμε το Wolpz, για να σας προσφέρουμε έναν απλό τρόπο να γεφυρώσετε το χάσμα μεταξύ της έντυπης λέξης και της προσβασιμότητας.\\n\\nΣυνδυάζοντας την προηγμένη αναγνώριση εικόνας με τη φυσική μετατροπή κειμένου σε ομιλία, μετατρέπουμε το καθημερινό κείμενο - από ετικέτες τροφίμων έως μπουκάλια φαρμάκων - σε ένα καθαρό ηχητικό κομμάτι. Το Wolpz είναι εδώ για να παρέχει ανεξαρτησία και εμπιστοσύνη στην κοινότητα των ατόμων με προβλήματα όρασης, μια φωτογραφία τη φορά.",
+  "aboutLegal": "Μπορείτε να έχετε πρόσβαση σε περισσότερες λεπτομέρειες σχετικά με το Wolpz, συμπεριλαμβανομένων των πλήρων όρων και προϋποθέσεών μας, του τρόπου με τον οποίο χρησιμοποιούμε τα δεδομένα σας (spoiler alert: δεν τα χρησιμοποιούμε) και να μάθετε πώς προστατεύουμε το απόρρητό σας στον ιστότοπό μας.",
+  "aboutVisitSite": "Επισκεφθείτε το Wolpz",
+
+  "removeAccountTitle": "Διαγραφή Λογαριασμού",
+  "removeAccountHeading": "ΣΗΜΑΝΤΙΚΗ ΕΙΔΟΠΟΙΗΣΗ ΣΥΝΔΡΟΜΗΣ",
+  "removeAccMessage": "Η διαγραφή του λογαριασμού σας ΔΕΝ ακυρώνει αυτόματα τη συνδρομή σας.\\nΘα συνεχίσετε να χρεώνεστε από την Apple/Google. Εάν είστε σίγουροι ότι θέλετε να αποχωρήσετε, χρησιμοποιήστε το κουμπί ακύρωσης συνδρομής παρακάτω.",
+  "removeAccountConfirm": "Είστε σίγουροι ότι θέλετε να διαγράψετε οριστικά τον λογαριασμό σας;",
+  "removeAccountWarning": "Προειδοποίηση: Αυτή η ενέργεια δεν μπορεί να αναιρεθεί. Όλα τα δεδομένα σας, συμπεριλαμβανομένου του ιστορικού συνδρομών και των αποθηκευμένων προτιμήσεων, θα διαγραφούν οριστικά.",
+  "removeAccountConfirmBtn": "ΕΠΙΒΕΒΑΙΩΣΗ",
+  "removeAccountCancelBtn": "Ακύρωση Συνδρομής",
+  "removeAccountSuccess": "Ο λογαριασμός διαγράφηκε με επιτυχία. Αντίο!",
+
+  "registerTitle": "Δημιουργήστε τον λογαριασμό σας",
+  "registerFirstNameHint": "Όνομα",
+  "registerLastNameHint": "Επώνυμο",
+  "registerEmailHint": "Email",
+  "registerPasswordHint": "Κωδικός πρόσβασης",
+  "registerConfirmPasswordHint": "Επιβεβαίωση κωδικού πρόσβασης",
+  "registerButton": "ΔΗΜΙΟΥΡΓΙΑ ΛΟΓΑΡΙΑΣΜΟΥ",
+
+  "userNotFound": "Δεν βρέθηκε χρήστης για αυτό το email.",
+  "wrongPassword": "Δόθηκε λάθος κωδικός πρόσβασης.",
+  "operationNotAllowed": "Η λειτουργία δεν επιτρέπεται.",
+  "invalidEmail": "Η διεύθυνση email δεν είναι έγκυρη.",
+  "userDisabled": "Αυτός ο λογαριασμός έχει απενεργοποιηθεί.",
+  "weakPassword": "Ο κωδικός πρόσβασης που δόθηκε είναι πολύ αδύναμος.",
+  "emailAlreadyInUse": "Υπάρχει ήδη λογαριασμός για αυτό το email.",
+  "unexpectedError": "Παρουσιάστηκε ένα απροσδόκητο σφάλμα. Παρακαλώ δοκιμάστε ξανά.",
+  "connectionErrorAlt": "Παρουσιάστηκε σφάλμα. Παρακαλώ ελέγξτε τη σύνδεσή σας.",
+  "basicError": "Σφάλμα",
+
+  "deviceLimitTitle": "Επίτευξη ορίου συσκευών",
+  "deviceLimitMessage": "Αυτή η συσκευή έχει ήδη χρησιμοποιήσει τις 5 δωρεάν μονάδες της. Για να συνεχίσετε, παρακαλούμε εγγραφείτε.",
+  "deviceLimitButton": "ΔΕΙΤΕ ΤΙΣ ΣΥΝΔΡΟΜΕΣ",
+
+  "urlLaunchError": "Δεν ήταν δυνατή η εκκίνηση του {url}. Παρακαλώ ελέγξτε τη σύνδεσή σας",
+  "@urlLaunchError": {
+    "placeholders": { "url": { "type": "String" } }
+  },
+  "urlError": "Σφάλμα κατά την εκκίνηση της διεύθυνσης URL: {error}",
+  "@urlError": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+
+  "termsAndPrivacyTitle": "Όροι & Απόρρητο",
+  "termsAndPrivacyGreeting": "Γεια σου {userName}\n\nΜπορείτε να διαβάσετε την πλήρη δήλωση Όρων & Απορρήτου στον ιστότοπό μας μέσω του παρακάτω κουμπιού.",
+  "@termsAndPrivacyGreeting": {
+    "placeholders": { "userName": { "type": "String" } }
+  },
+  "termsVisitButton": "Επισκεφθείτε το BaaadKitty",
+  "termsEmailPrompt": "Θα θέλαμε πολύ να σας ακούσουμε, οπότε για να επικοινωνήσετε μαζί μας απλώς στείλτε μας ένα email.",
+  "termsEmailButton": "Στείλτε ένα email",
+  "termsRemoveLink": "Κάντε κλικ εδώ για να διαγράψετε τον λογαριασμό σας",
+
+  "photosPermission": "Χρειαζόμαστε άδεια για πρόσβαση στις φωτογραφίες σας",
+  "permissionBtn": "OK",
+  "permissionGrantBtn": "Παροχή άδειας",
+  "permissionCameraReq": "Θα χρειαστεί να χρησιμοποιήσετε την κάμερά σας",
+
+  "subscriptionRestored": "Η συνδρομή αποκαταστάθηκε!",
+  "subscriptionNotFound": "Δεν βρέθηκε ενεργή συνδρομή.",
+  "subscriptionManage": "Διαχείριση συνδρομής",
+  "subscriptionManageOrCancel": "Διαχείριση ή Ακύρωση Συνδρομής",
+  "subscriptionManageSettings": "Θα μεταφερθείτε στις ρυθμίσεις της συσκευής σας για να διαχειριστείτε ή να τερματίσετε το πρόγραμμά σας.",
+  "subscriptionUpgrade": "Αναβάθμιση σε Wolpz Pro",
+  "subscriptionRestorePast": "Επαναφορά παλαιών αγορών",
+  "subscriptionStatusActive": "Κατάσταση Pro: Ενεργή",
+  "subscriptionStatusInactive": "Κατάσταση Pro: Ανενεργή",
+
+  "inviteMessage": "Δείτε το Wolpz! Με βοηθά να \"βλέπω\" τον κόσμο μέσα από τα αυτιά μου. Αποκτήστε το εδώ: ",
+  "inviteTitle": "Πρόσκληση στο Wolpz",
+
+  "supportEmailBody": "Παρακαλώ περιγράψτε το πρόβλημά σας εδώ...\n\n",
+  "supportEmailSubject": "Αίτημα υποστήριξης Wolpz",
+  "iosVoiceInstruction": "Για την καλύτερη εμπειρία στο iPhone, μεταβείτε στις Ρυθμίσεις > Προσβασιμότητα > Εκφωνούμενο περιεχόμενο > Φωνές και κατεβάστε την έκδοση «Βελτιωμένη» ή «Premium» της γλώσσας που προτιμάτε."
+}

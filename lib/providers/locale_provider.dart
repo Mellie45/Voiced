@@ -1,36 +1,26 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LocaleProvider extends ChangeNotifier {
-  Locale _locale = const Locale('en');
+  Locale _locale;
+  String _locationCode;
 
-  String locationCode = 'en';
+  LocaleProvider({Locale initialLocale = const Locale('en')})
+      : _locale = initialLocale,
+        _locationCode = initialLocale.languageCode;
 
   Locale get locale => _locale;
-  var _localeUpdateController = Completer<void>();
+  String get locationCode => _locationCode;
 
-  void setLocationCode(value) {
-    locationCode = value;
+  void setLocale(Locale newLocale) async {
+    if (_locale == newLocale) return;
+    _locale = newLocale;
+    _locationCode = newLocale.languageCode;
+
+    debugPrint('Locale updated to: ${_locale.languageCode}');
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('language_code', locale.languageCode);
+
     notifyListeners();
-  }
-
-  void setLocale(Locale locale) {
-    _locale = locale;
-    debugPrint('Locale from inside the provider: $_locale');
-    notifyListeners();
-  }
-
-  Future<void> localeUpdateFuture() {
-    if (_localeUpdateController.isCompleted) {
-      _localeUpdateController.complete();
-    }
-    return _localeUpdateController.future;
-  }
-
-  @override
-  void notifyListeners() {
-    super.notifyListeners();
-    _localeUpdateController.complete();
-    _localeUpdateController = Completer<void>();
   }
 }

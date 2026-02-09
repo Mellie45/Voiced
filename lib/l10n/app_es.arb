@@ -1,0 +1,177 @@
+{
+  "@@locale": "es",
+
+  "homeScreenTopMessage": "Toca para configurar el idioma",
+  "homeScreenMainButton": "Presiona para tomar una foto",
+  "homeScreenSelectedLanguage": "Español",
+  "homeScreenChanged": "Idioma cambiado a Español",
+  "homeScreenSubscriptionPrompt": "Haz clic aquí para crear tu suscripción.",
+  "homeScreenFreeUsesRemaining": "{count, plural, =1{Queda 1 uso} other{Quedan {count} usos gratuitos}}",
+  "@homeScreenFreeUsesRemaining": {
+    "description": "Texto que muestra cuántos usos gratuitos le quedan a un usuario de prueba",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "format": "compact"
+      }
+    }
+  },
+  "homeGreeting": "Hola {userName}",
+  "@homeGreeting": {
+    "description": "Un mensaje de bienvenida para el usuario en la pantalla de inicio",
+    "placeholders": {
+      "userName": {
+        "type": "String",
+        "example": "Mel"
+      }
+    }
+  },
+  "languageSelectTitle": "Elige tu idioma preferido",
+  "languageError": "Error al cambiar el idioma: {error}",
+  "@languageError": {
+    "placeholders": {
+      "error": { "type": "String" }
+    }
+  },
+
+  "alertMessagesTitle": "¡Listo!",
+  "alertMessagesBody": "Tu idioma ha sido configurado en Español",
+
+  "selectImageScreenTopNavBack": "Atrás",
+  "selectImageScreenWorkingText": "Procesando",
+  "selectImageScreenReadyText": "listo",
+  "selectImageScreenShowTextBtn": "Presiona para ver como texto",
+  "selectImageScreenCloseButton": "Cerrar",
+
+  "paywallSuccess": "¡Éxito! Acceso ilimitado desbloqueado.",
+  "paywallPurchaseError": "Hubo un error al procesar tu compra.",
+  "paywallRestoreError": "No pudimos restaurar tus compras.",
+  "paywallNoProducts": "No hay productos de suscripción disponibles en este momento.",
+  "paywallHeadline": "Convierte tus oídos en tus ojos.",
+  "paywallSubHeadline": "Obtén acceso ilimitado con una de nuestras suscripciones de gran valor.",
+  "paywallMonthlyFlex": "'Mensual Flex':",
+  "paywallYearlySaver": "'Ahorro Anual':",
+  "paywallRestoreButton": "RESTAURAR COMPRAS",
+  "paywallDisclaimer": "El plan se renueva automáticamente. Cancela en los ajustes de tu dispositivo al menos 24 horas antes de que termine el periodo actual para evitar la renovación. Cualquier parte no utilizada de una prueba gratuita se pierde al comprar.",
+  "paywallTermsOfUse": "Condiciones de uso",
+  "paywallPrivacyPolicy": "Política de privacidad",
+  "paywallMonthlyDescription": "Acceso ilimitado.\nCancelación flexible en cualquier momento",
+  "paywallYearlyDescription": "Nuestra mejor opción de valor.\nAhorra un 20% con un único pago anual",
+  "paywallLaunchError": "No se pudo abrir la URL",
+  "paywallGeneralError": "Error: {message}",
+  "@paywallGeneralError": {
+    "placeholders": { "message": { "type": "String" } }
+  },
+  "paywallUnexpectedError": "Ocurrió un error inesperado: {error}",
+  "@paywallUnexpectedError": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+
+  "walkthroughTitleHow": "Cómo funciona",
+  "walkthroughBodyHow": "Wolpz es una forma sencilla y fiable de convertir textos pequeños y difíciles de leer en formato de audio.",
+  "walkthroughTitleStep1": "Paso 1",
+  "walkthroughBodyStep1": "Simplemente toma una foto del texto que deseas mejorar.",
+  "walkthroughTitleStep2": "Paso 2",
+  "walkthroughBodyStep2": "Dale a la aplicación un par de momentos para procesar la imagen.",
+  "walkthroughTitleStep3": "Paso 3",
+  "walkthroughBodyStep3": "Presiona reproducir y tu texto se leerá en voz alta.",
+  "walkthroughDone": "LISTO",
+  "walkthroughSkip": "SALTAR",
+
+  "drawerAbout": "Sobre Wolpz",
+  "drawerHow": "Cómo funciona Wolpz",
+  "drawerSubscribe": "Suscribirse",
+  "drawerLanguage": "Idioma",
+  "drawerLogin": "Iniciar sesión",
+  "drawerLogout": "Cerrar sesión",
+  "drawerSupport": "Soporte y comentarios",
+  "drawerRemove": "Eliminar cuenta",
+  "drawerInvite": "Invitar a un amigo",
+  "drawerTerms": "Términos y Privacidad",
+  "drawerYourWolpz": "Tu Wolpz",
+
+  "loginTitle": "Iniciar sesión",
+  "loginEmailHint": "Introduce tu correo",
+  "loginPasswordHint": "Introduce tu contraseña",
+  "loginButton": "INICIAR SESIÓN",
+  "loginLoadingProfile": "Cargando tu perfil...",
+
+  "aboutTitle": "Bienvenido a Wolpz",
+  "aboutHeader": "Sobre Wolpz",
+  "aboutDescription": "La discapacidad visual puede hacer que incluso las tareas más sencillas parezcan casi imposibles. Por eso creamos Wolpz, para ofrecerte una forma sencilla de cerrar la brecha entre la palabra impresa y la accesibilidad.\\n\\nAl combinar el reconocimiento de imágenes avanzado con una síntesis de voz natural, transformamos el texto cotidiano (desde etiquetas de alimentos hasta frascos de medicamentos) en una pista de audio clara. Wolpz está aquí para brindar independencia y confianza a la comunidad con discapacidad visual, una foto a la vez.",
+  "aboutLegal": "Puedes acceder a más detalles sobre Wolpz, incluyendo nuestros términos y condiciones completos, cómo usamos tus datos (alerta de spoiler: no lo hacemos) y aprender cómo protegemos tu privacidad en nuestro sitio web.",
+  "aboutVisitSite": "Visitar Wolpz",
+
+  "removeAccountTitle": "Eliminar cuenta",
+  "removeAccountHeading": "AVISO IMPORTANTE DE SUSCRIPCIÓN",
+  "removeAccMessage": "Eliminar tu cuenta NO cancela automáticamente tu suscripción.\\nSeguirás recibiendo cargos de Apple/Google. Si estás seguro de querer irte, utiliza el botón de cancelar suscripción a continuación.",
+  "removeAccountConfirm": "¿Estás seguro de que deseas eliminar permanentemente tu cuenta?",
+  "removeAccountWarning": "Advertencia: Esta acción no se puede deshacer. Todos tus datos, incluyendo el historial de suscripciones y las preferencias guardadas, se eliminarán permanentemente.",
+  "removeAccountConfirmBtn": "CONFIRMAR",
+  "removeAccountCancelBtn": "Cancelar suscripción",
+  "removeAccountSuccess": "Cuenta eliminada con éxito. ¡Adiós!",
+
+  "registerTitle": "Crea tu cuenta",
+  "registerFirstNameHint": "Nombre",
+  "registerLastNameHint": "Apellido",
+  "registerEmailHint": "Correo electrónico",
+  "registerPasswordHint": "Contraseña",
+  "registerConfirmPasswordHint": "Confirmar contraseña",
+  "registerButton": "CREAR CUENTA",
+
+  "userNotFound": "No se encontró ningún usuario con ese correo.",
+  "wrongPassword": "Contraseña incorrecta.",
+  "operationNotAllowed": "Operación no permitida.",
+  "invalidEmail": "La dirección de correo electrónico no es válida.",
+  "userDisabled": "Esta cuenta ha sido desactivada.",
+  "weakPassword": "La contraseña proporcionada es demasiado débil.",
+  "emailAlreadyInUse": "Ya existe una cuenta para ese correo electrónico.",
+  "unexpectedError": "Ocurrió un error inesperado. Por favor, inténtalo de nuevo.",
+  "connectionErrorAlt": "Ocurrió un error. Por favor, comprueba tu conexión.",
+  "basicError": "Error",
+
+  "deviceLimitTitle": "Límite de dispositivos alcanzado",
+  "deviceLimitMessage": "Este dispositivo ya ha utilizado sus 5 créditos gratuitos. Para continuar, por favor suscríbete.",
+  "deviceLimitButton": "VER SUSCRIPCIONES",
+
+  "urlLaunchError": "No se pudo abrir {url}. Por favor, comprueba tu conexión",
+  "@urlLaunchError": {
+    "placeholders": { "url": { "type": "String" } }
+  },
+  "urlError": "Error al abrir la URL: {error}",
+  "@urlError": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+
+  "termsAndPrivacyTitle": "Términos y Privacidad",
+  "termsAndPrivacyGreeting": "Hola {userName}\n\nPuedes leer nuestra declaración completa de Términos y Privacidad en nuestro sitio web a través del botón de abajo.",
+  "@termsAndPrivacyGreeting": {
+    "placeholders": { "userName": { "type": "String" } }
+  },
+  "termsVisitButton": "Visitar BaaadKitty",
+  "termsEmailPrompt": "Nos encantaría saber de ti, así que para ponerte en contacto simplemente envíanos un correo electrónico.",
+  "termsEmailButton": "Enviar un correo",
+  "termsRemoveLink": "Haz clic aquí para eliminar tu cuenta",
+
+  "photosPermission": "Necesitamos permiso para acceder a tus fotos",
+  "permissionBtn": "OK",
+  "permissionGrantBtn": "Conceder permiso",
+  "permissionCameraReq": "Necesitarás usar tu cámara",
+
+  "subscriptionRestored": "¡Suscripción restaurada!",
+  "subscriptionNotFound": "No se encontró ninguna suscripción activa.",
+  "subscriptionManage": "Gestionar suscripción",
+  "subscriptionManageOrCancel": "Gestionar o cancelar suscripción",
+  "subscriptionManageSettings": "Se te llevará a los ajustes de tu dispositivo para gestionar o finalizar tu plan.",
+  "subscriptionUpgrade": "Mejorar a Wolpz Pro",
+  "subscriptionRestorePast": "Restaurar compras anteriores",
+  "subscriptionStatusActive": "Estado Pro: Activo",
+  "subscriptionStatusInactive": "Estado Pro: Inactivo",
+
+  "inviteMessage": "¡Mira Wolpz! Me ayuda a \"ver\" el mundo a través de mis oídos. Consíguelo aquí: ",
+  "inviteTitle": "Invitar a Wolpz",
+
+  "supportEmailBody": "Por favor, describe tu problema aquí...\n\n",
+  "supportEmailSubject": "Solicitud de soporte de Wolpz",
+  "iosVoiceInstruction": "Para disfrutar de la mejor experiencia en el iPhone, ve a Ajustes > Accesibilidad > Contenido leído > Voces y descarga la versión 'Mejorada' o 'Premium' de tu idioma preferido."
+}

@@ -28,6 +28,13 @@ class TextToSpeechFunc {
     _isSpeakingNotifier.value = false;
     isPaused = true;
   }
+
+  Future<void> stopPlayback() async {
+    flutterTts.stop();
+    _isSpeakingNotifier.value = false;
+    isPaused = false;
+  }
+
   Future<void> resumePlayback() async {
     flutterTts.setContinueHandler(() {
       isPaused = false;
@@ -59,19 +66,31 @@ class TextToSpeechFunc {
         debugPrint('Available voices: $voices');
         dynamic selectedVoice;
         if (Platform.isAndroid) {}
-        dynamic defaultVoice = Platform.isAndroid ? {'name': 'en-gb-x-gba-local', 'locale': 'en-GB'} : {'name': 'Daniel', 'locale': 'en-GB'};
+        dynamic defaultVoice = Platform.isAndroid ?
+        {'name': 'en-gb-x-gba-local', 'locale': 'en-GB'}
+        : {'name': 'com.apple.ttsbundle.siri_Martha_en-GB_compact', 'locale': 'en-GB'};
 
         for (var voice in voices) {
           Map<String, String> voiceMap = voice.cast<String, String>();
           String voiceName = voiceMap['name']?.toLowerCase() ?? '';
+          String voiceLocale = voiceMap['locale'] ?? '';
 
-          if (languageCode == 'en') {
-            selectedVoice = defaultVoice;
-          } else if (voiceMap['locale'] == languageCode && voiceName.contains(gender)) {
-            selectedVoice = voiceMap;
-            break;
-          } else if (voiceMap['locale']?.startsWith(languageCode) ?? false) {
-            selectedVoice = voiceMap;
+          // 1. Check if the voice matches our language
+          if (voiceLocale.startsWith(languageCode)) {
+
+            // 2. Search for the "Golden Trio": Enhanced, Premium, or Siri
+            if (voiceName.contains('enhanced') ||
+                voiceName.contains('premium') ||
+                voiceName.contains('siri')) {
+
+              // If it also matches our preferred gender, we've found a winner
+              if (voiceName.contains(gender)) {
+                selectedVoice = voiceMap;
+                break;
+              }
+              // If gender doesn't match, we still keep it as a high-quality fallback
+              selectedVoice = voiceMap;
+            }
           }
         }
         await Future.delayed(const Duration(milliseconds: 100));

@@ -1,0 +1,112 @@
+{
+  "@@locale": "it",
+
+  "homeScreenTopMessage": "Tocca per impostare la lingua",
+  "homeScreenMainButton": "Premi per scattare una foto",
+  "homeScreenSelectedLanguage": "Italiano",
+  "homeScreenChanged": "Lingua cambiata in Italiano",
+  "homeScreenSubscriptionPrompt": "Clicca qui per creare il tuo abbonamento.",
+  "homeScreenFreeUsesRemaining": "{count, plural, =1{1 utilizzo rimaso} other{{count} utilizzi gratuiti rimasti}}",
+  "@homeScreenFreeUsesRemaining": {
+    "description": "Testo che mostra quanti utilizzi gratuiti rimangono a un utente di prova",
+    "placeholders": {
+      "count": { "type": "int", "format": "compact" }
+    }
+  },
+  "homeGreeting": "Ciao {userName}",
+  "@homeGreeting": {
+    "description": "Un messaggio di benvenuto per l'utente nella schermata iniziale",
+    "placeholders": {
+      "userName": { "type": "String", "example": "Mel" }
+    }
+  },
+  "languageSelectTitle": "Scegli la tua lingua preferita",
+  "languageError": "Errore nel cambio della lingua: {error}",
+  "@languageError": { "placeholders": { "error": { "type": "String" } } },
+
+  "alertMessagesTitle": "Fatto!",
+  "alertMessagesBody": "La tua lingua è stata impostata su Italiano",
+
+  "selectImageScreenTopNavBack": "Indietro",
+  "selectImageScreenWorkingText": "Elaborazione",
+  "selectImageScreenReadyText": "pronto",
+  "selectImageScreenShowTextBtn": "Premi per visualizzare come testo",
+  "selectImageScreenCloseButton": "Chiudi",
+
+  "paywallSuccess": "Successo! Accesso illimitato sbloccato.",
+  "paywallPurchaseError": "Si è verificato un errore durante l'elaborazione dell'acquisto.",
+  "paywallRestoreError": "Non è stato possibile ripristinare i tuoi acquisti.",
+  "paywallNoProducts": "Nessun prodotto di abbonamento disponibile al momento.",
+  "paywallHeadline": "Trasforma le tue orecchie nei tuoi occhi.",
+  "paywallSubHeadline": "Ottieni l'accesso illimitato con uno dei nostri convenienti abbonamenti.",
+  "paywallMonthlyFlex": "'Mensile Flex':",
+  "paywallYearlySaver": "'Risparmio Annuale':",
+  "paywallRestoreButton": "RIPRISTINA ACQUISTI",
+  "paywallDisclaimer": "Il piano si rinnova automaticamente. Annulla in qualsiasi momento nelle impostazioni del dispositivo almeno 24 ore prima della fine del periodo corrente per evitare il rinnovo. Qualsiasi parte non utilizzata di una prova gratuita viene persa al momento dell'acquisto.",
+  "paywallTermsOfUse": "Termini di Utilizzo",
+  "paywallPrivacyPolicy": "Informativa sulla Privacy",
+  "paywallMonthlyDescription": "Accesso illimitato.\nCancellazione flessibile in qualsiasi momento",
+  "paywallYearlyDescription": "La nostra opzione più vantaggiosa.\nRisparmia il 20% con un unico pagamento annuale",
+
+  "walkthroughTitleHow": "Come funziona",
+  "walkthroughBodyHow": "Wolpz è un modo semplice e affidabile per trasformare testi piccoli e difficili da leggere in un formato audio.",
+  "walkthroughTitleStep1": "Passaggio 1",
+  "walkthroughBodyStep1": "Scatta semplicemente una foto del testo che desideri migliorare.",
+  "walkthroughTitleStep2": "Passaggio 2",
+  "walkthroughBodyStep2": "Concedi all'app qualche istante per elaborare l'immagine.",
+  "walkthroughTitleStep3": "Passaggio 3",
+  "walkthroughBodyStep3": "Premi play e il tuo testo verrà letto ad alta voce.",
+  "walkthroughDone": "FATTO",
+  "walkthroughSkip": "SALTA",
+
+  "drawerAbout": "Informazioni su Wolpz",
+  "drawerHow": "Come funziona Wolpz",
+  "drawerSubscribe": "Abbonati",
+  "drawerLanguage": "Lingua",
+  "drawerLogin": "Accedi",
+  "drawerLogout": "Esci",
+  "drawerSupport": "Supporto e Feedback",
+  "drawerRemove": "Elimina account",
+  "drawerInvite": "Invita un amico",
+  "drawerTerms": "Termini e Privacy",
+  "drawerYourWolpz": "Il tuo Wolpz",
+
+  "loginTitle": "Accedi",
+  "loginEmailHint": "Inserisci la tua email",
+  "loginPasswordHint": "Inserisci la tua password",
+  "loginButton": "ACCEDI",
+  "loginLoadingProfile": "Caricamento del profilo...",
+
+  "removeAccountTitle": "Elimina Account",
+  "removeAccountHeading": "AVVISO IMPORTANTE SULL'ABBONAMENTO",
+  "removeAccMessage": "L'eliminazione del tuo account NON annulla automaticamente l'abbonamento.\\nTi verranno comunque addebitati costi da Apple/Google. Se sei sicuro di voler andare via, usa il pulsante di annullamento qui sotto.",
+  "removeAccountConfirm": "Sei sicuro di voler rimuovere permanentemente il tuo account?",
+  "removeAccountWarning": "Avviso: Questa azione non può essere annullata. Tutti i tuoi dati verranno eliminati definitivamente.",
+  "removeAccountConfirmBtn": "CONFERMA",
+  "removeAccountCancelBtn": "Annulla Abbonamento",
+  "removeAccountSuccess": "Account rimosso con successo. Addio!",
+
+  "registerTitle": "Crea il tuo account",
+  "registerButton": "CREA ACCOUNT",
+
+  "deviceLimitTitle": "Limite Dispositivi Raggiunto",
+  "deviceLimitMessage": "Questo dispositivo ha già utilizzato i suoi 5 crediti gratuiti. Per continuare, abbonati.",
+  "deviceLimitButton": "VEDI ABBONAMENTI",
+
+  "photosPermission": "Abbiamo bisogno del permesso per accedere alle tue foto",
+  "permissionBtn": "OK",
+  "permissionGrantBtn": "Concedi Permesso",
+  "permissionCameraReq": "Dovrai usare la tua fotocamera",
+
+  "subscriptionRestored": "Abbonamento Ripristinato!",
+  "subscriptionNotFound": "Nessun abbonamento attivo trovato.",
+  "subscriptionStatusActive": "Stato Pro: Attivo",
+  "subscriptionStatusInactive": "Stato Pro: Inattivo",
+
+  "inviteMessage": "Guarda Wolpz! Mi aiuta a \"vedere\" il mondo attraverso le mie orecchie. Scoprilo qui: ",
+  "inviteTitle": "Invita a Wolpz",
+
+  "supportEmailBody": "Descrivi qui il tuo problema...\n\n",
+  "supportEmailSubject": "Richiesta di Supporto Wolpz",
+  "iosVoiceInstruction": "Per la migliore esperienza su iPhone, vai in Impostazioni > Accessibilità > Contenuto letto ad alta voce > Voci e scarica la versione 'Migliorata' o 'Premium' della tua lingua preferita."
+}
