@@ -34,6 +34,15 @@
     }
   },
 
+  "lang_en": "English",
+  "lang_fr": "French",
+  "lang_de": "German",
+  "lang_it": "Italian",
+  "lang_es": "Spanish",
+  "lang_el": "Greek",
+  "lang_hi": "Hindi",
+  "lang_pa": "Punjabi",
+
   "alertMessagesTitle": "Done!",
   "alertMessagesBody": "Your language has been set to English",
 
@@ -42,6 +51,10 @@
   "selectImageScreenReadyText": "ready",
   "selectImageScreenShowTextBtn": "Press to view as text",
   "selectImageScreenCloseButton": "Close",
+  "selectImageScreenStopButton": "Stop Speech",
+  "selectImageScreenRestartButton": "Restart Speech",
+  "selectImageScreenStartButton": "Start Speech",
+  "selectImageScreenDisclaimer": "AI can make errors. Do not rely on this text for critical health, safety, or legal decisions. Always verify important information independently.",
 
   "paywallSuccess": "Success! Unlimited access unlocked.",
   "paywallPurchaseError": "There was an error processing your purchase.",
@@ -66,6 +79,15 @@
   "@paywallUnexpectedError": {
     "placeholders": { "error": { "type": "String" } }
   },
+  "paywallMonthlyBreakdown": "Just {monthlyPrice} / month",
+  "@paywallMonthlyBreakdown": {
+    "placeholders": {
+      "monthlyPrice": {
+        "type": "String"
+      }
+    }
+  },
+  "paywallAMonth": "a month",
 
   "walkthroughTitleHow": "How it works",
   "walkthroughBodyHow": "Wolpz is a simple and reliable way to turn small, hard to read text into an audio format.",
@@ -98,13 +120,14 @@
 
   "aboutTitle": "Welcome to Wolpz",
   "aboutHeader": "About Wolpz",
-  "aboutDescription": "Visual impairment can make even the simplest tasks feel almost impossible. So we created Wolpz to provide you with a simple way to bridge the gap between the printed word and accessibility.\\n\\nBy combining advanced image recognition with natural-sounding text-to-speech, we transform everyday text - from food labels to medicine bottles - into a clear audio track. Wolpz is here to provide independence and confidence to the visually impaired community, one picture at a time.",
+  "aboutDescription": "Visual impairment can make even the simplest tasks feel almost impossible. So we created Wolpz to provide you with a simple way to bridge the gap between the printed word and accessibility.\n\nBy combining advanced image recognition with natural-sounding text-to-speech, we transform everyday text - from food labels to medicine bottles - into a clear audio track. Wolpz is here to provide independence and confidence to the visually impaired community, one picture at a time.",
   "aboutLegal": "You can access more details about Wolpz including our complete terms and conditions, how we use your data (spoiler alert, we don’t) and learn how we protect your privacy on our website.",
   "aboutVisitSite": "Visit Wolpz",
 
   "removeAccountTitle": "Remove Account",
+  "removeAccountMessage": "It’s been a pleasure having you with us, and we’re truly sorry to see you go. Please keep in mind that deleting your account is permanent and will erase all your saved history and settings. If a technical glitch is getting in your way, we’d love the chance to fix it for you - just reach out to our team!",
   "removeAccountHeading": "IMPORTANT SUBSCRIPTION NOTICE",
-  "removeAccMessage": "Deleting your account does NOT automatically cancel your subscription.\\nYou will continue to be charged by Apple/Google. If you're sure you want to leave, please use the cancel subscription button below.",
+  "removeAccMessage": "Deleting your account does NOT automatically cancel your subscription.\n\nYou will continue to be charged by Apple/Google. If you're sure you want to leave, please use the cancel subscription button below.",
   "removeAccountConfirm": "Are you sure you want to permanently remove your account?",
   "removeAccountWarning": "Warning: This action cannot be undone. All your data, including subscription history and saved preferences, will be permanently deleted.",
   "removeAccountConfirmBtn": "CONFIRM",

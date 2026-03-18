@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:math';
+import 'package:audio_session/audio_session.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:provider/provider.dart';
@@ -8,7 +9,6 @@ import '../providers/locale_provider.dart';
 class TextToSpeechFunc {
   TextToSpeechFunc(this.context);
   final BuildContext context;
-
   String textFile = '';
   FlutterTts flutterTts = FlutterTts();
   final ValueNotifier<bool> _isSpeakingNotifier = ValueNotifier<bool>(false);
@@ -47,23 +47,35 @@ class TextToSpeechFunc {
     debugPrint('Language code within text to speech func: $languageCode');
   }
 
-
   Future<void> initializeTts({String gender = 'female'}) async {
     flutterTts.setStartHandler(() {
       isLoadingAudio = false;
     });
 
     if (!isTtsInitialized) {
+      // --- NEW: Unified Audio Session (v1.1.0) ---
+      final session = await AudioSession.instance;
+      await session.configure(const AudioSessionConfiguration(
+        // iOS: Bypasses silent switch & optimizes for voice
+        avAudioSessionCategory: AVAudioSessionCategory.playback,
+        avAudioSessionMode: AVAudioSessionMode.spokenAudio,
+
+        // Android: Identifies as an Accessibility Service
+        androidAudioAttributes: AndroidAudioAttributes(
+          contentType: AndroidAudioContentType.speech,
+          usage: AndroidAudioUsage.assistanceAccessibility,
+        ),
+        androidAudioFocusGainType: AndroidAudioFocusGainType.gainTransientMayDuck,
+      ));
+
       setLanguageCode();
       try {
-        debugPrint('Language code where it matters for tts: $languageCode');
         await flutterTts.setLanguage(languageCode);
         debugPrint('Language code as TTS initialized: $languageCode');
         await flutterTts.setSpeechRate(0.5);
         await flutterTts.setPitch(1.0);
 
         List<dynamic> voices = await flutterTts.getVoices;
-        debugPrint('Available voices: $voices');
         dynamic selectedVoice;
         if (Platform.isAndroid) {}
         dynamic defaultVoice = Platform.isAndroid ?
@@ -74,21 +86,16 @@ class TextToSpeechFunc {
           Map<String, String> voiceMap = voice.cast<String, String>();
           String voiceName = voiceMap['name']?.toLowerCase() ?? '';
           String voiceLocale = voiceMap['locale'] ?? '';
-
           // 1. Check if the voice matches our language
           if (voiceLocale.startsWith(languageCode)) {
-
-            // 2. Search for the "Golden Trio": Enhanced, Premium, or Siri
             if (voiceName.contains('enhanced') ||
                 voiceName.contains('premium') ||
                 voiceName.contains('siri')) {
 
-              // If it also matches our preferred gender, we've found a winner
               if (voiceName.contains(gender)) {
                 selectedVoice = voiceMap;
                 break;
               }
-              // If gender doesn't match, we still keep it as a high-quality fallback
               selectedVoice = voiceMap;
             }
           }
@@ -103,7 +110,6 @@ class TextToSpeechFunc {
         }
         isTtsInitialized = true;
         debugPrint('Value of isTtsInitialized: $isTtsInitialized');
-
         if (isTtsInitialized != false && _isSpeakingNotifier.value != true) {
           speakText(textFile);
         }
@@ -113,7 +119,6 @@ class TextToSpeechFunc {
     }
   }
   Future<void> speakText(String text) async {
-    debugPrint('SpeakText called');
     _isSpeakingNotifier.value = true;
     int estimatedPrepTimeMs = max(text.length * 7, 600);
     await Future.delayed(Duration(milliseconds: estimatedPrepTimeMs));

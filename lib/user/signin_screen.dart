@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:wolpz/logic/validator.dart';
 import 'package:wolpz/widgets/custom_button.dart';
-import 'package:wolpz/widgets/custom_login_field.dart';
+import 'package:wolpz/widgets/custom_password_field.dart';
 import '../l10n/app_localizations.dart';
 import '../support_files/constants.dart';
 
@@ -20,7 +20,6 @@ class _SigninScreenState extends State<SigninScreen> {
 
   bool _isLoading = false;
   bool loading = false;
-  bool _isRegistering = false;
   String? _errorMsg;
 
   @override
@@ -31,8 +30,13 @@ class _SigninScreenState extends State<SigninScreen> {
   }
 
   Future<void> _handleSignIn() async {
-    // Don't do anything if already loading
-    setState(() => _isRegistering = true);
+    if (_isLoading) return;
+
+    setState(() {
+      _isLoading = true;
+      _errorMsg = null;
+    });
+
     final localizations = AppLocalizations.of(context)!;
     final navigator = Navigator.of(context);
 
@@ -45,14 +49,6 @@ class _SigninScreenState extends State<SigninScreen> {
     final String msgEmailInUse = localizations.emailAlreadyInUse;
     final String msgUnexpected = localizations.unexpectedError;
     final String msgConnection = localizations.connectionErrorAlt;
-
-    if (_isLoading) return;
-
-    // 1. Start loading and clear old errors
-    setState(() {
-      _isLoading = true;
-      _errorMsg = null;
-    });
 
     try {
       final userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword (
@@ -129,24 +125,6 @@ class _SigninScreenState extends State<SigninScreen> {
         child: Stack(
           children: [
             _buildLoginForm(),
-
-            if (_isLoading)
-              Positioned.fill(
-                child: Container(
-                  color: Colors.black.withAlpha(60),
-                  child: Center(
-                    child: Semantics(
-                  label: AppLocalizations.of(context)!.loginLoadingProfile,
-                      child: const CircularProgressIndicator(
-                        color: kDarkOrange,
-                        strokeWidth: 6.0,
-                      ),
-                    ),
-
-                  )
-                ),
-              )
-
           ],
         ),
       ),
@@ -185,6 +163,8 @@ class _SigninScreenState extends State<SigninScreen> {
                                 label: AppLocalizations.of(context)!.loginEmailHint,
                                 controller: _emailController,
                                 inputType: TextInputType.emailAddress,
+                                autofillHints: const [AutofillHints.email],
+                                textInputAction: TextInputAction.next,
                                 onChanged: (_) => setState(() => _errorMsg = null),
                                 validator: Validator.validateEmail,
                               ),
@@ -194,6 +174,8 @@ class _SigninScreenState extends State<SigninScreen> {
                                 label: AppLocalizations.of(context)!.loginPasswordHint,
                                 controller: _passwordController,
                                 inputType: TextInputType.text,
+                                autofillHints: const [AutofillHints.password],
+                                textInputAction: TextInputAction.done,
                                 obscureText: true,
                                 onChanged: (_) => setState(() => _errorMsg = null),
                                 validator: Validator.validatePassword,
@@ -218,7 +200,7 @@ class _SigninScreenState extends State<SigninScreen> {
                         child: SizedBox(
                           width: screenWidth * 0.45,
                           height: screenWidth * 0.45,
-                          child: _isRegistering ?  Center(
+                          child: _isLoading ?  Center(
                               child: Container(
                                 width: double.infinity,
                             height: double.infinity,

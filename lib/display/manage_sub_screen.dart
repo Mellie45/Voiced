@@ -51,6 +51,22 @@ class _ManageSubscriptionScreenState extends State<ManageSubscriptionScreen> {
     }
   }
 
+  Future<void> _launchURL(String urlString) async {
+    final Uri url = Uri.parse(urlString);
+    final localizations = AppLocalizations.of(context)!;
+    final String Function(String url) error = localizations.urlLaunchError;
+
+
+    try {
+      if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+        throw Exception(error);
+      }
+    } catch (e) {
+      // Just a safety log in case something goes wrong
+      debugPrint('Error launching URL: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,18 +91,25 @@ class _ManageSubscriptionScreenState extends State<ManageSubscriptionScreen> {
                   if (isPro) ...[
                     SizedBox(
                       height: 60,
-                      child: ElevatedButton.icon(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: kDarkBlue,
-                          foregroundColor: kDarkOrange,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16.0),
+                      child: Semantics(
+                        label: AppLocalizations.of(context)!.subscriptionManageOrCancel,
+                        button: true,
+                        onTap: _onManagePress,
+                        child: ElevatedButton.icon(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: kDarkBlue,
+                            foregroundColor: kDarkOrange,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16.0),
+                            ),
+                          ),
+                          onPressed: _onManagePress,
+                          icon: const Icon(Icons.open_in_new, color: kBackgroundTint),
+                          label: ExcludeSemantics(
+                            child: Text(AppLocalizations.of(context)!.subscriptionManageOrCancel,
+                                style: Theme.of(context).textTheme.displayMedium?.copyWith(color: kBackgroundTint)),
                           ),
                         ),
-                        onPressed: _onManagePress,
-                        icon: const Icon(Icons.open_in_new, color: kBackgroundTint),
-                        label: Text(AppLocalizations.of(context)!.subscriptionManageOrCancel,
-                            style: Theme.of(context).textTheme.displayMedium?.copyWith(color: kBackgroundTint)),
                       ),
                     ),
                      Padding(
@@ -98,41 +121,56 @@ class _ManageSubscriptionScreenState extends State<ManageSubscriptionScreen> {
                       ),
                     ),
                   ] else ...[
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: kDarkBlue,
-                        foregroundColor: kDarkOrange,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16.0),
+                    Semantics(
+                      label: AppLocalizations.of(context)!.subscriptionUpgrade,
+                      button: true,
+                      onTap: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const PaywallScreen()),),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: kDarkBlue,
+                          foregroundColor: kDarkOrange,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.0),
+                          ),
                         ),
-                      ),
-                      onPressed: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const PaywallScreen()),),
-                      child:  Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 18.0),
-                        child:  Text(AppLocalizations.of(context)!.subscriptionUpgrade,
-                          style: Theme.of(context).textTheme.headlineMedium!.copyWith(color: kDarkOrange)),
+                        onPressed: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const PaywallScreen()),),
+                        child:  Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 18.0),
+                          child:  ExcludeSemantics(
+                            child: Text(AppLocalizations.of(context)!.subscriptionUpgrade,
+                              style: Theme.of(context).textTheme.headlineMedium!.copyWith(color: kDarkOrange)),
+                          ),
+                        ),
                       ),
                     ),
                   ],
 
                   const SizedBox(height: 36),
 
-                  OutlinedButton(
-                    style: ElevatedButton.styleFrom(
-                      side: const BorderSide(color: kDarkBlue, width: 1.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                    ),
-                    onPressed: _isLoading ? null : _onRestorePress,
-                    child: _isLoading
-                        ? const SizedBox(height: 50, width: 50, child: CircularProgressIndicator(strokeWidth: 6))
-                        : Padding(
-          padding:  const EdgeInsets.symmetric(vertical: 18.0),
-                          child: Text(AppLocalizations.of(context)!.subscriptionRestorePast,
-                              style: Theme.of(context).textTheme.headlineMedium!),
+                  Semantics(
+                    label: AppLocalizations.of(context)!.subscriptionRestorePast,
+                    button: true,
+                    onTap: _isLoading ? null : _onRestorePress,
+                    child: OutlinedButton(
+                      style: ElevatedButton.styleFrom(
+                        side: const BorderSide(color: kDarkBlue, width: 1.0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16.0),
                         ),
+                      ),
+                      onPressed: _isLoading ? null : _onRestorePress,
+                      child: _isLoading
+                          ? const SizedBox(height: 50, width: 50, child: CircularProgressIndicator(strokeWidth: 6))
+                          : Padding(
+                              padding:  const EdgeInsets.symmetric(vertical: 18.0),
+                            child: ExcludeSemantics(
+                              child: Text(AppLocalizations.of(context)!.subscriptionRestorePast,
+                                  style: Theme.of(context).textTheme.headlineMedium!),
+                            ),
+                          ),
+                    ),
                   ),
                   const SizedBox(height: 26),
                   const Divider(color: kDarkOrange, thickness: 1.0, indent: 5.0, endIndent:5.0),
@@ -155,7 +193,7 @@ class _ManageSubscriptionScreenState extends State<ManageSubscriptionScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(isPro ? Icons.check_circle : Icons.warning_amber_rounded, color: isPro ? Colors.green : kBackgroundTint,
+          Icon(isPro ? Icons.check_circle : Icons.warning_amber_rounded, color: isPro ? kBackgroundTint : kBackgroundTint,
           size: 36,),
           const SizedBox(width: 12),
           Text(
@@ -172,16 +210,47 @@ class _ManageSubscriptionScreenState extends State<ManageSubscriptionScreen> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-            TextButton(onPressed: () {},
-                child:  Container(
-                  padding: const EdgeInsets.only(bottom: 2.2),
-                  decoration: const BoxDecoration(
-                    border: Border(bottom: BorderSide(color: kAlertDialogBackground, width: 1.0)),
-                  ),
-                  child: Text(AppLocalizations.of(context)!.drawerTerms,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: kAlertDialogBackground,),),
-                )),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Semantics(
+                  label: AppLocalizations.of(context)!.paywallTermsOfUse,
+                  button: true,
+                  onTap: () => _launchURL('https://www.baaadkitty.uk/wolpz-terms-and-conditions.html'),
+                  child: TextButton(onPressed: () => _launchURL('https://www.baaadkitty.uk/wolpz-terms-and-conditions.html'),
+                      child:  Container(
+                        padding: const EdgeInsets.only(bottom: 2.2),
+                        decoration: const BoxDecoration(
+                          border: Border(bottom: BorderSide(color: kAlertDialogBackground, width: 1.0)),
+                        ),
+                        child: ExcludeSemantics(
+                          child: Text(AppLocalizations.of(context)!.paywallTermsOfUse,
+                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                color: kAlertDialogBackground,),),
+                        ),
+                      )),
+                ),
+                const SizedBox(width: 18, height: 32,
+                child: VerticalDivider(color: kAlertDialogBackground, thickness: 1.0, indent: 5.0, endIndent:5.0,),),
+                Semantics(
+                  label: AppLocalizations.of(context)!.paywallPrivacyPolicy,
+                  button: true,
+                  onTap: () => _launchURL('https://www.baaadkitty.uk/wolpz-privacy-policy.html'),
+                  child: TextButton(onPressed: () => _launchURL('https://www.baaadkitty.uk/wolpz-privacy-policy.html'),
+                      child:  Container(
+                        padding: const EdgeInsets.only(bottom: 2.2),
+                        decoration: const BoxDecoration(
+                          border: Border(bottom: BorderSide(color: kAlertDialogBackground, width: 1.0)),
+                        ),
+                        child: ExcludeSemantics(
+                          child: Text(AppLocalizations.of(context)!.paywallPrivacyPolicy,
+                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              color: kAlertDialogBackground,),),
+                        ),
+                      )),
+                ),
+              ],
+            ),
          Text(AppLocalizations.of(context)!.paywallDisclaimer,
           textAlign: TextAlign.center,
           style: const TextStyle(fontSize: 14, color: kDarkBlue),
@@ -189,5 +258,4 @@ class _ManageSubscriptionScreenState extends State<ManageSubscriptionScreen> {
       ],
     );
   }
-
 }

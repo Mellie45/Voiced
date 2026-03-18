@@ -9,6 +9,8 @@ class CustomCreateUserField extends StatefulWidget {
   final bool isPassword;
   final Function validator;
   final void Function(dynamic _) onChanged;
+  final Iterable<String>? autofillHints; // NEW
+  final TextInputAction? textInputAction;
 
   const CustomCreateUserField({super.key,
     required this.label,
@@ -17,7 +19,9 @@ class CustomCreateUserField extends StatefulWidget {
     this.obscureText,
     required this.isPassword,
     required this.validator,
-    required this.onChanged ,
+    required this.onChanged,
+    this.autofillHints,
+    this.textInputAction,
   });
 
   @override
@@ -37,21 +41,22 @@ class _CustomCreateUserFieldState extends State<CustomCreateUserField> {
           obscureText: widget.isPassword ? !_showPassword : false,
           keyboardType: widget.inputType,
           controller: widget.controller,
+          autofillHints: widget.autofillHints,
+          textInputAction: widget.textInputAction,
+          validator: (value) => widget.validator(value),
+
           decoration: InputDecoration(
             labelText: widget.label,
             labelStyle: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.white),
             suffixIcon: widget.isPassword
-                ? GestureDetector(
-              onTap: () {
-                setState(() {
-                  _showPassword = !_showPassword;
-                });
-              },
-              child: Icon(
+                ? IconButton(
+              icon: Icon(
                 _showPassword ? Icons.visibility_off : Icons.visibility,
                 color: Colors.white,
                 size: 32.0,
               ),
+              tooltip: _showPassword ? 'Hide password' : 'Show password',
+              onPressed: () => setState(() => _showPassword = !_showPassword),
             )
                 : null,
             enabledBorder: const UnderlineInputBorder(

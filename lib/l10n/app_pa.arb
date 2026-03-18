@@ -12,14 +12,32 @@
       "count": { "type": "int", "format": "compact" }
     }
   },
-  "homeGreeting": "ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ {userName}",
+  "homeGreeting": "ہیلو {userName}",
   "@homeGreeting": {
+    "description": "A welcome message for the user on the home screen",
     "placeholders": {
-      "userName": { "type": "String", "example": "Mel" }
+      "userName": {
+        "type": "String",
+        "example": "Mel"
+      }
     }
   },
-  "languageSelectTitle": "ਆਪਣੀ ਪਸੰਦੀਦਾ ਭਾਸ਼ਾ ਚੁਣੋ",
-  "languageError": "ਭਾਸ਼ਾ ਬਦਲਣ ਵਿੱਚ ਤਰੁੱਟੀ: {error}",
+  "languageSelectTitle": "اپنی پسندیدہ زبان منتخب کریں",
+  "languageError": "زبان تبدیل کرنے میں خرابی: {error}",
+  "@languageError": {
+    "placeholders": {
+      "error": { "type": "String" }
+    }
+  },
+
+  "lang_en": "انگریزی",
+  "lang_fr": "فرانسیسی",
+  "lang_de": "جرمن",
+  "lang_it": "اطالوی",
+  "lang_es": "ہسپانوی",
+  "lang_el": "یونانی",
+  "lang_hi": "ہندی",
+  "lang_pa": "اردو",
 
   "alertMessagesTitle": "ਹੋ ਗਿਆ!",
   "alertMessagesBody": "ਤੁਹਾਡੀ ਭਾਸ਼ਾ ਪੰਜਾਬੀ ਸੈੱਟ ਕਰ ਦਿੱਤੀ ਗਈ ਹੈ",
@@ -29,6 +47,10 @@
   "selectImageScreenReadyText": "ਤਿਆਰ",
   "selectImageScreenShowTextBtn": "ਟੈਕਸਟ ਵਜੋਂ ਦੇਖਣ ਲਈ ਦਬਾਓ",
   "selectImageScreenCloseButton": "ਬੰਦ ਕਰੋ",
+  "selectImageScreenStopButton": "آواز روکیں",
+  "selectImageScreenRestartButton": "آواز دوبارہ شروع کریں",
+  "selectImageScreenStartButton": "آواز شروع کریں",
+  "selectImageScreenDisclaimer": "اے آئی غلطیاں کر سکتا ہے۔ اہم صحت، حفاظت یا قانونی فیصلوں کے لیے اس متن پر بھروسہ نہ کریں۔ ہمیشہ اہم معلومات کی آزادانہ طور پر تصدیق کریں۔",
 
   "paywallSuccess": "ਸਫਲਤਾ! ਅਸੀਮਤ ਐਕਸੈਸ ਅਨਲੌਕ ਹੋ ਗਿਆ।",
   "paywallPurchaseError": "ਤੁਹਾਡੀ ਖਰੀਦ ਦੀ ਪ੍ਰਕਿਰਿਆ ਵਿੱਚ ਤਰੁੱਟੀ ਆਈ ਸੀ।",
@@ -36,9 +58,32 @@
   "paywallNoProducts": "ਇਸ ਸਮੇਂ ਕੋਈ ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਉਤਪਾਦ ਉਪਲਬਧ ਨਹੀਂ ਹਨ।",
   "paywallHeadline": "ਆਪਣੇ ਕੰਨਾਂ ਨੂੰ ਆਪਣੀਆਂ ਅੱਖਾਂ ਬਣਾਓ।",
   "paywallSubHeadline": "ਸਾਡੀ ਸ਼ਾਨਦਾਰ ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਨਾਲ ਅਸੀਮਤ ਐਕਸੈਸ ਪ੍ਰਾਪਤ ਕਰੋ।",
-  "paywallRestoreButton": "ਖਰੀਦਾਂ ਬਹਾਲ ਕਰੋ",
-  "paywallTermsOfUse": "ਵਰਤੋਂ ਦੀਆਂ ਸ਼ਰਤਾਂ",
-  "paywallPrivacyPolicy": "ਪ੍ਰਾਈਵੇਸੀ ਪਾਲਿਸੀ",
+  "paywallMonthlyFlex": "'ماہانہ فلیکس':",
+  "paywallYearlySaver": "'سالانہ سیور':",
+  "paywallRestoreButton": "خریداری بحال کریں",
+  "paywallDisclaimer": "پلان خود بخود تجدید ہو جاتا ہے۔ تجدید سے بچنے کے لیے موجودہ مدت ختم ہونے سے کم از کم 24 گھنٹے پہلے اپنے ڈیوائس کی سیٹنگز میں جا کر کسی بھی وقت منسوخ کریں۔ خریداری پر مفت آزمائش کا کوئی بھی غیر استعمال شدہ حصہ ختم ہو جاتا ہے۔",
+  "paywallTermsOfUse": "استعمال کی شرائط",
+  "paywallPrivacyPolicy": "رازداری کی پالیسی",
+  "paywallMonthlyDescription": "لامحدود رسائی۔\nکسی بھی وقت لچکدار منسوخی",
+  "paywallYearlyDescription": "ہمارا بہترین قیمت والا آپشن۔\nایک سالانہ ادائیگی کے ساتھ %20 بچائیں",
+  "paywallLaunchError": "URL نہیں کھل سکا",
+  "paywallGeneralError": "غلطی: {message}",
+  "@paywallGeneralError": {
+    "placeholders": { "message": { "type": "String" } }
+  },
+  "paywallUnexpectedError": "ایک غیر متوقع غلطی ہوئی ہے: {error}",
+  "@paywallUnexpectedError": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+  "paywallMonthlyBreakdown": "صرف {monthlyPrice} فی مہینہ",
+  "@paywallMonthlyBreakdown": {
+    "placeholders": {
+      "monthlyPrice": {
+        "type": "String"
+      }
+    }
+  },
+  "paywallAMonth": "ਪ੍ਰਤੀ ਮਹੀਨਾ",
 
   "walkthroughTitleHow": "ਇਹ ਕਿਵੇਂ ਕੰਮ ਕਰਦਾ ਹੈ",
   "walkthroughBodyHow": "Wolpz ਛੋਟੇ, ਪੜ੍ਹਨ ਵਿੱਚ ਮੁਸ਼ਕਲ ਟੈਕਸਟ ਨੂੰ ਆਡੀਓ ਫਾਰਮੈਟ ਵਿੱਚ ਬਦਲਣ ਦਾ ਇੱਕ ਸਰਲ ਅਤੇ ਭਰੋਸੇਮੰਦ ਤਰੀਕਾ ਹੈ।",
@@ -61,6 +106,7 @@
   "drawerRemove": "ਖਾਤਾ ਹਟਾਓ",
   "drawerInvite": "ਕਿਸੇ ਦੋਸਤ ਨੂੰ ਸੱਦਾ ਦਿਓ",
   "drawerTerms": "ਸ਼ਰਤਾਂ ਅਤੇ ਪ੍ਰਾਈਵੇਸੀ",
+  "drawerYourWolpz": "آپ کا Wolpz",
 
   "loginTitle": "ਸਾਈਨ ਇਨ ਕਰੋ",
   "loginEmailHint": "ਆਪਣੀ ਈਮੇਲ ਦਰਜ ਕਰੋ",
@@ -68,29 +114,78 @@
   "loginButton": "ਸਾਈਨ ਇਨ ਕਰੋ",
   "loginLoadingProfile": "ਤੁਹਾਡੀ ਪ੍ਰੋਫਾਈਲ ਲੋਡ ਹੋ ਰਹੀ ਹੈ...",
 
+  "aboutTitle": "Wolpz میں خوش آمدید",
+  "aboutHeader": "Wolpz کے بارے میں",
+  "aboutDescription": "بصارت کی کمزوری سادہ ترین کاموں کو بھی تقریباً ناممکن بنا سکتی ہے۔ چنانچہ ہم نے Wolpz تخلیق کیا تاکہ آپ کو تحریری لفظ اور رسائی کے درمیان فرق کو ختم کرنے کا ایک سادہ طریقہ فراہم کیا جا سکے۔\n\nاعلیٰ درجے کی امیج ریکگنیشن اور قدرتی آواز والی ٹیکسٹ ٹو اسپیچ کو ملا کر، ہم روزمرہ کی تحریروں کو — کھانے کے لیبلز سے لے کر دواؤں کی بوتلوں تک — ایک واضح آڈیو ٹریک میں تبدیل کرتے ہیں۔ Wolpz بصارت سے محروم کمیونٹی کو خود مختاری اور اعتماد فراہم کرنے کے لیے حاضر ہے، ایک وقت میں ایک تصویر کے ذریعے۔",
+  "aboutLegal": "آپ ہماری ویب سائٹ پر Wolpz کے بارے میں مزید تفصیلات بشمول ہماری مکمل شرائط و ضوابط، ہم آپ کا ڈیٹا کیسے استعمال کرتے ہیں (سپائلر الرٹ: ہم نہیں کرتے) اور ہم آپ کی رازداری کی حفاظت کیسے کرتے ہیں، اس کے بارے میں جان سکتے ہیں۔",
+  "aboutVisitSite": "Wolpz ملاحظہ کریں",
+
   "removeAccountTitle": "ਖਾਤਾ ਹਟਾਓ",
+  "removeAccountMessage": "ہمارے ساتھ آپ کا ہونا خوشی کی बात تھی، اور ہمیں آپ کو جاتے ہوئے دیکھ کر واقعی دکھ ہو رہا ہے۔ براہ کرم ذہن میں رکھیں کہ اپنا اکاؤنٹ حذف کرنا مستقل ہے اور اس سے آپ کی تمام محفوظ کردہ ہسٹری اور ترتیبات مٹ جائیں گی۔ اگر کوئی تکنیکی مسئلہ آپ کے راستے میں آ رہا ہے، تو ہمیں اسے آپ کے لیے ٹھیک کرنے کا موقع ملنے پر خوشی ہوگی—بس ہماری ٹیم سے رابطہ کریں!",
   "removeAccountHeading": "ਮਹੱਤਵਪੂਰਨ ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਨੋਟਿਸ",
-  "removeAccMessage": "ਤੁਹਾਡਾ ਖਾਤਾ ਮਿਟਾਉਣ ਨਾਲ ਤੁਹਾਡੀ ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਆਪਣੇ ਆਪ ਰੱਦ ਨਹੀਂ ਹੁੰਦੀ।\\nApple/Google ਵੱਲੋਂ ਤੁਹਾਡੇ ਤੋਂ ਚਾਰਜ ਲਿਆ ਜਾਂਦਾ ਰਹੇਗਾ। ਜੇਕਰ ਤੁਸੀਂ ਛੱਡਣਾ ਚਾਹੁੰਦੇ ਹੋ, ਤਾਂ ਕਿਰਪਾ ਕਰਕੇ ਹੇਠਾਂ ਦਿੱਤੇ ਬਟਨ ਦੀ ਵਰਤੋਂ ਕਰੋ।",
+  "removeAccMessage": "ਤੁਹਾਡਾ ਖਾਤਾ ਮਿਟਾਉਣ ਨਾਲ ਤੁਹਾਡੀ ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਆਪਣੇ ਆਪ ਰੱਦ ਨਹੀਂ ਹੁੰਦੀ।\n\nApple/Google ਵੱਲੋਂ ਤੁਹਾਡੇ ਤੋਂ ਚਾਰਜ ਲਿਆ ਜਾਂਦਾ ਰਹੇਗਾ। ਜੇਕਰ ਤੁਸੀਂ ਛੱਡਣਾ ਚਾਹੁੰਦੇ ਹੋ, ਤਾਂ ਕਿਰਪਾ ਕਰਕੇ ਹੇਠਾਂ ਦਿੱਤੇ ਬਟਨ ਦੀ ਵਰਤੋਂ ਕਰੋ।",
   "removeAccountConfirm": "ਕੀ ਤੁਸੀਂ ਸੱਚਮੁੱਚ ਆਪਣਾ ਖਾਤਾ ਸਥਾਈ ਤੌਰ 'ਤੇ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+  "removeAccountWarning": "انتباہ: یہ عمل واپس نہیں لیا جا سکتا۔ آپ کا تمام ڈیٹا بشمول سبسکرپشن کی تاریخ اور محفوظ کردہ ترجیحات، مستقل طور پر حذف کر دیا جائے گا۔",
   "removeAccountConfirmBtn": "ਪੁਸ਼ਟੀ ਕਰੋ",
   "removeAccountCancelBtn": "ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਰੱਦ ਕਰੋ",
   "removeAccountSuccess": "ਖਾਤਾ ਸਫਲਤਾਪੂਰਵਕ ਹਟਾਇਆ ਗਿਆ। ਅਲਵਿਦਾ!",
 
-  "registerTitle": "ਆਪਣਾ ਖਾਤਾ ਬਣਾਓ",
-  "registerButton": "ਖਾਤਾ ਬਣਾਓ",
+  "registerTitle": "اپنا اکاؤنٹ بنائیں",
+  "registerFirstNameHint": "پہلا نام",
+  "registerLastNameHint": "آخری نام",
+  "registerEmailHint": "ای میل",
+  "registerPasswordHint": "پاس ورڈ",
+  "registerConfirmPasswordHint": "پاس ورڈ کی تصدیق کریں",
+  "registerButton": "اکاؤنٹ بنائیں",
+
+  "userNotFound": "اس ای میل کے لیے کوئی صارف نہیں ملا۔",
+  "wrongPassword": "فراہم کردہ پاس ورڈ غلط ہے۔",
+  "operationNotAllowed": "آپریشن کی اجازت نہیں ہے۔",
+  "invalidEmail": "ای میل ایڈریس درست نہیں ہے۔",
+  "userDisabled": "یہ اکاؤنٹ معطل کر دیا گیا ہے۔",
+  "weakPassword": "فراہم کردہ پاس ورڈ بہت کمزور ہے۔",
+  "emailAlreadyInUse": "اس ای میل پر پہلے ہی ایک اکاؤنٹ موجود ہے۔",
+  "unexpectedError": "ایک غیر متوقع غلطی ہوئی ہے۔ براہ کرم دوبارہ کوشش کریں۔",
+  "connectionErrorAlt": "ایک غلطی ہوئی ہے۔ براہ کرم اپنا کنکشن چیک کریں۔",
+  "basicError": "غلطی",
 
   "deviceLimitTitle": "ਡਿਵਾਈਸ ਸੀਮਾ ਪੂਰੀ ਹੋ ਗਈ",
   "deviceLimitMessage": "ਇਹ ਡਿਵਾਈਸ ਪਹਿਲਾਂ ਹੀ ਆਪਣੇ 5 ਮੁਫ਼ਤ ਕ੍ਰੈਡਿਟ ਵਰਤ ਚੁੱਕਾ ਹੈ। ਜਾਰੀ ਰੱਖਣ ਲਈ, ਕਿਰਪਾ ਕਰਕੇ ਸਬਸਕ੍ਰਾਈਬ ਕਰੋ।",
   "deviceLimitButton": "ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਦੇਖੋ",
+
+  "urlLaunchError": "{url} نہیں کھل سکا۔ براہ کرم اپنا کنکشن چیک کریں۔",
+  "@urlLaunchError": {
+    "placeholders": { "url": { "type": "String" } }
+  },
+  "urlError": "URL کھولنے میں غلطی: {error}",
+  "@urlError": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+
+  "termsAndPrivacyTitle": "شرائط و ضوابط اور رازداری",
+  "termsAndPrivacyGreeting": "ہیلو {userName}\n\nآپ نیچے دیے گئے بٹن کے ذریعے ہماری ویب سائٹ پر ہماری مکمل شرائط و ضوابط اور رازداری کا بیان پڑھ سکتے ہیں۔",
+  "@termsAndPrivacyGreeting": {
+    "placeholders": { "userName": { "type": "String" } }
+  },
+  "termsVisitButton": "BaaadKitty ملاحظہ کریں",
+  "termsEmailPrompt": "ہم آپ کی رائے جاننا پسند کریں گے، رابطہ کرنے کے لیے بس ہمیں ایک ای میل بھیجیں۔",
+  "termsEmailButton": "ای میل بھیجیں",
+  "termsRemoveLink": "اپنا اکاؤنٹ حذف کرنے کے لیے یہاں کلک کریں",
 
   "photosPermission": "ਸਾਨੂੰ ਤੁਹਾਡੀਆਂ ਫੋਟੋਆਂ ਤੱਕ ਪਹੁੰਚਣ ਲਈ ਇਜਾਜ਼ਤ ਚਾਹੀਦੀ ਹੈ",
   "permissionBtn": "ਠੀਕ ਹੈ",
   "permissionGrantBtn": "ਇਜਾਜ਼ਤ ਦਿਓ",
   "permissionCameraReq": "ਤੁਹਾਨੂੰ ਆਪਣੇ ਕੈਮਰੇ ਦੀ ਵਰਤੋਂ ਕਰਨ ਦੀ ਲੋੜ ਹੋਵੇਗੀ",
 
-  "subscriptionRestored": "ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਬਹਾਲ ਹੋ ਗਈ!",
-  "subscriptionStatusActive": "ਪ੍ਰੋ ਸਥਿਤੀ: ਸਰਗਰਮ",
-  "subscriptionStatusInactive": "ਪ੍ਰੋ ਸਥਿਤੀ: ਨਿਸ਼ਕਿਰਿਆ",
+  "subscriptionRestored": "سبسکرپشن بحال کر دی گئی!",
+  "subscriptionNotFound": "کوئی فعال سبسکرپشن نہیں ملی۔",
+  "subscriptionManage": "سبسکرپشن کا انتظام کریں",
+  "subscriptionManageOrCancel": "سبسکرپشن کا انتظام کریں یا منسوخ کریں",
+  "subscriptionManageSettings": "آپ کو اپنا پلان تبدیل کرنے یا ختم کرنے کے لیے ڈیوائس کی سیٹنگز پر لے جایا جائے گا۔",
+  "subscriptionUpgrade": "Wolpz Pro پر اپ گریڈ کریں",
+  "subscriptionRestorePast": "پچھلی خریداریاں بحال کریں",
+  "subscriptionStatusActive": "پرو اسٹیٹس: فعال",
+  "subscriptionStatusInactive": "پرو اسٹیٹس: غیر فعال",
 
   "inviteMessage": "Wolpz ਦੇਖੋ! ਇਹ ਮੈਨੂੰ ਆਪਣੇ ਕੰਨਾਂ ਰਾਹੀਂ ਦੁਨੀਆ ਨੂੰ \"ਦੇਖਣ\" ਵਿੱਚ ਮਦਦ ਕਰਦਾ ਹੈ। ਇੱਥੇ ਪ੍ਰਾਪਤ ਕਰੋ: ",
   "inviteTitle": "Wolpz 'ਤੇ ਸੱਦਾ ਦਿਓ",

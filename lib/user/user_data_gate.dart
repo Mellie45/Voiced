@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wolpz/display/launch_screen.dart';
 import 'package:wolpz/support_files/constants.dart';
-import '../data_classes/voicedUser.dart';
+import '../data_classes/wolpz_user.dart';
 import '../l10n/app_localizations.dart';
 
 class UserDataGate extends StatelessWidget {
@@ -14,7 +14,7 @@ class UserDataGate extends StatelessWidget {
   Widget build(BuildContext context) {
     // We "watch" the provider for changes.
     // This will be null at first, then update to a VoicedUser
-    final voicedUser = context.watch<VoicedUser?>();
+    final voicedUser = context.watch<WolpzUser?>();
     debugPrint('UserDataGate: build() called. User is: $voicedUser');
 
     if (voicedUser == null) {
@@ -41,7 +41,7 @@ class UserDataGate extends StatelessWidget {
                       height: 100,
                       child: CircularProgressIndicator(color: kDarkOrange, strokeWidth: 14.0,)),
                 ),
-                Text(AppLocalizations.of(context)!.loginLoadingProfile, style: kAlertTitleText,),
+                Text(AppLocalizations.of(context)?.loginLoadingProfile ?? 'Loading Profile...', style: kAlertTitleText,),
               ],
             ),
           ),

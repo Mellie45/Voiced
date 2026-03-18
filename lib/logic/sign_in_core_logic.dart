@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:wolpz/data_classes/voicedUser.dart';
+import 'package:wolpz/data_classes/wolpz_user.dart';
 import 'package:wolpz/support_files/constants.dart';
 
 import '../l10n/app_localizations.dart';
@@ -26,7 +26,7 @@ Future<UserCredential?> createAccount(String email, String password) async {
   }
 }
 
-Future<void> addUserToFirebase(VoicedUser user, BuildContext context) async {
+Future<void> addUserToFirebase(WolpzUser user, BuildContext context) async {
   try {
     final bool onValue = await checkUserExist(user.userID);
     debugPrint('---------- addUser called');
@@ -50,13 +50,13 @@ Future<void> addUserToFirebase(VoicedUser user, BuildContext context) async {
   }
   }
 
-Stream<VoicedUser?> getUser(String userID) {
+Stream<WolpzUser?> getUser(String userID) {
   return FirebaseFirestore.instance.collection('users').doc(userID).snapshots()
       .map((snapshot) {
         if (snapshot.exists && snapshot.data() != null) {
           try {
             final Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
-            return VoicedUser.fromJson(data);
+            return WolpzUser.fromJson(data);
           } catch (e) {
             debugPrint('Error in getUser: $e');
             return null;

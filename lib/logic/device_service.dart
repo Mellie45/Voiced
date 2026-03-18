@@ -7,8 +7,10 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 class DeviceService {
   final _storage = const FlutterSecureStorage();
   final _deviceInfo = DeviceInfoPlugin();
+//TODO: Change key before release build
+  //static const String _storageKey = 'vocal_eyes_device_token';
 
-  static const String _storageKey = 'vocal_eyes_device_token';
+  static const String _storageKey = 'wolpz_device_token';
 
   Future<String?> getUniqueDeviceIdentifier() async {
     try {

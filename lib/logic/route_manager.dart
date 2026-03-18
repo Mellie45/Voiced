@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:wolpz/data_classes/voicedUser.dart';
+import 'package:wolpz/data_classes/wolpz_user.dart';
 import 'package:wolpz/user/login_options_screen.dart';
 import 'package:wolpz/logic/sign_in_core_logic.dart';
 import 'package:wolpz/user/user_data_gate.dart';
@@ -25,7 +25,7 @@ class _RouteManagerState extends State<RouteManager> {
         stream: _firebaseAuth.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return StreamProvider<VoicedUser?>(create: (context) => getUser(snapshot.data!.uid),
+            return StreamProvider<WolpzUser?>(create: (context) => getUser(snapshot.data!.uid),
                 initialData: null,
             catchError: (context, error) {
               debugPrint('Provider caught error: $error');

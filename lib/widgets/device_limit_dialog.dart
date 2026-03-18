@@ -29,25 +29,43 @@ void showDeviceLimitDialog(BuildContext context) {
         actions: [
           Column(
             children: [
-              MainFlatButton(
-                title: AppLocalizations.of(context)!.deviceLimitButton,
-                background: kDarkOrange,
-                borderColor: kDarkOrange,
-                textStyle: kFlatButtonText,
-                pressed: () async {
+              Semantics(
+                label: AppLocalizations.of(context)!.deviceLimitButton,
+                button: true,
+                onTap: () async {
                   Navigator.pop(context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const PaywallScreen()),
-                    );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const PaywallScreen()),
+                  );
                 },
+                child: MainFlatButton(
+                  title: AppLocalizations.of(context)!.deviceLimitButton,
+                  background: kDarkOrange,
+                  borderColor: kDarkOrange,
+                  textStyle: kFlatButtonText,
+                  pressed: () async {
+                    Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const PaywallScreen()),
+                      );
+                  },
+                ),
               ),
               const SizedBox(height: 12),
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text(
-                  AppLocalizations.of(context)!.selectImageScreenCloseButton.toUpperCase(),
-                  style: const TextStyle(color: Colors.white70),
+              Semantics(
+                label: AppLocalizations.of(context)!.selectImageScreenCloseButton,
+                button: true,
+                onTap: () => Navigator.pop(context),
+                child: TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: ExcludeSemantics(
+                    child: Text(
+                      AppLocalizations.of(context)!.selectImageScreenCloseButton.toUpperCase(),
+                      style: const TextStyle(color: Colors.white70),
+                    ),
+                  ),
                 ),
               ),
             ],

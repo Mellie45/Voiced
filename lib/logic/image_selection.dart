@@ -10,16 +10,17 @@ import 'package:path/path.dart' as path;
 import 'package:provider/provider.dart';
 import 'package:wolpz/logic/main_ai_query.dart';
 import 'package:wolpz/support_files/constants.dart';
-import '../data_classes/voicedUser.dart';
+import '../data_classes/wolpz_user.dart';
 import '../l10n/app_localizations.dart';
 import '../providers/locale_provider.dart';
 import '../display/paywall_screen.dart';
+import '../widgets/text_results_button.dart';
 import 'device_service.dart';
 import 'text_to_speech_function.dart';
 
 
 class ImageSelection extends StatefulWidget {
-  final VoicedUser user;
+  final WolpzUser user;
   const ImageSelection({super.key, required this.user});
 
   @override
@@ -27,7 +28,6 @@ class ImageSelection extends StatefulWidget {
 }
 
 class _ImageSelectionState extends State<ImageSelection> {
-  final ScrollController _modalScrollController = ScrollController();
   late TextToSpeechFunc textToSpeech;
   File? image;
   final picker = ImagePicker();
@@ -37,11 +37,19 @@ class _ImageSelectionState extends State<ImageSelection> {
   String languageCode = 'en';
   late DeviceService deviceService;
 
+  @override
+  void initState() {
+    super.initState();
+    deviceService = DeviceService();
+    setLanguageCode();
+    // 1. Warm up the TTS engine immediately on screen load
+    textToSpeech = TextToSpeechFunc(context);
+    WidgetsBinding.instance.addPostFrameCallback((_) => _selectImage());
+  }
 
   void setLanguageCode() {
     final localeProvider = Provider.of<LocaleProvider>(context, listen: false).locale;
     setState(() => languageCode = localeProvider.toString());
-    debugPrint('Language code at imageSelection: $languageCode');
   }
 
   void _toggleVisibility() {
@@ -49,7 +57,6 @@ class _ImageSelectionState extends State<ImageSelection> {
       _isAnimating = !_isAnimating;
     });
   }
-
 
   Future _selectImage() async {
     final localizations = AppLocalizations.of(context)!;
@@ -86,9 +93,7 @@ class _ImageSelectionState extends State<ImageSelection> {
             actions: [
               TextButton(
                 child: Text(btnText),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
+                onPressed: () => Navigator.pop(context),
               ),
               TextButton(
                 child: Text(grantPermission),
@@ -100,11 +105,8 @@ class _ImageSelectionState extends State<ImageSelection> {
                   } else {
                     Fluttertoast.showToast(
                       msg: cameraPermission,
-                      toastLength: Toast.LENGTH_LONG,
-                      gravity: ToastGravity.CENTER,
-                      backgroundColor: Colors.red,
-                      textColor: Colors.white,
-                      fontSize: 16.0,
+                      toastLength: Toast.LENGTH_LONG, gravity: ToastGravity.CENTER,
+                      backgroundColor: Colors.red, textColor: Colors.white, fontSize: 16.0,
                     );
                   }
                 },
@@ -122,11 +124,8 @@ class _ImageSelectionState extends State<ImageSelection> {
     final appDir = await getApplicationDocumentsDirectory();
     final fileName = path.basename(pickedImage.path);
     final savedImagePath = '${appDir.path}/$fileName';
-    final savedImage = await File(pickedImage.path).copy(savedImagePath);
+    await File(pickedImage.path).copy(savedImagePath);
 
-    setState(() {
-      image = savedImage;
-    });
     final tempDir = await getTemporaryDirectory();
     final compressedImagePath = '${tempDir.path}/compressed_$fileName';
     var result = await FlutterImageCompress.compressAndGetFile(
@@ -135,62 +134,55 @@ class _ImageSelectionState extends State<ImageSelection> {
       quality: 60,
       format: CompressFormat.jpeg,
     );
-    if (result == null) {
-      debugPrint('Image compression failed');
-      return;
-    }
+
+    if (result == null) return;
     File compressedImageFile = File(result.path);
-    // We only tag the device if the user is NOT a subscriber.
     if (!widget.user.isSubscribed) {
-      // We await this to ensure the record is sent to Firestore
-      // before the AI results potentially trigger a navigation change.
       await deviceService.tagDeviceAsUsed();
     }
 
     MainAiQuery mainAiQuery = MainAiQuery(
-        imageFile: compressedImageFile, languageCode: languageCode,
-
+        imageFile: compressedImageFile,
+        languageCode: languageCode,
         onResponseComplete: (String? responseText) {
+          if (!mounted) return;
           setState(() {
-            debugPrint('Response = $responseText');
             responseComplete = true;
             if (responseText != null) {
               responseTextValue = responseText;
+              textToSpeech.updateText(responseTextValue);
             }
           });
+
         }, onPaywallTrigger: () {
-      // Navigate to Paywall when uses run out
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const PaywallScreen()),
+          Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const PaywallScreen()),
       );
     });
     mainAiQuery.initializeVertex(compressedImageFile);
   }
 
-  @override
-  void initState() {
-    super.initState();
-    deviceService = DeviceService();
-    debugPrint('ImageSelection: initState called');
-    debugPrint('ImageSelection: calling setLanguageCode');
-    setLanguageCode();
-    debugPrint('ImageSelection: calling _selectImage');
-    WidgetsBinding.instance.addPostFrameCallback((_) => _selectImage());
-    debugPrint('ImageSelection: initializing textToSpeech');
-    textToSpeech = TextToSpeechFunc(context);
-    debugPrint('ImageSelection: initState finished');
+  void _handleToggle() async {
+    if(textToSpeech.isSpeakingNotifier.value) {
+      await textToSpeech.pauseTts();
+    } else if (textToSpeech.isTtsInitialized && textToSpeech.isPaused) {
+      await textToSpeech.speakText(responseTextValue);
+    } else {
+      textToSpeech.updateText(responseTextValue);
+      await textToSpeech.speakText(responseTextValue);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+    final localizations = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: kBackgroundTint,
       body: SafeArea(
         child: Padding(
-          padding:  EdgeInsets.symmetric(vertical: height * 0.001, horizontal: 30.0),
+          padding:  EdgeInsets.symmetric(vertical: height * 0.002, horizontal: 30.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -200,10 +192,8 @@ class _ImageSelectionState extends State<ImageSelection> {
                 decoration: const BoxDecoration(
                     color: kDarkBlue,
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(48.0),
-                      topRight: Radius.circular(22.0),
-                      bottomLeft: Radius.circular(48.0),
-                      bottomRight: Radius.circular(22.0),
+                      topLeft: Radius.circular(48.0), topRight: Radius.circular(22.0),
+                      bottomLeft: Radius.circular(48.0), bottomRight: Radius.circular(22.0),
                     )
                 ),
                 child: Padding(
@@ -219,15 +209,13 @@ class _ImageSelectionState extends State<ImageSelection> {
                               textToSpeech.stopPlayback();
                               Navigator.pop(context);
                             },
-                            child: const Icon(
-                              Icons.arrow_back_ios_new_rounded,
-                              color: kDarkOrange,
-                              size: 54,
+                            child: const ExcludeSemantics(
+                              child: Icon(Icons.arrow_back_ios_new_rounded, color: kDarkOrange, size: 54,),
                             )),
 
                       ),
                       const SizedBox(width: 12.0),
-                      Text(AppLocalizations.of(context)!.selectImageScreenTopNavBack,
+                      Text(localizations.selectImageScreenTopNavBack,
                         style: kBasicTextAlt.copyWith(fontSize: 34, color: kBackgroundTint),),
                     ],
                   ),
@@ -239,164 +227,72 @@ class _ImageSelectionState extends State<ImageSelection> {
                 children: [
                   SizedBox(
                     width: width,
-                    height: height * 0.74,
+                    height: height * 0.8,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
-                          AppLocalizations.of(context)!.selectImageScreenReadyText,
-                          style: kBasicTextAlt,
-                        ),
+                        Text(localizations.selectImageScreenReadyText, style: kBasicTextAlt,),
                         const Spacer(),
-                        GestureDetector(
-                          onTap: () async {
-                            if(textToSpeech.isSpeakingNotifier.value) {
-                              await textToSpeech.pauseTts();
-                            } else if (textToSpeech.isTtsInitialized && textToSpeech.isPaused) {
-                              await textToSpeech.speakText(responseTextValue);
-                            } else {
-                              textToSpeech.updateText(responseTextValue);
-                              await textToSpeech.initializeTts();
-                            }
-                          },
-                          child: Container(
-                            height: width * 0.86,
-                            width: width * 0.86,
-                            decoration: BoxDecoration(
-                                color: kDarkOrange,
-                                borderRadius: BorderRadius.circular(22.0)
-                            ),
-                            child: Center(
-                              child: SizedBox(
-                                height: 240,
-                                width: 240,
-                                child: ValueListenableBuilder<bool>(
-                                  valueListenable: textToSpeech.isSpeakingNotifier,
-                                  builder: (context, isPlaying, _) {
-                                    return Container(
-                                      alignment: Alignment.center,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(120),
-                                        color: isPlaying
-                                            ? kDarkBlue
-                                            : textToSpeech.isPaused
-                                            ? kDarkBlue
-                                            : kBackgroundTint,
-                                      ),
-                                      child: Icon(
-                                        isPlaying
-                                            ? Icons.pause_rounded
-                                            : textToSpeech.isPaused
-                                            ? Icons.restart_alt_rounded
-                                            : Icons.play_arrow_rounded,
-                                        color: kDarkOrange,
-                                        size: 240,
-                                      ),
-                                    );
-                                  },
+                        Semantics(
+                          label: textToSpeech.isSpeakingNotifier.value
+                              ? localizations.selectImageScreenStopButton : textToSpeech.isPaused
+                              ? localizations.selectImageScreenRestartButton : localizations.selectImageScreenStartButton,
+                          button: true,
+                          onTap: _handleToggle,
+
+                          child: GestureDetector(
+                            onTap: _handleToggle,
+                            child: Container(
+                              height: width * 0.86,
+                              width: width * 0.86,
+                              decoration: BoxDecoration(
+                                  color: kDarkOrange,
+                                  borderRadius: BorderRadius.circular(22.0)
+                              ),
+                              child: Center(
+                                child: SizedBox(
+                                  height: 240,
+                                  width: 240,
+                                  child: ValueListenableBuilder<bool>(
+                                    valueListenable: textToSpeech.isSpeakingNotifier,
+                                    builder: (context, isPlaying, _) {
+                                      return Container(
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(120),
+                                          color: (isPlaying || textToSpeech.isPaused) ? kDarkBlue : kBackgroundTint,
+                                        ),
+                                        child: ExcludeSemantics(
+                                          child: Icon(
+                                            isPlaying
+                                                ? Icons.pause_rounded : textToSpeech.isPaused
+                                                ? Icons.restart_alt_rounded : Icons.play_arrow_rounded,
+                                            color: kDarkOrange,
+                                            size: 240,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
                         //Display the text pop-up
-                        const SizedBox(height: 32.0,),
-                        GestureDetector(
-                          onTap: () {
-                            debugPrint('pressed');
-                            showModalBottomSheet(backgroundColor: kDarkBlue,
-                              useSafeArea: false,
-                              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(22.0))),
-                              barrierColor: kDarkOrange,
-                              context: context,
-                              builder: (context) => SizedBox(
-                                height: height * 0.8,
-                                child: Padding(padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 22.0),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Expanded(
-                                          child: ScrollbarTheme(
-                                            data: ScrollbarThemeData(
-                                              thumbColor: WidgetStateProperty.all<Color>(kDarkOrange),
-                                              trackColor: WidgetStateProperty.all<Color>(Colors.white),
-                                              trackBorderColor: WidgetStateProperty.all<Color>(kDarkOrange),
-                                              radius: const Radius.circular(12.0),
-                                              thickness: WidgetStateProperty.all(12.0),
-                                            ),
-                                            child: Scrollbar(
-                                              controller: _modalScrollController,
-                                              thumbVisibility: true,
-                                              trackVisibility: true,
-                                              interactive: true,
-                                              child: SingleChildScrollView(
-                                                controller: _modalScrollController,
-                                                padding: const EdgeInsets.only(right: 16.0),
-                                                child: Text(
-                                                  responseTextValue,
-                                                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: Colors.white),
-                                                ),
-                                              ),
-                                            ),
-                                          )),
-
-                                      Column(
-                                        children: [
-                                          const SizedBox(height: 16.0,),
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(vertical: 12.0),
-                                            child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                const SizedBox(width: 10.0),
-                                                Stack(
-                                                  alignment: Alignment.center,
-                                                  children: [
-                                                    Container(
-                                                      height: 56,
-                                                      width: 180,
-                                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(12.0), border: Border.all(color: kDarkOrange, width: 2.0)),
-                                                    ),
-                                                    TextButton.icon(
-                                                        icon: const Icon(
-                                                            Icons.close_rounded, color: kDarkOrange, size: 34.0, weight: 900
-                                                        ),
-                                                        onPressed: () => Navigator.pop(context),
-                                                        label:  Text(AppLocalizations.of(context)!.selectImageScreenCloseButton,
-                                                          style: const TextStyle(color: kDarkOrange, fontSize: 24, letterSpacing: 1.6),
-                                                        )),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),);
-                          },
-                          child: Container(
-                            alignment: Alignment.center,
-                            width: width,
-                            decoration: BoxDecoration(
-                              color: kDarkBlue,
-                              borderRadius: BorderRadius.circular(22.0)
-                          ),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 22.0),
-                              child: Text(AppLocalizations.of(context)!.selectImageScreenShowTextBtn,
-                                style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: kBackgroundTint),
-                              ),
-                            ),
-                          ),
+                        const SizedBox(height: 22.0,),
+                        TextResultsButton(text: responseTextValue),
+                        const SizedBox(height: 22.0,),
+                        Semantics(
+                          label: 'Disclaimer: AI can make errors. Do not rely on this text for critical health, safety, or legal decisions.',
+                          child: Text(
+                              textAlign: TextAlign.center,
+                              localizations.selectImageScreenDisclaimer,
+                              style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.black87)),
                         ),
                       ],
                     ),
                   ),
-
                 ],
               ) : Column(
                 children: [
@@ -405,7 +301,7 @@ class _ImageSelectionState extends State<ImageSelection> {
                     curve: Curves.easeInOut,
                     opacity: _isAnimating ? 1.0 : 0.2,
                     child:  Text(
-                      AppLocalizations.of(context)!.selectImageScreenWorkingText,
+                      localizations.selectImageScreenWorkingText,
                       style: kBasicTextAlt,
                     ),
                     onEnd: () {

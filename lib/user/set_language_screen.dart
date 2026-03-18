@@ -23,11 +23,33 @@ class _SetLanguageScreenState extends State<SetLanguageScreen> {
     'es': 'ES',
     'el': 'GR',
     'hi': 'IN',
-    'ur': 'PK',
+    'pa': 'PK',
   };
 
   FlagTheme getFlagTheme(Shape shape) {
     return ImageTheme(width: 66, height: 66, shape: shape);
+  }
+
+  String getLanguageName(String code, BuildContext context) {
+    final localizations = AppLocalizations.of(context);
+    if (localizations == null) return "English";
+
+    switch (code) {
+      case 'en': return localizations.lang_en;
+      case 'fr': return localizations.lang_fr;
+      case 'de': return localizations.lang_de;
+      case 'it': return localizations.lang_it;
+      case 'es': return localizations.lang_es;
+      case 'el': return localizations.lang_el;
+      case 'hi': return localizations.lang_hi;
+      case 'pa':
+        try {
+          return localizations.lang_pa;
+        } catch (_) {
+          return "Punjabi";
+        }
+      default: return localizations.lang_en;
+    }
   }
 
   Future _showLanguageChangeConfirmationDialog(BuildContext context) async {
@@ -44,14 +66,22 @@ class _SetLanguageScreenState extends State<SetLanguageScreen> {
             AppLocalizations.of(context)!.alertMessagesTitle,
             style: kAlertTitleText.copyWith(fontWeight: FontWeight.w900),
           ),
-          content: Text(
-            AppLocalizations.of(context)!.alertMessagesBody,
-            style: kAlertTitleText,
+          content: Semantics(
+            label: AppLocalizations.of(context)!.alertMessagesBody,
+            child: Text(
+              AppLocalizations.of(context)!.alertMessagesBody,
+              style: kAlertTitleText,
+            ),
           ),
           actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context, rootNavigator: true).pop(),
-              child: const Icon(Icons.check, color: Colors.white),
+            Semantics(
+              label: AppLocalizations.of(context)!.selectImageScreenCloseButton,
+              button: true,
+              onTap: () => Navigator.of(context, rootNavigator: true).pop(),
+              child: TextButton(
+                onPressed: () => Navigator.of(context, rootNavigator: true).pop(),
+                child: const Icon(Icons.check, color: Colors.white),
+              ),
             ),
           ],
         );
@@ -107,22 +137,28 @@ class _SetLanguageScreenState extends State<SetLanguageScreen> {
                   itemBuilder: (context, index) {
                     final languageCode = _countryCodes.keys.elementAt(index);
                     final countryCode = _countryCodes.values.elementAt(index);
-                    return LanguageFlagButton(
-                      countryCode: countryCode,
-                      onTap: () {
-                        try {
-                          localeProvider.setLocale(Locale(languageCode));
-                          Navigator.pop(context);
-                              _showLanguageChangeConfirmationDialog(context);
+                    final String languageName = getLanguageName(languageCode, context);
+                    return Semantics(
+                      label: languageName,
+                      button: true,
+                      excludeSemantics: true,
+                      child: LanguageFlagButton(
+                        countryCode: countryCode,
+                        onTap: () {
+                          try {
+                            localeProvider.setLocale(Locale(languageCode));
+                            Navigator.pop(context);
+                                _showLanguageChangeConfirmationDialog(context);
 
-                        } catch (e) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text(
-                                AppLocalizations.of(context)!.languageError(e.toString())
-                            )),
-                          );
+                          } catch (e) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text(
+                                  AppLocalizations.of(context)!.languageError(e.toString())
+                              )),
+                            );
+                          }
                         }
-                      }
+                      ),
                     );
                   },
                 ),

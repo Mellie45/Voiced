@@ -26,11 +26,13 @@ class MainFlatButton extends StatelessWidget {
       onPressed: pressed,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0),
-        child: Text(
-          title,
-          softWrap: true,
-          textAlign: TextAlign.center,
-          style: textStyle,
+        child: ExcludeSemantics(
+          child: Text(
+            title,
+            softWrap: true,
+            textAlign: TextAlign.center,
+            style: textStyle,
+          ),
         ),
       ),
     );

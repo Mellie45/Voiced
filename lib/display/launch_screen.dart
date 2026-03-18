@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:wolpz/data_classes/voicedUser.dart';
+import 'package:wolpz/data_classes/wolpz_user.dart';
 import 'package:wolpz/support_files/constants.dart';
 import 'package:wolpz/widgets/end_drawer.dart';
 import '../l10n/app_localizations.dart';
@@ -14,7 +14,7 @@ import 'paywall_screen.dart';
 import '../widgets/device_limit_dialog.dart';
 
 class LaunchScreen extends StatefulWidget {
-  final VoicedUser user;
+  final WolpzUser user;
   final SharedPreferences prefs;
 
   const LaunchScreen({super.key, required this.user, required this.prefs});
@@ -86,7 +86,7 @@ class _LaunchScreenState extends State<LaunchScreen> {
           .doc(widget.user.userID)
           .get();
 
-      final freshUser = VoicedUser.fromDocument(freshDoc);
+      final freshUser = WolpzUser.fromDocument(freshDoc);
 
       if (mounted) {
         setState(() {
@@ -155,6 +155,9 @@ class _LaunchScreenState extends State<LaunchScreen> {
     final bool isExactlyZero = rawCredits != null && rawCredits == 0;
     final bool showSubscriptionPrompt = widget.user.isSubscribed || isExactlyZero;
 
+    final localizations = AppLocalizations.of(context);
+    //if (localizations == null) return const Scaffold();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -181,92 +184,106 @@ class _LaunchScreenState extends State<LaunchScreen> {
                       height: 200,
                       decoration: const BoxDecoration(
                           image: DecorationImage(
-                        image: AssetImage('assets/vocal_eyes_logo.png'),
+                        image: AssetImage('assets/wolpz_full_logo_clear.png'),
                         fit: BoxFit.contain,
                       )),
                     ),
                   ),
                   if (!isSubscribed)
                   showSubscriptionPrompt
-                      ? GestureDetector(
-                          child: Text(AppLocalizations.of(context)!.homeScreenSubscriptionPrompt,
-                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                    color: kDarkBlue,
-                                    fontWeight: FontWeight.w900,
-                                  )),
-                          onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const PaywallScreen()));
-                          })
+                      ? Semantics(
+                    label: AppLocalizations.of(context)!.homeScreenSubscriptionPrompt,
+                    button: true,
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const PaywallScreen())),
+                        child: GestureDetector(
+                          excludeFromSemantics: true,
+                            child: Text(AppLocalizations.of(context)!.homeScreenSubscriptionPrompt,
+                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                      color: kDarkBlue,
+                                      fontWeight: FontWeight.w900,
+                                    )),
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const PaywallScreen()));
+                            }),
+                      )
                       : Text(AppLocalizations.of(context)!.homeScreenFreeUsesRemaining(remainingUses),
                           style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                 color: kDarkOrange,
                                 fontWeight: FontWeight.w900,
                               )),
                   const Spacer(),
-                  AnimatedOpacity(
-                    opacity: visible ? 1.0 : 0.0,
-                    duration: const Duration(milliseconds: 600),
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        GestureDetector(
-                          onTap: _isCheckingLimit ? null : () => _handleMainButtonTap(),
-                          child: Container(
-                            width: constraints.maxWidth * 0.75,
-                            height: constraints.maxWidth * 0.75,
-                            decoration: BoxDecoration(color: kDarkOrange, borderRadius: BorderRadius.circular(22.0)),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 12.0, top: 10.0),
-                                  child: Text(
-                                    textAlign: TextAlign.center,
-                                    AppLocalizations.of(context)!.homeScreenMainButton,
-                                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: kBackgroundTint),
-                                  ),
-                                ),
-                                Expanded(
-                                    child: Padding(
-                                  padding: const EdgeInsets.only(bottom: 12.0),
-                                  child: FittedBox(
-                                    fit: BoxFit.contain,
-                                    child: Container(
-                                      padding: const EdgeInsets.all(20),
-                                      decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: kBackgroundTint,
-                                      ),
-                                      child: Stack(
-                                        alignment: Alignment.center,
-                                        children: [
-                                          Opacity(
-                                            opacity: _isCheckingLimit ? 0.0 : 1.0,
-                                            child: const Icon(
-                                              Icons.camera_alt_outlined,
-                                              color: kDarkOrange,
-                                              size: 160,
-                                            ),
-                                          ),
-                                          if (_isCheckingLimit)
-                                            const SizedBox(
-                                              height: 100.0,
-                                              width: 100.0,
-                                              child: CircularProgressIndicator(
-                                                color: kDarkOrange,
-                                                strokeWidth: 7.0,
-                                              ),
-                                            ),
-                                        ],
+                  ExcludeSemantics(
+                    excluding: !visible,
+                    child: AnimatedOpacity(
+                      opacity: visible ? 1.0 : 0.0,
+                      duration: const Duration(milliseconds: 600),
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Semantics(
+                            label: AppLocalizations.of(context)!.homeScreenMainButton,
+                            button: true,
+                            onTap: _isCheckingLimit ? null : () => _handleMainButtonTap(),
+                            child: GestureDetector(
+                              onTap: _isCheckingLimit ? null : () => _handleMainButtonTap(),
+                              child: Container(
+                                width: constraints.maxWidth * 0.75,
+                                height: constraints.maxWidth * 0.75,
+                                decoration: BoxDecoration(color: kDarkOrange, borderRadius: BorderRadius.circular(22.0)),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(bottom: 12.0, top: 10.0),
+                                      child: Text(
+                                        textAlign: TextAlign.center,
+                                        AppLocalizations.of(context)!.homeScreenMainButton,
+                                        style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: kBackgroundTint),
                                       ),
                                     ),
-                                  ),
-                                )),
-                              ],
+                                    Expanded(
+                                        child: Padding(
+                                      padding: const EdgeInsets.only(bottom: 12.0),
+                                      child: FittedBox(
+                                        fit: BoxFit.contain,
+                                        child: Container(
+                                          padding: const EdgeInsets.all(20),
+                                          decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: kBackgroundTint,
+                                          ),
+                                          child: Stack(
+                                            alignment: Alignment.center,
+                                            children: [
+                                              Opacity(
+                                                opacity: _isCheckingLimit ? 0.0 : 1.0,
+                                                child: const Icon(
+                                                  Icons.camera_alt_outlined,
+                                                  color: kDarkOrange,
+                                                  size: 160,
+                                                ),
+                                              ),
+                                              if (_isCheckingLimit)
+                                                const SizedBox(
+                                                  height: 100.0,
+                                                  width: 100.0,
+                                                  child: CircularProgressIndicator(
+                                                    color: kDarkOrange,
+                                                    strokeWidth: 7.0,
+                                                  ),
+                                                ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    )),
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20.0),

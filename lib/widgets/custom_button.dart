@@ -36,11 +36,13 @@ class CustomFlatButton extends StatelessWidget {
       onPressed: onPressed,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12.0),
-        child: Text(
-          title,
-          softWrap: true,
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: Colors.white)
+        child: ExcludeSemantics(
+          child: Text(
+            title,
+            softWrap: true,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: Colors.white)
+          ),
         ),
       ),
     );

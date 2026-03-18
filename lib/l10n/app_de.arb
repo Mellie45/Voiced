@@ -1,14 +1,14 @@
 {
   "@@locale": "de",
 
-  "homeScreenTopMessage": "Tippen, um die Sprache einzustellen",
+  "homeScreenTopMessage": "Tippen, um Sprache festzulegen",
   "homeScreenMainButton": "Drücken, um ein Foto zu machen",
   "homeScreenSelectedLanguage": "Deutsch",
   "homeScreenChanged": "Sprache auf Deutsch geändert",
-  "homeScreenSubscriptionPrompt": "Klicken Sie hier, um Ihr Abonnement zu erstellen.",
-  "homeScreenFreeUsesRemaining": "{count, plural, =1{Noch 1 Nutzung frei} other{Noch {count} freie Nutzungen}}",
+  "homeScreenSubscriptionPrompt": "Hier klicken, um ein Abonnement abzuschließen.",
+  "homeScreenFreeUsesRemaining": "{count, plural, =1{1 Nutzung übrig} other{{count} freie Nutzungen übrig}}",
   "@homeScreenFreeUsesRemaining": {
-    "description": "Text, der anzeigt, wie viele freie Nutzungen ein Testbenutzer noch hat",
+    "description": "Text showing how many free uses a trial user has left",
     "placeholders": {
       "count": {
         "type": "int",
@@ -18,7 +18,7 @@
   },
   "homeGreeting": "Hallo {userName}",
   "@homeGreeting": {
-    "description": "Eine Willkommensnachricht für den Benutzer auf dem Startbildschirm",
+    "description": "A welcome message for the user on the home screen",
     "placeholders": {
       "userName": {
         "type": "String",
@@ -26,7 +26,7 @@
       }
     }
   },
-  "languageSelectTitle": "Wählen Sie Ihre bevorzugte Sprache",
+  "languageSelectTitle": "Wähle deine bevorzugte Sprache",
   "languageError": "Fehler beim Ändern der Sprache: {error}",
   "@languageError": {
     "placeholders": {
@@ -34,30 +34,43 @@
     }
   },
 
-  "alertMessagesTitle": "Fertig!",
-  "alertMessagesBody": "Ihre Sprache wurde auf Deutsch eingestellt",
+  "lang_en": "Englisch",
+  "lang_fr": "Französisch",
+  "lang_de": "Deutsch",
+  "lang_it": "Italienisch",
+  "lang_es": "Spanisch",
+  "lang_el": "Griechisch",
+  "lang_hi": "Hindi",
+  "lang_pa": "Punjabi",
+
+  "alertMessagesTitle": "Erledigt!",
+  "alertMessagesBody": "Deine Sprache wurde auf Deutsch eingestellt",
 
   "selectImageScreenTopNavBack": "Zurück",
-  "selectImageScreenWorkingText": "Wird bearbeitet",
+  "selectImageScreenWorkingText": "Wird verarbeitet...",
   "selectImageScreenReadyText": "bereit",
-  "selectImageScreenShowTextBtn": "Als Text anzeigen",
+  "selectImageScreenShowTextBtn": "Drücken, um als Text anzuzeigen",
   "selectImageScreenCloseButton": "Schließen",
+  "selectImageScreenStopButton": "Sprachausgabe stoppen",
+  "selectImageScreenRestartButton": "Sprachausgabe neu starten",
+  "selectImageScreenStartButton": "Sprachausgabe starten",
+  "selectImageScreenDisclaimer": "KI kann Fehler machen. Verlassen Sie sich bei kritischen Gesundheits-, Sicherheits- oder Rechtsentscheidungen nicht auf diesen Text. Überprüfen Sie wichtige Informationen immer unabhängig.",
 
   "paywallSuccess": "Erfolg! Unbegrenzter Zugriff freigeschaltet.",
   "paywallPurchaseError": "Beim Verarbeiten Ihres Kaufs ist ein Fehler aufgetreten.",
-  "paywallRestoreError": "Wir konnten Ihre Käufe nicht wiederherstellen.",
-  "paywallNoProducts": "Zurzeit sind keine Abonnementprodukte verfügbar.",
-  "paywallHeadline": "Machen Sie Ihre Ohren zu Ihren Augen.",
-  "paywallSubHeadline": "Erhalten Sie unbegrenzten Zugriff mit einem unserer preiswerten Abonnements.",
-  "paywallMonthlyFlex": "'Monthly Flex':",
-  "paywallYearlySaver": "'Yearly Saver':",
+  "paywallRestoreError": "Ihre Käufe konnten nicht wiederhergestellt werden.",
+  "paywallNoProducts": "Zurzeit sind keine Abonnement-Produkte verfügbar.",
+  "paywallHeadline": "Verwandle deine Ohren in deine Augen.",
+  "paywallSubHeadline": "Erhalte unbegrenzten Zugriff mit einem unserer preiswerten Abonnements.",
+  "paywallMonthlyFlex": "'Monats-Flex':",
+  "paywallYearlySaver": "'Jahres-Sparplan':",
   "paywallRestoreButton": "KÄUFE WIEDERHERSTELLEN",
-  "paywallDisclaimer": "Das Abonnement verlängert sich automatisch. Kündigen Sie jederzeit in Ihren Geräteeinstellungen mindestens 24 Stunden vor Ablauf des aktuellen Zeitraums, um eine Verlängerung zu vermeiden. Nicht genutzte Teile eines kostenlosen Testzeitraums verfallen beim Kauf.",
+  "paywallDisclaimer": "Das Abonnement verlängert sich automatisch. Kündigen Sie jederzeit in Ihren Geräteeinstellungen mindestens 24 Stunden vor Ablauf des aktuellen Zeitraums, um eine Verlängerung zu vermeiden. Ein ungenutzter Teil eines kostenlosen Testzeitraums verfällt beim Kauf.",
   "paywallTermsOfUse": "Nutzungsbedingungen",
   "paywallPrivacyPolicy": "Datenschutzerklärung",
   "paywallMonthlyDescription": "Unbegrenzter Zugriff.\nJederzeit flexibel kündbar",
-  "paywallYearlyDescription": "Unsere beste Option.\nSparen Sie 20% bei einer einmaligen jährlichen Zahlung",
-  "paywallLaunchError": "URL konnte nicht gestartet werden",
+  "paywallYearlyDescription": "Unser bestes Angebot.\nSpare 20% bei einer jährlichen Einmalzahlung",
+  "paywallLaunchError": "URL konnte nicht geöffnet werden",
   "paywallGeneralError": "Fehler: {message}",
   "@paywallGeneralError": {
     "placeholders": { "message": { "type": "String" } }
@@ -66,15 +79,24 @@
   "@paywallUnexpectedError": {
     "placeholders": { "error": { "type": "String" } }
   },
+  "paywallMonthlyBreakdown": "Nur {monthlyPrice} / Monat",
+  "@paywallMonthlyBreakdown": {
+    "placeholders": {
+      "monthlyPrice": {
+        "type": "String"
+      }
+    }
+  },
+  "paywallAMonth": "pro Monat",
 
-  "walkthroughTitleHow": "Wie es funktioniert",
+  "walkthroughTitleHow": "So funktioniert es",
   "walkthroughBodyHow": "Wolpz ist eine einfache und zuverlässige Methode, um kleinen, schwer lesbaren Text in ein Audioformat umzuwandeln.",
   "walkthroughTitleStep1": "Schritt 1",
-  "walkthroughBodyStep1": "Machen Sie einfach ein Foto von dem Text, den Sie verbessern möchten.",
+  "walkthroughBodyStep1": "Machen Sie einfach ein Foto von dem Text, den Sie sich vorlesen lassen möchten.",
   "walkthroughTitleStep2": "Schritt 2",
-  "walkthroughBodyStep2": "Geben Sie der App einen Moment Zeit, um das Bild zu verarbeiten.",
+  "walkthroughBodyStep2": "Geben Sie der App einen kurzen Moment Zeit, um das Bild zu verarbeiten.",
   "walkthroughTitleStep3": "Schritt 3",
-  "walkthroughBodyStep3": "Drücken Sie auf Play und Ihr Text wird laut vorgelesen.",
+  "walkthroughBodyStep3": "Drücken Sie auf Play, und Ihr Text wird laut vorgelesen.",
   "walkthroughDone": "FERTIG",
   "walkthroughSkip": "ÜBERSPRINGEN",
 
@@ -87,7 +109,7 @@
   "drawerSupport": "Support & Feedback",
   "drawerRemove": "Konto löschen",
   "drawerInvite": "Einen Freund einladen",
-  "drawerTerms": "Bedingungen & Datenschutz",
+  "drawerTerms": "AGB & Datenschutz",
   "drawerYourWolpz": "Dein Wolpz",
 
   "loginTitle": "Anmelden",
@@ -98,18 +120,19 @@
 
   "aboutTitle": "Willkommen bei Wolpz",
   "aboutHeader": "Über Wolpz",
-  "aboutDescription": "Sehbehinderungen können selbst die einfachsten Aufgaben fast unmöglich erscheinen lassen. Deshalb haben wir Wolpz entwickelt, um Ihnen eine einfache Möglichkeit zu bieten, die Lücke zwischen dem gedruckten Wort und der Barrierefreiheit zu schließen.\\n\\nDurch die Kombination fortschrittlicher Bilderkennung mit natürlich klingender Sprachausgabe verwandeln wir alltägliche Texte – von Lebensmitteletiketten bis hin zu Medikamentenflaschen – in eine klare Audiospur. Wolpz ist da, um der Gemeinschaft der Sehbehinderten Unabhängigkeit und Vertrauen zu schenken, ein Bild nach dem anderen.",
-  "aboutLegal": "Weitere Details zu Wolpz, einschließlich unserer vollständigen Geschäftsbedingungen, wie wir Ihre Daten verwenden (Spoiler-Alarm: tun wir nicht) und wie wir Ihre Privatsphäre schützen, finden Sie auf unserer Website.",
+  "aboutDescription": "Eine Sehbehinderung kann selbst einfachste Aufgaben fast unmöglich machen. Deshalb haben wir Wolpz entwickelt, um die Lücke zwischen gedrucktem Wort und Barrierefreiheit zu schließen.\n\nDurch die Kombination fortschrittlicher Bilderkennung mit natürlich klingender Sprachausgabe verwandeln wir Alltagstexte – von Lebensmitteletiketten bis hin zu Medikamentenpackungen – in eine klare Audiospur. Wolpz ist dazu da, der Gemeinschaft der Sehbehinderten Unabhängigkeit und Vertrauen zu schenken, Bild für Bild.",
+  "aboutLegal": "Weitere Details zu Wolpz, einschließlich unserer vollständigen Geschäftsbedingungen, wie wir Ihre Daten verwenden (Spoiler-Alarm: wir tun es nicht) und wie wir Ihre Privatsphäre schützen, finden Sie auf unserer Website.",
   "aboutVisitSite": "Wolpz besuchen",
 
   "removeAccountTitle": "Konto löschen",
-  "removeAccountHeading": "WICHTIGER ABONNEMENT-HINWEIS",
-  "removeAccMessage": "Das Löschen Ihres Kontos kündigt Ihr Abonnement NICHT automatisch.\\nDie Abrechnung über Apple/Google läuft weiter. Wenn Sie sicher sind, dass Sie gehen möchten, nutzen Sie bitte die Schaltfläche 'Abonnement kündigen' unten.",
+  "removeAccountMessage": "Es war uns eine Freude, Sie bei uns zu haben, und wir bedauern es sehr, dass Sie uns verlassen. Bitte denken Sie daran, dass das Löschen Ihres Kontos dauerhaft ist und alle Ihre gespeicherten Verläufe und Einstellungen löscht. Wenn Sie ein technisches Problem haben, würden wir uns freuen, dieses für Sie zu beheben - wenden Sie sich einfach an unser Team!",
+  "removeAccountHeading": "WICHTIGER HINWEIS ZUM ABONNEMENT",
+  "removeAccMessage": "Das Löschen Ihres Kontos kündigt Ihr Abonnement NICHT automatisch.\n\nDie Gebühren werden weiterhin von Apple/Google erhoben. Wenn Sie sicher sind, dass Sie uns verlassen möchten, nutzen Sie bitte die Schaltfläche 'Abonnement kündigen' unten.",
   "removeAccountConfirm": "Sind Sie sicher, dass Sie Ihr Konto dauerhaft löschen möchten?",
   "removeAccountWarning": "Warnung: Diese Aktion kann nicht rückgängig gemacht werden. Alle Ihre Daten, einschließlich des Abonnementverlaufs und der gespeicherten Einstellungen, werden dauerhaft gelöscht.",
   "removeAccountConfirmBtn": "BESTÄTIGEN",
   "removeAccountCancelBtn": "Abonnement kündigen",
-  "removeAccountSuccess": "Konto erfolgreich gelöscht. Auf Wiedersehen!",
+  "removeAccountSuccess": "Konto erfolgreich entfernt. Auf Wiedersehen!",
 
   "registerTitle": "Konto erstellen",
   "registerFirstNameHint": "Vorname",
@@ -124,38 +147,38 @@
   "operationNotAllowed": "Vorgang nicht erlaubt.",
   "invalidEmail": "Die E-Mail-Adresse ist ungültig.",
   "userDisabled": "Dieses Konto wurde deaktiviert.",
-  "weakPassword": "Das eingegebene Passwort ist zu schwach.",
-  "emailAlreadyInUse": "Ein Konto für diese E-Mail existiert bereits.",
+  "weakPassword": "Das angegebene Passwort ist zu schwach.",
+  "emailAlreadyInUse": "Ein Konto mit dieser E-Mail existiert bereits.",
   "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
-  "connectionErrorAlt": "Ein Fehler ist aufgetreten. Bitte überprüfen Sie Ihre Verbindung.",
+  "connectionErrorAlt": "Ein Fehler ist aufgetreten. Bitte prüfen Sie Ihre Verbindung.",
   "basicError": "Fehler",
 
   "deviceLimitTitle": "Gerätelimit erreicht",
-  "deviceLimitMessage": "Dieses Gerät hat bereits seine 5 kostenlosen Credits verbraucht. Um fortzufahren, schließen Sie bitte ein Abonnement ab.",
+  "deviceLimitMessage": "Dieses Gerät hat seine 5 kostenlosen Credits bereits aufgebraucht. Um fortzufahren, schließen Sie bitte ein Abonnement ab.",
   "deviceLimitButton": "ABONNEMENTS ANSEHEN",
 
-  "urlLaunchError": "{url} konnte nicht gestartet werden. Bitte überprüfen Sie Ihre Verbindung",
+  "urlLaunchError": "{url} konnte nicht geöffnet werden. Bitte prüfen Sie Ihre Verbindung.",
   "@urlLaunchError": {
     "placeholders": { "url": { "type": "String" } }
   },
-  "urlError": "Fehler beim Starten der URL: {error}",
+  "urlError": "Fehler beim Öffnen der URL: {error}",
   "@urlError": {
     "placeholders": { "error": { "type": "String" } }
   },
 
-  "termsAndPrivacyTitle": "Bedingungen & Datenschutz",
-  "termsAndPrivacyGreeting": "Hallo {userName}\n\nUnsere vollständige Erklärung zu Bedingungen & Datenschutz können Sie auf unserer Website über die Schaltfläche unten lesen.",
+  "termsAndPrivacyTitle": "AGB & Datenschutz",
+  "termsAndPrivacyGreeting": "Hallo {userName}\n\nUnsere vollständige Erklärung zu AGB & Datenschutz können Sie auf unserer Website über die untenstehende Schaltfläche lesen.",
   "@termsAndPrivacyGreeting": {
     "placeholders": { "userName": { "type": "String" } }
   },
   "termsVisitButton": "BaaadKitty besuchen",
-  "termsEmailPrompt": "Wir würden uns freuen, von Ihnen zu hören. Um uns zu kontaktieren, senden Sie uns einfach eine E-Mail.",
+  "termsEmailPrompt": "Wir würden uns freuen, von Ihnen zu hören. Um Kontakt aufzunehmen, senden Sie uns einfach eine E-Mail.",
   "termsEmailButton": "E-Mail senden",
   "termsRemoveLink": "Klicken Sie hier, um Ihr Konto zu löschen",
 
   "photosPermission": "Wir benötigen die Erlaubnis, auf Ihre Fotos zuzugreifen",
   "permissionBtn": "OK",
-  "permissionGrantBtn": "Erlaubnis erteilen",
+  "permissionGrantBtn": "Berechtigung erteilen",
   "permissionCameraReq": "Sie müssen Ihre Kamera verwenden",
 
   "subscriptionRestored": "Abonnement wiederhergestellt!",
@@ -168,10 +191,10 @@
   "subscriptionStatusActive": "Pro-Status: Aktiv",
   "subscriptionStatusInactive": "Pro-Status: Inaktiv",
 
-  "inviteMessage": "Schau dir Wolpz an! Es hilft mir, die Welt mit meinen Ohren zu \"sehen\". Hol es dir hier: ",
+  "inviteMessage": "Schau dir Wolpz an! Es hilft mir, die Welt mit meinen Ohren zu 'sehen'. Hier gibt es die App: ",
   "inviteTitle": "Zu Wolpz einladen",
 
-  "supportEmailBody": "Bitte beschreiben Sie Ihr Problem hier...\n\n",
+  "supportEmailBody": "Bitte beschreiben Sie hier Ihr Problem…\n\n",
   "supportEmailSubject": "Wolpz Support-Anfrage",
-  "iosVoiceInstruction": "Für das beste Erlebnis auf dem iPhone gehen Sie zu Einstellungen > Bedienungshilfen > Gesprochene Inhalte > Stimmen und laden Sie die „Erweiterte“ oder „Premium“-Version Ihrer bevorzugten Sprache herunter."
+  "iosVoiceInstruction": "Für das beste Erlebnis auf dem iPhone gehen Sie zu Einstellungen > Bedienungshilfen > Gesprochene Inhalte > Stimmen und laden Sie die Version 'Erweitert' oder 'Premium' Ihrer bevorzugten Sprache herunter."
 }

@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
-import 'package:wolpz/data_classes/voicedUser.dart';
+import 'package:wolpz/data_classes/wolpz_user.dart';
 import 'package:wolpz/logic/validator.dart';
 import 'package:wolpz/widgets/custom_button.dart';
 import 'package:wolpz/widgets/custom_create_user_textfield.dart';
@@ -184,52 +184,62 @@ class _CreateUserScreenState extends State<CreateUserScreen> {
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(18.0),
-                            child: Column(
-                              children: [
-                                CustomCreateUserField(
-                                  isPassword: false,
-                                  label: AppLocalizations.of(context)!.registerFirstNameHint,
-                                  controller: _firstNameController,
-                                  inputType: TextInputType.text,
-                                  onChanged: (_) => setState(() => _errorMsg = null),
-                                  validator: Validator.validatePassword,
-                                ),
-                                CustomCreateUserField(
-                                  isPassword: false,
-                                  label: AppLocalizations.of(context)!.registerLastNameHint,
-                                  controller: _lastNameController,
-                                  inputType: TextInputType.text,
-                                  onChanged: (_) => setState(() => _errorMsg = null),
-                                  validator: Validator.validatePassword,
-                                ),
-                                CustomCreateUserField(
-                                  isPassword: false,
-                                  label: AppLocalizations.of(context)!.registerEmailHint,
-                                  controller: _emailController,
-                                  inputType: TextInputType.emailAddress,
-                                  onChanged: (_) => setState(() => _errorMsg = null),
-                                  validator: Validator.validateEmail,
-                                ),
-                                CustomCreateUserField(
-                                  isPassword: true,
-                                  label: AppLocalizations.of(context)!.registerPasswordHint,
-                                  controller: _passwordController,
-                                  inputType: TextInputType.text,
-                                  obscureText: true,
-                                  onChanged: (_) => setState(() => _errorMsg = null),
-                                  validator: Validator.validatePassword,
-                                ),
-                                CustomCreateUserField(
-                                  isPassword: true,
-                                  label: AppLocalizations.of(context)!.registerConfirmPasswordHint,
-                                  controller: _confirmPasswordController,
-                                  inputType: TextInputType.text,
-                                  obscureText: true,
-                                  onChanged: (_) => setState(() => _errorMsg = null),
-                                  validator: Validator.validatePassword,
-                                ),
-                                const SizedBox(height: 10),
-                              ],
+                            child: AutofillGroup(
+                              child: Column(
+                                children: [
+                                  CustomCreateUserField(
+                                    label: AppLocalizations.of(context)!.registerFirstNameHint,
+                                    controller: _firstNameController,
+                                    inputType: TextInputType.name,
+                                    autofillHints: const [AutofillHints.givenName],
+                                    textInputAction: TextInputAction.next,
+                                    isPassword: false,
+                                    onChanged: (_) => setState(() => _errorMsg = null),
+                                    validator: Validator.validateName, // Changed from validatePassword
+                                  ),
+                                  CustomCreateUserField(
+                                    label: AppLocalizations.of(context)!.registerLastNameHint,
+                                    controller: _lastNameController,
+                                    inputType: TextInputType.name,
+                                    autofillHints: const [AutofillHints.familyName],
+                                    textInputAction: TextInputAction.next,
+                                    isPassword: false,
+                                    onChanged: (_) => setState(() => _errorMsg = null),
+                                    validator: Validator.validateName,
+                                  ),
+                                  CustomCreateUserField(
+                                    label: AppLocalizations.of(context)!.registerEmailHint,
+                                    controller: _emailController,
+                                    inputType: TextInputType.emailAddress,
+                                    autofillHints: const [AutofillHints.email],
+                                    textInputAction: TextInputAction.next,
+                                    isPassword: false,
+                                    onChanged: (_) => setState(() => _errorMsg = null),
+                                    validator: Validator.validateEmail,
+                                  ),
+                                  CustomCreateUserField(
+                                    label: AppLocalizations.of(context)!.registerPasswordHint,
+                                    controller: _passwordController,
+                                    inputType: TextInputType.visiblePassword,
+                                    autofillHints: const [AutofillHints.newPassword],
+                                    textInputAction: TextInputAction.next,
+                                    isPassword: true,
+                                    onChanged: (_) => setState(() => _errorMsg = null),
+                                    validator: Validator.validatePassword,
+                                  ),
+                                  CustomCreateUserField(
+                                    label: AppLocalizations.of(context)!.registerConfirmPasswordHint,
+                                    controller: _confirmPasswordController,
+                                    inputType: TextInputType.visiblePassword,
+                                    autofillHints: const [AutofillHints.newPassword],
+                                    textInputAction: TextInputAction.done, // Closes keyboard on last field
+                                    isPassword: true,
+                                    onChanged: (_) => setState(() => _errorMsg = null),
+                                    validator: Validator.validatePassword,
+                                  ),
+                                  const SizedBox(height: 10),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -266,16 +276,21 @@ class _CreateUserScreenState extends State<CreateUserScreen> {
                                   ),
                                 ),
                               ),
-                            ) : CustomFlatButton(
-                              title: AppLocalizations.of(context)!.registerButton,
-                              textColor: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                              onPressed: _handleOnPressed,
-                              color: kDarkOrange,
-                              splashColor: kBackgroundTint,
-                              borderColor: Colors.transparent,
-                              borderWidth: 0.0,
+                            ) : Semantics(
+                              label: AppLocalizations.of(context)!.registerButton,
+                              button: true,
+                              onTap: _handleOnPressed,
+                              child: CustomFlatButton(
+                                title: AppLocalizations.of(context)!.registerButton,
+                                textColor: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700,
+                                onPressed: _handleOnPressed,
+                                color: kDarkOrange,
+                                splashColor: kBackgroundTint,
+                                borderColor: Colors.transparent,
+                                borderWidth: 0.0,
+                              ),
                             ),
                           ),
                         ),
@@ -303,7 +318,7 @@ class _CreateUserScreenState extends State<CreateUserScreen> {
       try {
         SystemChannels.textInput.invokeMethod('TextInput.hide');
         String? deviceId = await deviceService.getUniqueDeviceIdentifier();
-        final voicedUser = VoicedUser(
+        final voicedUser = WolpzUser(
           userID: uid,
           firstName: name,
           lastName: lastName,

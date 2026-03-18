@@ -37,12 +37,17 @@ void main() async {
   );
 
   await _configureRevenueCat();
+  const List<String> supportedCodes = ['en', 'fr', 'de', 'it', 'es', 'el', 'hi', 'pa'];
+
   final prefs = await SharedPreferences.getInstance();
-  final String savedLanguageCode = prefs.getString('language_code') ?? 'en';
+  final String rawCode = prefs.getString('language_code') ?? 'en';
+
+// 2. The Gatekeeper: Verify the code is actually supported
+  final String safeLanguageCode = supportedCodes.contains(rawCode) ? rawCode : 'en';
 
   runApp(
     ChangeNotifierProvider(
-    create: (context) => LocaleProvider(initialLocale: Locale(savedLanguageCode)),
+    create: (context) => LocaleProvider(initialLocale: Locale(safeLanguageCode)),
     child: MyApp( prefs: prefs),
 
   ),
@@ -92,7 +97,7 @@ class MyApp extends StatelessWidget {
                 .textScaler;
 
             final TextScaler effectiveTextScaler = userTextScaler.clamp(
-              minScaleFactor: 1.0, // Ensures text is at least normal size
+              minScaleFactor: 1.0,
               maxScaleFactor: maxScaleFactor,
             );
 
@@ -104,9 +109,22 @@ class MyApp extends StatelessWidget {
                 localizationsDelegates: AppLocalizations.localizationsDelegates,
                 supportedLocales: AppLocalizations.supportedLocales,
 
+                // THIS IS THE FIX:
+                localeResolutionCallback: (locale, supportedLocales) {
+                  // Check if the current device locale is supported by your .arb files
+                  for (var supportedLocale in supportedLocales) {
+                    if (supportedLocale.languageCode == locale?.languageCode) {
+                      return supportedLocale;
+                    }
+                  }
+                  if (locale?.languageCode == 'ur') return const Locale('en');
+                  // If it's NOT supported (like 'ur'), force the app to use English
+                  return const Locale('en');
+                },
+                showSemanticsDebugger: false,
+
                 // Maintain the user's chosen language
                 locale: localeProvider.locale,
-
                 localeListResolutionCallback: (locales, supportedLocales) {
                   return localeProvider.locale;
                 },

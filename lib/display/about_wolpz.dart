@@ -6,7 +6,7 @@ import '../l10n/app_localizations.dart';
 import '../support_files/constants.dart';
 import '../widgets/custom_button.dart';
 
-final Uri _url = Uri.parse('https://www.baaadkitty.uk/vocal-eyes.html');
+final Uri _url = Uri.parse('https://www.baaadkitty.uk/wolpz.html');
 
 class AboutWolpz extends StatelessWidget {
   const AboutWolpz({super.key});
@@ -44,16 +44,16 @@ class AboutWolpz extends StatelessWidget {
                         AppLocalizations.of(context)!.aboutHeader,
                         textAlign: TextAlign.center,
                         style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                          color: kDarkOrange,
+                          color: kDarkOrange, fontWeight: FontWeight.w700
                         ),
                       ),
-                      const SizedBox(height: 6),
+                      const SizedBox(height: 12),
                       Container(
                         height: screenHeight * 0.16,
                         width: screenWidth * 0.5,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage('assets/vocal_eyes_logo.png'),
+                            image: AssetImage('assets/wolpz_full_logo_clear.png'),
                             fit: BoxFit.contain,
                           ),
                         ),
@@ -85,16 +85,27 @@ class AboutWolpz extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 12.0),
                         child: SizedBox(
-                          child: CustomFlatButton(
-                            title: AppLocalizations.of(context)!.aboutVisitSite,
-                            textColor: kDarkBlue,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            onPressed: () => launchWolpzUrl(context),
-                            color: kDarkOrange,
-                            splashColor: kDarkOrangeTint,
-                            borderColor: Colors.transparent,
-                            borderWidth: 0.0,
+                          child: Semantics(
+                            label: AppLocalizations.of(context)!.aboutVisitSite,
+                            button: true,
+                            onTap: ()  => launchWolpzUrl(context),
+                            child: ExcludeSemantics(
+                              child: SizedBox(
+                                width: 300,
+                                height: 60,
+                                child: CustomFlatButton(
+                                  title: AppLocalizations.of(context)!.aboutVisitSite,
+                                  textColor: kDarkBlue,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  onPressed: () => launchWolpzUrl(context),
+                                  color: kDarkOrange,
+                                  splashColor: kDarkOrangeTint,
+                                  borderColor: Colors.transparent,
+                                  borderWidth: 0.0,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ),

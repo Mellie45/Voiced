@@ -238,33 +238,20 @@ class _PaywallScreenState extends State<PaywallScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            AppLocalizations.of(context)!.paywallHeadline,
+            localizations.paywallHeadline,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.headlineMedium
           ),
           const SizedBox(height: 16),
           Text(
-            AppLocalizations.of(context)!.paywallSubHeadline,
+            localizations.paywallSubHeadline,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.displaySmall?.copyWith(
                   color: kDarkBlue,
-                  fontSize: 16,
+                  fontSize: 18,
                 ),
           ),
-
           const SizedBox(height: 22),
-
-              Text(
-                AppLocalizations.of(context)!.paywallMonthlyFlex,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                  color: kDarkBlue,
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-
-          const SizedBox(height: 6.0),
     // --- Monthly Package ---
           if (monthlyPackage != null)
             _buildPackageCard(
@@ -272,76 +259,73 @@ class _PaywallScreenState extends State<PaywallScreen> {
               isRecommended: true,
             ),
           const SizedBox(height: 22),
-              Text(
-                AppLocalizations.of(context)!.paywallYearlySaver,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                      color: kDarkBlue,
-                      fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                    ),
-              ),
-
-          const SizedBox(height: 6.0),
           // --- Yearly Package ---
           if (yearlyPackage != null)
             _buildPackageCard(
               package: yearlyPackage,
               isRecommended: false,
+              monthlyBreakdown: yearlyPackage.storeProduct.pricePerMonthString,
             ),
 
-          const SizedBox(height: 34),
+          const SizedBox(height: 44),
           // --- Restore Button ---
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 22.0),
             child:
-            OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                fixedSize: const Size(double.infinity, 50.0),
-                side: const BorderSide(color: kDarkBlue, width: 1.0),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16.0),
-                ),
-              ),
-              onPressed: _isRestoring ? null : _restorePurchases,
-
-                child: AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 300),
-                  layoutBuilder: (Widget? currentChild, List<Widget> previousChildren) {
-                    return Stack(
-                      alignment: Alignment.center,
-                      children: <Widget>[
-                        ...previousChildren,
-                        if (currentChild != null) currentChild,
-                      ],
-                    );
-                  },
-                  child: _isRestoring
-                      ? const Center(
-                    key: ValueKey('loading'),
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: LinearProgressIndicator(
-                        color: kDarkBlue,
-                        minHeight: 6.0,
-                      ),
-                    ),
-                  )
-                      : Text(
-                    AppLocalizations.of(context)!.paywallRestoreButton,
-                    key: const ValueKey('text'),
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      color: kDarkBlue,
-                      height: 1.0,
-                    ),
+            Semantics(
+              label: localizations.paywallRestoreButton,
+              button: true,
+              onTap: _isRestoring ? null : _restorePurchases,
+              child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  fixedSize: const Size(double.infinity, 50.0),
+                  side: const BorderSide(color: kDarkBlue, width: 1.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16.0),
                   ),
                 ),
+                onPressed: _isRestoring ? null : _restorePurchases,
+
+                  child: AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 300),
+                    layoutBuilder: (Widget? currentChild, List<Widget> previousChildren) {
+                      return Stack(
+                        alignment: Alignment.center,
+                        children: <Widget>[
+                          ...previousChildren,
+                          if (currentChild != null) currentChild,
+                        ],
+                      );
+                    },
+                    child: _isRestoring
+                        ? const Center(
+                      key: ValueKey('loading'),
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: LinearProgressIndicator(
+                          color: kDarkBlue,
+                          minHeight: 6.0,
+                        ),
+                      ),
+                    )
+                        : ExcludeSemantics(
+                          child: Text(
+                            localizations.paywallRestoreButton,
+                            key: const ValueKey('text'),
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                          color: kDarkBlue,
+                          height: 1.0,
+                                                ),
+                                              ),
+                        ),
+                  ),
+              ),
             ),),
           const SizedBox(height: 12),
 
           // --- Disclaimer ---
-          Text(AppLocalizations.of(context)!.paywallDisclaimer,
+          Text(localizations.paywallDisclaimer,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: Colors.black54,
@@ -352,26 +336,41 @@ class _PaywallScreenState extends State<PaywallScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextButton(
-
-                onPressed: () => _launchURL('https://www.baaadkitty.uk/terms-and-conditions-vocal-eyes.html'),
-                child: Text(
-                  AppLocalizations.of(context)!.paywallTermsOfUse,
-                  style: const TextStyle(fontSize: 11,
-                      color: kDarkBlue,
-                      decoration: TextDecoration.underline,
+              Semantics(
+                label: localizations.paywallTermsOfUse,
+                button: true,
+                onTap: () => _launchURL('https://www.baaadkitty.uk/terms-and-conditions-vocal-eyes.html'),
+                child: TextButton(
+                  onPressed: () => _launchURL('https://www.baaadkitty.uk/terms-and-conditions-vocal-eyes.html'),
+                  child: ExcludeSemantics(
+                    child: Text(localizations.paywallTermsOfUse,
+                      style: const TextStyle(fontSize: 11,
+                          color: kDarkBlue,
+                          decoration: TextDecoration.underline,
+                      ),
+                    ),
                   ),
                 ),
               ),
-              const Text(
-                "|",
-                style: TextStyle(fontSize: 11, color: kDarkBlue),
-              ),
-              TextButton(
-                onPressed: () => _launchURL('https://www.baaadkitty.uk/terms-and-conditions-vocal-eyes.html'),
+              const ExcludeSemantics(
                 child: Text(
-                  AppLocalizations.of(context)!.paywallPrivacyPolicy,
-                  style: const TextStyle(fontSize: 11, color: kDarkBlue),
+                  "|",
+                  style: TextStyle(fontSize: 12, color: kDarkBlue),
+                ),
+              ),
+              Semantics(
+                label: localizations.paywallPrivacyPolicy,
+                button: true,
+                onTap: () => _launchURL('https://www.baaadkitty.uk/wolpz-privacy-policy.html'),
+                child: TextButton(
+                  onPressed: () => _launchURL('https://www.baaadkitty.uk/wolpz-privacy-policy.html'),
+                  child: ExcludeSemantics(
+                    child: Text(localizations.paywallPrivacyPolicy,
+                      style: const TextStyle(fontSize: 12,
+                        color: kDarkBlue,decoration:
+                        TextDecoration.underline,),
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -382,13 +381,14 @@ class _PaywallScreenState extends State<PaywallScreen> {
     );
   }
 
-  Widget _buildPackageCard({required Package package, bool isRecommended = false}) {
+  Widget _buildPackageCard({required Package package, bool isRecommended = false, String? monthlyBreakdown}) {
     final product = package.storeProduct;
+    final localizations = AppLocalizations.of(context)!;
 
     return Card(
       color: isRecommended ? kDarkBlue : Colors.white,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.0),
+        borderRadius: BorderRadius.circular(14.0),
         side: isRecommended ? BorderSide.none : const BorderSide(color: kDarkBlue, width: 1.0),
       ),
       elevation: 4,
@@ -397,7 +397,7 @@ class _PaywallScreenState extends State<PaywallScreen> {
         onTap: _isPurchasing ? null : () => _purchasePackage(package),
         borderRadius: BorderRadius.circular(16.0),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 28.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32.0),
           child: _isPurchasing
               ? const Center(child: CircularProgressIndicator(color: kDarkBlue))
               : Column(
@@ -405,9 +405,10 @@ class _PaywallScreenState extends State<PaywallScreen> {
                   children: [
                     Text(
                       textAlign: TextAlign.center,
-                      product.title, // e.g., "Yearly"
+                       product.title == 'wolpz_pro_monthly_sub'  ? localizations.paywallMonthlyFlex : localizations.paywallYearlySaver,
+
                       style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w600, fontSize: 24,
                             color: isRecommended ? kBackgroundTint : kDarkBlue,),
                     ),
                     const SizedBox(height: 8.0),
@@ -415,16 +416,37 @@ class _PaywallScreenState extends State<PaywallScreen> {
                       textAlign: TextAlign.center,
                       product.priceString, // e.g., "$49.99"
                       style: TextStyle(
-                        fontSize: 24,
+                        fontSize: 26,
                         fontWeight: FontWeight.bold,
                         color: isRecommended ? kDarkOrange : kDarkBlue,
                       ),
                     ),
+                    if (product.title == 'wolpz_pro_monthly_sub')
+                    Text(
+                      textAlign: TextAlign.center,
+                      localizations.paywallAMonth,
+                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                        fontWeight: FontWeight.w900, fontSize: 15,
+                        color:  kBackgroundTint)
+
+                    ),
+
+                    if (monthlyBreakdown != null) ...[
+                      const SizedBox(height: 4.0),
+                      Text(
+                        localizations.paywallMonthlyBreakdown(monthlyBreakdown),
+                        style: TextStyle(
+                          color: isRecommended ? Colors.white70 : kDarkBlue,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                    ],
                     const SizedBox(height: 8.0),
                     isRecommended
                         ? Text(
                       textAlign: TextAlign.center,
-                      AppLocalizations.of(context)!.paywallMonthlyDescription,
+                      localizations.paywallMonthlyDescription,
                       style: const TextStyle(
                         fontSize: 14,
                         color: Colors.white,
@@ -432,7 +454,7 @@ class _PaywallScreenState extends State<PaywallScreen> {
                     )
                         : Text(
                       textAlign: TextAlign.center,
-                      AppLocalizations.of(context)!.paywallYearlyDescription,
+                      localizations.paywallYearlyDescription,
                       style: const TextStyle(
                         fontSize: 14,
                         color: kDarkBlue,

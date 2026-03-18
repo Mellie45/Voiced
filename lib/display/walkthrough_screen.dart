@@ -79,9 +79,14 @@ class _WalkthroughScreenState extends State<WalkthroughScreen> {
       globalBackgroundColor: kDarkBlue,
       globalHeader: SafeArea(child: Align(alignment: Alignment.topRight,
       child: Padding(padding: const EdgeInsets.only(top: 16.0, right: 36.0),
-      child: IconButton(
-        icon: const Icon(Icons.language, color: kDarkOrange, size: 44.0,),
-        onPressed: _showLanguagePicker,
+      child: Semantics(
+        label: AppLocalizations.of(context)!.homeScreenSelectedLanguage,
+        button: true,
+        onTap: _showLanguagePicker,
+        child: IconButton(
+          icon: const Icon(Icons.language, color: kDarkOrange, size: 44.0,),
+          onPressed: _showLanguagePicker,
+        ),
       ),))),
       allowImplicitScrolling: true,
       autoScrollDuration: 4500,

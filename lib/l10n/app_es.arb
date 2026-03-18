@@ -34,6 +34,15 @@
     }
   },
 
+  "lang_en": "Inglés",
+  "lang_fr": "Francés",
+  "lang_de": "Alemán",
+  "lang_it": "Italiano",
+  "lang_es": "Español",
+  "lang_el": "Griego",
+  "lang_hi": "Hindi",
+  "lang_pa": "Punjabi",
+
   "alertMessagesTitle": "¡Listo!",
   "alertMessagesBody": "Tu idioma ha sido configurado en Español",
 
@@ -42,6 +51,11 @@
   "selectImageScreenReadyText": "listo",
   "selectImageScreenShowTextBtn": "Presiona para ver como texto",
   "selectImageScreenCloseButton": "Cerrar",
+  "selectImageScreenStopButton": "Detener voz",
+  "selectImageScreenRestartButton": "Reiniciar voz",
+  "selectImageScreenStartButton": "Iniciar voz",
+  "selectImageScreenDisclaimer": "La IA puede cometer errores. No confíes en este texto para decisiones críticas de salud, seguridad o legales. Siempre verifica la información importante de forma independiente.",
+
 
   "paywallSuccess": "¡Éxito! Acceso ilimitado desbloqueado.",
   "paywallPurchaseError": "Hubo un error al procesar tu compra.",
@@ -66,6 +80,15 @@
   "@paywallUnexpectedError": {
     "placeholders": { "error": { "type": "String" } }
   },
+  "paywallMonthlyBreakdown": "Solo {monthlyPrice} / mes",
+  "@paywallMonthlyBreakdown": {
+    "placeholders": {
+      "monthlyPrice": {
+        "type": "String"
+      }
+    }
+  },
+  "paywallAMonth": "al mes",
 
   "walkthroughTitleHow": "Cómo funciona",
   "walkthroughBodyHow": "Wolpz es una forma sencilla y fiable de convertir textos pequeños y difíciles de leer en formato de audio.",
@@ -98,13 +121,14 @@
 
   "aboutTitle": "Bienvenido a Wolpz",
   "aboutHeader": "Sobre Wolpz",
-  "aboutDescription": "La discapacidad visual puede hacer que incluso las tareas más sencillas parezcan casi imposibles. Por eso creamos Wolpz, para ofrecerte una forma sencilla de cerrar la brecha entre la palabra impresa y la accesibilidad.\\n\\nAl combinar el reconocimiento de imágenes avanzado con una síntesis de voz natural, transformamos el texto cotidiano (desde etiquetas de alimentos hasta frascos de medicamentos) en una pista de audio clara. Wolpz está aquí para brindar independencia y confianza a la comunidad con discapacidad visual, una foto a la vez.",
+  "aboutDescription": "La discapacidad visual puede hacer que incluso las tareas más sencillas parezcan casi imposibles. Por eso creamos Wolpz, para ofrecerte una forma sencilla de cerrar la brecha entre la palabra impresa y la accesibilidad.\n\nAl combinar el reconocimiento de imágenes avanzado con una síntesis de voz natural, transformamos el texto cotidiano (desde etiquetas de alimentos hasta frascos de medicamentos) en una pista de audio clara. Wolpz está aquí para brindar independencia y confianza a la comunidad con discapacidad visual, una foto a la vez.",
   "aboutLegal": "Puedes acceder a más detalles sobre Wolpz, incluyendo nuestros términos y condiciones completos, cómo usamos tus datos (alerta de spoiler: no lo hacemos) y aprender cómo protegemos tu privacidad en nuestro sitio web.",
   "aboutVisitSite": "Visitar Wolpz",
 
   "removeAccountTitle": "Eliminar cuenta",
+  "removeAccountMessage": "Ha sido un placer tenerte con nosotros y lamentamos mucho que te vayas. Ten en cuenta que eliminar tu cuenta es permanente y borrará todo tu historial y configuración guardados. Si un problema técnico te está causando problemas, nos encantaría tener la oportunidad de solucionarlo por ti - ¡solo contacta a nuestro equipo!",
   "removeAccountHeading": "AVISO IMPORTANTE DE SUSCRIPCIÓN",
-  "removeAccMessage": "Eliminar tu cuenta NO cancela automáticamente tu suscripción.\\nSeguirás recibiendo cargos de Apple/Google. Si estás seguro de querer irte, utiliza el botón de cancelar suscripción a continuación.",
+  "removeAccMessage": "Eliminar tu cuenta NO cancela automáticamente tu suscripción.\n\nSeguirás recibiendo cargos de Apple/Google. Si estás seguro de querer irte, utiliza el botón de cancelar suscripción a continuación.",
   "removeAccountConfirm": "¿Estás seguro de que deseas eliminar permanentemente tu cuenta?",
   "removeAccountWarning": "Advertencia: Esta acción no se puede deshacer. Todos tus datos, incluyendo el historial de suscripciones y las preferencias guardadas, se eliminarán permanentemente.",
   "removeAccountConfirmBtn": "CONFIRMAR",

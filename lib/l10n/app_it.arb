@@ -22,7 +22,20 @@
   },
   "languageSelectTitle": "Scegli la tua lingua preferita",
   "languageError": "Errore nel cambio della lingua: {error}",
-  "@languageError": { "placeholders": { "error": { "type": "String" } } },
+  "@languageError": {
+    "placeholders": {
+      "error": { "type": "String" }
+    }
+  },
+
+  "lang_en": "Inglese",
+  "lang_fr": "Francese",
+  "lang_de": "Tedesco",
+  "lang_it": "Italiano",
+  "lang_es": "Spagnolo",
+  "lang_el": "Greco",
+  "lang_hi": "Hindi",
+  "lang_pa": "Urdu",
 
   "alertMessagesTitle": "Fatto!",
   "alertMessagesBody": "La tua lingua è stata impostata su Italiano",
@@ -32,6 +45,10 @@
   "selectImageScreenReadyText": "pronto",
   "selectImageScreenShowTextBtn": "Premi per visualizzare come testo",
   "selectImageScreenCloseButton": "Chiudi",
+  "selectImageScreenStopButton": "Interrompi voce",
+  "selectImageScreenRestartButton": "Riavvia voce",
+  "selectImageScreenStartButton": "Avvia voce",
+  "selectImageScreenDisclaimer": "L'IA può commettere errori. Non fare affidamento su questo testo per decisioni critiche in ambito sanitario, di sicurezza o legale. Verifica sempre le informazioni importanti in modo indipendente.",
 
   "paywallSuccess": "Successo! Accesso illimitato sbloccato.",
   "paywallPurchaseError": "Si è verificato un errore durante l'elaborazione dell'acquisto.",
@@ -47,6 +64,25 @@
   "paywallPrivacyPolicy": "Informativa sulla Privacy",
   "paywallMonthlyDescription": "Accesso illimitato.\nCancellazione flessibile in qualsiasi momento",
   "paywallYearlyDescription": "La nostra opzione più vantaggiosa.\nRisparmia il 20% con un unico pagamento annuale",
+
+  "paywallLaunchError": "Impossibile aprire l'URL",
+  "paywallGeneralError": "Errore: {message}",
+  "@paywallGeneralError": {
+    "placeholders": { "message": { "type": "String" } }
+  },
+  "paywallUnexpectedError": "Si è verificato un errore imprevisto: {error}",
+  "@paywallUnexpectedError": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+  "paywallMonthlyBreakdown": "Solo {monthlyPrice} / mese",
+  "@paywallMonthlyBreakdown": {
+    "placeholders": {
+      "monthlyPrice": {
+        "type": "String"
+      }
+    }
+  },
+  "paywallAMonth": "al mese",
 
   "walkthroughTitleHow": "Come funziona",
   "walkthroughBodyHow": "Wolpz è un modo semplice e affidabile per trasformare testi piccoli e difficili da leggere in un formato audio.",
@@ -77,9 +113,16 @@
   "loginButton": "ACCEDI",
   "loginLoadingProfile": "Caricamento del profilo...",
 
+  "aboutTitle": "Benvenuto su Wolpz",
+  "aboutHeader": "Informazioni su Wolpz",
+  "aboutDescription": "La disabilità visiva può rendere quasi impossibili anche i compiti più semplici. Per questo abbiamo creato Wolpz: per offrirti un modo semplice per colmare il divario tra la parola stampata e l'accessibilità.\n\nCombinando un riconoscimento avanzato delle immagini con una sintesi vocale naturale, trasformiamo i testi quotidiani — dalle etichette alimentari ai flaconi di medicinali — in una traccia audio chiara. Wolpz è qui per dare indipendenza e fiducia alla comunità dei non vedenti e ipovedenti, una foto alla volta.",
+  "aboutLegal": "Sul nostro sito web puoi trovare maggiori dettagli su Wolpz, inclusi i termini e le condizioni completi, come utilizziamo i tuoi dati (spoiler: non lo facciamo) e come proteggiamo la tua privacy.",
+  "aboutVisitSite": "Visita Wolpz",
+
   "removeAccountTitle": "Elimina Account",
+  "removeAccountMessage": "È stato un piacere averti con noi e ci dispiace molto vederti andare via. Ricorda che l'eliminazione del tuo account è permanente e cancellerà tutta la cronologia e le impostazioni salvate. Se un problema tecnico ti sta ostacolando, ci piacerebbe avere la possibilità di risolverlo per te - contatta semplicemente il nostro team!",
   "removeAccountHeading": "AVVISO IMPORTANTE SULL'ABBONAMENTO",
-  "removeAccMessage": "L'eliminazione del tuo account NON annulla automaticamente l'abbonamento.\\nTi verranno comunque addebitati costi da Apple/Google. Se sei sicuro di voler andare via, usa il pulsante di annullamento qui sotto.",
+  "removeAccMessage": "L'eliminazione del tuo account NON annulla automaticamente l'abbonamento.\n\nTi verranno comunque addebitati costi da Apple/Google. Se sei sicuro di voler andare via, usa il pulsante di annullamento qui sotto.",
   "removeAccountConfirm": "Sei sicuro di voler rimuovere permanentemente il tuo account?",
   "removeAccountWarning": "Avviso: Questa azione non può essere annullata. Tutti i tuoi dati verranno eliminati definitivamente.",
   "removeAccountConfirmBtn": "CONFERMA",
@@ -87,19 +130,60 @@
   "removeAccountSuccess": "Account rimosso con successo. Addio!",
 
   "registerTitle": "Crea il tuo account",
+  "registerFirstNameHint": "Nome",
+  "registerLastNameHint": "Cognome",
+  "registerEmailHint": "Email",
+  "registerPasswordHint": "Password",
+  "registerConfirmPasswordHint": "Conferma password",
   "registerButton": "CREA ACCOUNT",
+
+  "userNotFound": "Nessun utente trovato per questa email.",
+  "wrongPassword": "Password errata.",
+  "operationNotAllowed": "Operazione non consentita.",
+  "invalidEmail": "L'indirizzo email non è valido.",
+  "userDisabled": "Questo account è stato disabilitato.",
+  "weakPassword": "La password fornita è troppo debole.",
+  "emailAlreadyInUse": "Esiste già un account con questa email.",
+  "unexpectedError": "Si è verificato un errore imprevisto. Riprova.",
+  "connectionErrorAlt": "Si è verificato un errore. Controlla la tua connessione.",
+  "basicError": "Errore",
 
   "deviceLimitTitle": "Limite Dispositivi Raggiunto",
   "deviceLimitMessage": "Questo dispositivo ha già utilizzato i suoi 5 crediti gratuiti. Per continuare, abbonati.",
   "deviceLimitButton": "VEDI ABBONAMENTI",
+
+  "urlLaunchError": "Impossibile aprire {url}. Verifica la tua connessione.",
+  "@urlLaunchError": {
+    "placeholders": { "url": { "type": "String" } }
+  },
+  "urlError": "Errore durante l'apertura dell'URL: {error}",
+  "@urlError": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+
+  "termsAndPrivacyTitle": "Termini e Privacy",
+  "termsAndPrivacyGreeting": "Ciao {userName}\n\nPuoi leggere la nostra informativa completa su Termini e Privacy sul nostro sito web tramite il pulsante qui sotto.",
+  "@termsAndPrivacyGreeting": {
+    "placeholders": { "userName": { "type": "String" } }
+  },
+  "termsVisitButton": "Visita BaaadKitty",
+  "termsEmailPrompt": "Ci farebbe piacere ricevere tue notizie; per metterti in contatto con noi, inviaci semplicemente un'email.",
+  "termsEmailButton": "Invia un'email",
+  "termsRemoveLink": "Clicca qui per rimuovere il tuo account",
+
 
   "photosPermission": "Abbiamo bisogno del permesso per accedere alle tue foto",
   "permissionBtn": "OK",
   "permissionGrantBtn": "Concedi Permesso",
   "permissionCameraReq": "Dovrai usare la tua fotocamera",
 
-  "subscriptionRestored": "Abbonamento Ripristinato!",
+  "subscriptionRestored": "Abbonamento ripristinato!",
   "subscriptionNotFound": "Nessun abbonamento attivo trovato.",
+  "subscriptionManage": "Gestisci abbonamento",
+  "subscriptionManageOrCancel": "Gestisci o annulla abbonamento",
+  "subscriptionManageSettings": "Verrai indirizzato alle impostazioni del dispositivo per gestire o terminare il tuo piano.",
+  "subscriptionUpgrade": "Passa a Wolpz Pro",
+  "subscriptionRestorePast": "Ripristina acquisti precedenti",
   "subscriptionStatusActive": "Stato Pro: Attivo",
   "subscriptionStatusInactive": "Stato Pro: Inattivo",
 

@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:wolpz/l10n/app_localizations.dart';
 
 Future<void> shareWolpz(BuildContext context) async {
-  //TODO: Replace these with the actual store URLs once I have them
-  const String appleStoreUrl = 'https://apps.apple.com/app/vocaleyes/id6755300954';
+  const String appleStoreUrl = 'https://apps.apple.com/app/wolpz/id6758909140';
   const String googlePlayUrl = 'https://play.google.com/store/apps/details?id=com.baaadkitty.wolpz';
 
   String message = '';

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:wolpz/display/about_vocaleyes.dart';
+import 'package:wolpz/display/about_wolpz.dart';
 import 'package:wolpz/display/manage_sub_screen.dart';
 import 'package:wolpz/display/remove_account_screen.dart';
 import 'package:wolpz/display/terms_and_privacy_screen.dart';
+import 'package:wolpz/display/walkthrough_screen.dart';
 import 'package:wolpz/support_files/share_app_option.dart';
 import '../l10n/app_localizations.dart';
 import '../support_files/constants.dart';
@@ -75,8 +76,9 @@ class _EndDrawerState extends State<EndDrawer> {
                 padding: const EdgeInsets.only(left: 6.0),
                 child: Text(AppLocalizations.of(context)!.drawerYourWolpz, style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: kBackgroundTint),),
               ),
-               IconButton(icon: const Icon(Icons.close_outlined, color: kBackgroundTint, size: 30,),
-              onPressed: () => Navigator.of(context).pop(),),
+               IconButton(
+                 icon: const Icon(Icons.close_outlined, color: kBackgroundTint, size: 30,),
+                 onPressed: () => Navigator.of(context).pop(),),
             ],
           ),
           //const SizedBox(height: 8.0,),
@@ -102,14 +104,15 @@ class _EndDrawerState extends State<EndDrawer> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-
           ListTile(
             dense: true,
             minLeadingWidth: 20,
-            leading: const Icon(
-              Icons.info_rounded,
-              size: 30,
-              color: kDarkBlue,
+            leading: const ExcludeSemantics(
+              child: Icon(
+                Icons.info_rounded,
+                size: 30,
+                color: kDarkBlue,
+              ),
             ),
             title: Text(AppLocalizations.of(context)!.drawerAbout, style: Theme.of(context).textTheme.bodyMedium,),
             onTap: () {
@@ -122,7 +125,7 @@ class _EndDrawerState extends State<EndDrawer> {
           ),
 
           ListTile(
-            leading: const Icon(Icons.language, color: kDarkBlue, size: 30,),
+            leading: const ExcludeSemantics(child: const Icon(Icons.language, color: kDarkBlue, size: 30,)),
             title: Text(AppLocalizations.of(context)!.drawerLanguage,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
@@ -145,10 +148,12 @@ class _EndDrawerState extends State<EndDrawer> {
           ListTile(
             dense: true,
             minLeadingWidth: 20,
-            leading: const Icon(
-              Icons.credit_card_off_outlined,
-              size: 30,
-              color: kDarkBlue,
+            leading: const ExcludeSemantics(
+              child: Icon(
+                Icons.credit_card_off_outlined,
+                size: 30,
+                color: kDarkBlue,
+              ),
             ),
             title: Text(AppLocalizations.of(context)!.subscriptionManage, style: Theme.of(context).textTheme.bodyMedium,),
             onTap: () {
@@ -159,14 +164,37 @@ class _EndDrawerState extends State<EndDrawer> {
               );
             },
           ),
-          const Divider( color: kDarkBlue, thickness: 1.0, indent: 20, endIndent: 20),
+
           ListTile(
             dense: true,
             minLeadingWidth: 20,
-            leading: const Icon(
-              Icons.help_outline,
-              size: 30,
-              color: kDarkBlue,
+            leading: const ExcludeSemantics(
+              child: Icon(
+                Icons.credit_card_off_outlined,
+                size: 30,
+                color: kDarkBlue,
+              ),
+            ),
+            title: Text('Walkthrough', style: Theme.of(context).textTheme.bodyMedium,),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) => WalkthroughScreen(prefs: widget.prefs),
+              ),
+              );
+            },
+          ),
+          
+          const ExcludeSemantics(child: Divider( color: kDarkBlue, thickness: 1.0, indent: 20, endIndent: 20)),
+          ListTile(
+            dense: true,
+            minLeadingWidth: 20,
+            leading: const ExcludeSemantics(
+              child: Icon(
+                Icons.help_outline,
+                size: 30,
+                color: kDarkBlue,
+              ),
             ),
             title: Text(AppLocalizations.of(context)!.drawerSupport, style: Theme.of(context).textTheme.bodyMedium,),
             onTap: () {
@@ -177,10 +205,12 @@ class _EndDrawerState extends State<EndDrawer> {
           ListTile(
             dense: true,
             minLeadingWidth: 20,
-            leading: const Icon(
-              Icons.share,
-              size: 30,
-              color: kDarkBlue,
+            leading: const ExcludeSemantics(
+              child: Icon(
+                Icons.share,
+                size: 30,
+                color: kDarkBlue,
+              ),
             ),
             title: Text(AppLocalizations.of(context)!.drawerInvite, style: Theme.of(context).textTheme.bodyMedium,),
             onTap: () {
@@ -192,10 +222,12 @@ class _EndDrawerState extends State<EndDrawer> {
           ListTile(
             dense: true,
             minLeadingWidth: 20,
-            leading: const Icon(
-              Icons.details,
-              size: 30,
-              color: kDarkBlue,
+            leading: const ExcludeSemantics(
+              child: Icon(
+                Icons.details,
+                size: 30,
+                color: kDarkBlue,
+              ),
             ),
             title: Text(AppLocalizations.of(context)!.drawerTerms, style: Theme.of(context).textTheme.bodyMedium,),
             onTap: () {
@@ -205,37 +237,47 @@ class _EndDrawerState extends State<EndDrawer> {
 
             },
           ),
-          const Divider( color: kDarkBlue, thickness: 1.0, indent: 20, endIndent: 20),
-          ListTile(
-            dense: true,
-            minLeadingWidth: 20,
-            leading: const Icon(
-              Icons.logout_outlined,
-              size: 30,
-              color: kDarkBlue,
-            ),
-            title: Text(AppLocalizations.of(context)!.drawerLogout, style: Theme.of(context).textTheme.bodyMedium,),
-            onTap: () {
-              Navigator.of(context).pop();
-              auth.signOut();
-            },
-          ),
-          ListTile(
-            dense: true,
-            minLeadingWidth: 20,
-            leading: const Icon(
-              Icons.person_remove_alt_1_outlined,
-              size: 30,
-              color: kDarkBlue,
-            ),
-            title: Text(AppLocalizations.of(context)!.drawerRemove, style: Theme.of(context).textTheme.bodyMedium,),
-            onTap: () {
-              Navigator.of(context).pop();
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) => const RemoveAccountScreen(),
+          const ExcludeSemantics(child: Divider( color: kDarkBlue, thickness: 1.0, indent: 20, endIndent: 20)),
+          Semantics(
+            label: AppLocalizations.of(context)!.drawerLogout,
+            child: ListTile(
+              dense: true,
+              minLeadingWidth: 20,
+              leading: const ExcludeSemantics(
+                child: Icon(
+                  Icons.logout_outlined,
+                  size: 30,
+                  color: kDarkBlue,
+                ),
               ),
-              );
-            },
+              title: Text(AppLocalizations.of(context)!.drawerLogout, style: Theme.of(context).textTheme.bodyMedium,),
+              onTap: () {
+                Navigator.of(context).pop();
+                auth.signOut();
+              },
+            ),
+          ),
+          Semantics(
+            label: AppLocalizations.of(context)!.drawerRemove,
+            child: ListTile(
+              dense: true,
+              minLeadingWidth: 20,
+              leading: const ExcludeSemantics(
+                child: Icon(
+                  Icons.person_remove_alt_1_outlined,
+                  size: 30,
+                  color: kDarkBlue,
+                ),
+              ),
+              title: Text(AppLocalizations.of(context)!.drawerRemove, style: Theme.of(context).textTheme.bodyMedium,),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) => const RemoveAccountScreen(),
+                ),
+                );
+              },
+            ),
           ),
         ],
       ),

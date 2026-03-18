@@ -9,6 +9,8 @@ class CustomPasswordField extends StatefulWidget {
   final bool isPassword;
   final Function validator;
   final void Function(dynamic _) onChanged;
+  final Iterable<String>? autofillHints;
+  final TextInputAction? textInputAction;
   final Color? iconColor;
 
   const CustomPasswordField({super.key,
@@ -19,6 +21,8 @@ class CustomPasswordField extends StatefulWidget {
     required this.isPassword,
     required this.validator,
     required this.onChanged,
+    this.autofillHints,
+    this.textInputAction,
     this.iconColor = kDarkBlue,
   });
 
@@ -38,22 +42,20 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
           style: Theme.of(context).textTheme.bodyMedium,
           obscureText: widget.isPassword ? !_showPassword : false,
           keyboardType: widget.inputType,
+          autofillHints: widget.autofillHints,
+          textInputAction: widget.textInputAction,
+          validator: (value) => widget.validator(value),
           controller: widget.controller,
           decoration: InputDecoration(
             labelText: widget.label,
             labelStyle: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.white),
             suffixIcon: widget.isPassword
-                ? GestureDetector(
-              onTap: () {
-                setState(() {
-                  _showPassword = !_showPassword;
-                });
-              },
-              child: Icon(
-                _showPassword ? Icons.visibility_off : Icons.visibility,
+                ? IconButton(
+              icon: Icon(_showPassword ? Icons.visibility_off : Icons.visibility,
                 color: widget.iconColor,
-                size: 32.0,
-              ),
+                size: 32,),
+              onPressed: () => setState(() => _showPassword = !_showPassword),
+              tooltip: _showPassword ? 'Hide password' : 'Show password',
             )
                 : null,
             enabledBorder: const UnderlineInputBorder(

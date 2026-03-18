@@ -7,7 +7,8 @@ const kDarkBlue = Color.fromRGBO(0, 26, 51, 1.0);
 const kDarkOrange = Color.fromRGBO(255, 64, 0, 1.0);
 const kDarkOrangeTint = Color.fromRGBO(255, 94, 0, 1.0);
 const kFlatButtonText = TextStyle(color: kBackgroundTint, fontWeight: FontWeight.bold, fontSize: 16, );
-const kOrangeButtonText = TextStyle(color: kDarkOrange, fontWeight: FontWeight.w700, fontSize: 16, letterSpacing: 1.2);
+const kOrangeButtonText = TextStyle(color: kDarkOrange, fontWeight: FontWeight.w700, fontSize: 18, letterSpacing: 1.2);
+const kBlueButtonText = TextStyle(color: kDarkBlue, fontWeight: FontWeight.w700, fontSize: 18, letterSpacing: 1.2);
 
 const kAlertDialogBackground = Color(0xff18a1e3);
 const kAlertBodyText = TextStyle(color: Colors.white, fontWeight: FontWeight.w400, fontSize: 16, letterSpacing: 1.2);

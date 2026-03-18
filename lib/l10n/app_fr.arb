@@ -34,6 +34,15 @@
     }
   },
 
+  "lang_en": "Anglais",
+  "lang_fr": "Français",
+  "lang_de": "Allemand",
+  "lang_it": "Italien",
+  "lang_es": "Espagnol",
+  "lang_el": "Grec",
+  "lang_hi": "Hindi",
+  "lang_pa": "Ourdou",
+
   "alertMessagesTitle": "Terminé !",
   "alertMessagesBody": "Votre langue a été réglée sur le Français",
 
@@ -42,6 +51,10 @@
   "selectImageScreenReadyText": "prêt",
   "selectImageScreenShowTextBtn": "Appuyez pour voir comme texte",
   "selectImageScreenCloseButton": "Fermer",
+  "selectImageScreenStopButton": "Arrêter la lecture",
+  "selectImageScreenRestartButton": "Redémarrer la lecture",
+  "selectImageScreenStartButton": "Démarrer la lecture",
+  "selectImageScreenDisclaimer": "L'IA peut faire des erreurs. Ne vous fiez pas à ce texte pour des décisions critiques de santé, de sécurité ou juridiques. Vérifiez toujours les informations importantes de manière indépendante.",
 
   "paywallSuccess": "Succès ! Accès illimité débloqué.",
   "paywallPurchaseError": "Une erreur est survenue lors du traitement de votre achat.",
@@ -66,6 +79,15 @@
   "@paywallUnexpectedError": {
     "placeholders": { "error": { "type": "String" } }
   },
+  "paywallMonthlyBreakdown": "Seulement {monthlyPrice} / mois",
+  "@paywallMonthlyBreakdown": {
+    "placeholders": {
+      "monthlyPrice": {
+        "type": "String"
+      }
+    }
+  },
+  "paywallAMonth": "par mois",
 
   "walkthroughTitleHow": "Comment ça marche",
   "walkthroughBodyHow": "Wolpz est un moyen simple et fiable de transformer les petits textes difficiles à lire en format audio.",
@@ -98,13 +120,14 @@
 
   "aboutTitle": "Bienvenue sur Wolpz",
   "aboutHeader": "À propos de Wolpz",
-  "aboutDescription": "La déficience visuelle peut rendre les tâches les plus simples presque impossibles. C'est pourquoi nous avons créé Wolpz pour vous offrir un moyen simple de combler le fossé entre le mot écrit et l'accessibilité.\\n\\nEn combinant une reconnaissance d'image avancée avec une synthèse vocale naturelle, nous transformons le texte quotidien - des étiquettes alimentaires aux flacons de médicaments - en une piste audio claire. Wolpz est là pour apporter indépendance et confiance à la communauté des malvoyants, une photo à la fois.",
+  "aboutDescription": "La déficience visuelle peut rendre les tâches les plus simples presque impossibles. C'est pourquoi nous avons créé Wolpz pour vous offrir un moyen simple de combler le fossé entre le mot écrit et l'accessibilité.\n\nEn combinant une reconnaissance d'image avancée avec une synthèse vocale naturelle, nous transformons le texte quotidien - des étiquettes alimentaires aux flacons de médicaments - en une piste audio claire. Wolpz est là pour apporter indépendance et confiance à la communauté des malvoyants, une photo à la fois.",
   "aboutLegal": "Vous pouvez accéder à plus de détails sur Wolpz, y compris nos conditions générales, la manière dont nous utilisons vos données (alerte spoiler : nous ne le faisons pas) et apprendre comment nous protégeons votre vie privée sur notre site Web.",
   "aboutVisitSite": "Visiter Wolpz",
 
   "removeAccountTitle": "Supprimer le compte",
+  "removeAccountMessage": "Ce fut un plaisir de vous compter parmi nous, et nous sommes sincèrement désolés de vous voir partir. Gardez à l'esprit que la suppression de votre compte est définitive et effacera tout votre historique et vos paramètres enregistrés. Si un problème technique vous gêne, nous serions ravis de le résoudre pour vous - contactez simplement notre équipe !",
   "removeAccountHeading": "AVIS D'ABONNEMENT IMPORTANT",
-  "removeAccMessage": "La suppression de votre compte n'annule PAS automatiquement votre abonnement.\\nVous continuerez à être facturé par Apple/Google. Si vous êtes sûr de vouloir partir, veuillez utiliser le bouton d'annulation d'abonnement ci-dessous.",
+  "removeAccMessage": "La suppression de votre compte n'annule PAS automatiquement votre abonnement.\n\nVous continuerez à être facturé par Apple/Google. Si vous êtes sûr de vouloir partir, veuillez utiliser le bouton d'annulation d'abonnement ci-dessous.",
   "removeAccountConfirm": "Êtes-vous sûr de vouloir supprimer définitivement votre compte ?",
   "removeAccountWarning": "Attention : cette action est irréversible. Toutes vos données, y compris l'historique des abonnements et les préférences enregistrées, seront définitivement supprimées.",
   "removeAccountConfirmBtn": "CONFIRMER",

@@ -5,7 +5,7 @@ import 'package:wolpz/user/login_options_screen.dart';
 import 'package:wolpz/logic/sign_in_core_logic.dart' as auth;
 import 'package:wolpz/logic/validator.dart';
 import 'package:wolpz/widgets/custom_create_user_textfield.dart';
-import 'package:wolpz/widgets/custom_login_field.dart';
+import 'package:wolpz/widgets/custom_password_field.dart';
 import 'package:wolpz/widgets/main_flat_button.dart';
 
 import '../support_files/constants.dart';
@@ -90,17 +90,17 @@ class _RemoveAccountScreenState extends State<RemoveAccountScreen> {
               height: 136.0,
               decoration: const BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('assets/vocal_eyes_logo.png'),
+                      image: AssetImage('assets/wolpz_full_logo_clear.png'),
                       fit: BoxFit.contain)),
             ),
             const SizedBox(height: 24.0,),
             Text(textAlign: TextAlign.center,
-                AppLocalizations.of(context)!.removeAccountHeading,
-                style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: kDarkBlue)),
+                AppLocalizations.of(context)!.removeAccountTitle.toUpperCase(),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: kDarkOrange, fontWeight: FontWeight.bold)),
             const SizedBox(height: 14.0,),
             Text(
                 textAlign: TextAlign.center,
-                AppLocalizations.of(context)!.removeAccMessage,
+                AppLocalizations.of(context)!.removeAccountMessage,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: kDarkBlue)),
 
             Padding(
@@ -111,6 +111,7 @@ class _RemoveAccountScreenState extends State<RemoveAccountScreen> {
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: kDarkOrange, fontWeight: FontWeight.bold)),
             ),
 
+
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 12.0),
               child: Text(
@@ -118,26 +119,43 @@ class _RemoveAccountScreenState extends State<RemoveAccountScreen> {
                   AppLocalizations.of(context)!.removeAccMessage,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: kDarkBlue)),
             ),
-            SizedBox( width: 220.0,
-              child: MainFlatButton(
-                borderColor: kDarkBlue,
-                  title: AppLocalizations.of(context)!.removeAccountCancelBtn,
-                  pressed: () => Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => const ManageSubscriptionScreen(),
-                    ),
-                    ),
-                  background: kDarkBlue, textStyle: kFlatButtonText),
+            const Spacer(),
+            SizedBox( width: 300.0, height: 60.0,
+              child: Semantics(
+                label: AppLocalizations.of(context)!.removeAccountCancelBtn,
+                button: true,
+                onTap: () => Navigator.push(context, MaterialPageRoute(
+                  builder: (context) => const ManageSubscriptionScreen(),),),
+                child: MainFlatButton(
+                  borderColor: kDarkBlue,
+                    title: AppLocalizations.of(context)!.removeAccountCancelBtn.toUpperCase(),
+                    pressed: () => Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => const ManageSubscriptionScreen(),
+                      ),
+                      ),
+                    background: kDarkBlue, textStyle: kFlatButtonText.copyWith(fontSize: 18.0)),
+              ),
             ),
 
-            const Spacer(),
-            SizedBox(width: 220.0,
-              child: MainFlatButton(
-                borderColor: kDarkOrange,
-                  title: AppLocalizations.of(context)!.removeAccountTitle,
-                  pressed: (){
+
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: SizedBox(width: 300.0, height: 60.0,
+                child: Semantics(
+                  label: AppLocalizations.of(context)!.removeAccountTitle,
+                  button: true,
+                  onTap: (){
                     _showAlertDialogBox();
                   },
-                  background: kDarkOrange, textStyle: kFlatButtonText),
+                  child: MainFlatButton(
+                    borderColor: kDarkOrange,
+                      title: AppLocalizations.of(context)!.removeAccountTitle.toUpperCase(),
+                      pressed: (){
+                        _showAlertDialogBox();
+                      },
+                      background: kDarkOrange, textStyle: kFlatButtonText.copyWith(fontSize: 18.0)),
+                ),
+              ),
             ),
             const SizedBox(height: 8.0,),
           ],

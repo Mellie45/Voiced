@@ -17,6 +17,7 @@ class _LogInOptionsScreenState extends State<LogInOptionsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: kDarkBlue,
       body: SafeArea(child: Center(
@@ -27,32 +28,43 @@ class _LogInOptionsScreenState extends State<LogInOptionsScreen> {
             children: [
               const SizedBox(height: 60,),
              const SizedBox(
-
                   height: 260,
                   child: Image(image: AssetImage('assets/logo_orange.png'))),
               const Spacer(),
               SizedBox(
                 width: 260.0,
                 height: 60.0,
-                child: MainFlatButton(title: AppLocalizations.of(context)!.loginTitle.toUpperCase(),
-                    pressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                        const SigninScreen())),
-                    background: kBackgroundTint,
-                    borderColor: kBackgroundTint,
-                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: kDarkBlue, fontWeight: FontWeight.bold),
+                child: Semantics(
+                  label: localizations.loginTitle,
+                  button: true,
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                      const SigninScreen())),
+                  child: MainFlatButton(title: AppLocalizations.of(context)!.loginTitle.toUpperCase(),
+                      pressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                          const SigninScreen())),
+                      background: kBackgroundTint,
+                      borderColor: kBackgroundTint,
+                      textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: kDarkBlue, fontWeight: FontWeight.bold),
 
+                  ),
                 ),
               ),
               const SizedBox(height: 20,),
               SizedBox(
                 width: 260.0,
                 height: 60.0,
-                child: MainFlatButton(title: AppLocalizations.of(context)!.registerButton,
-                    pressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                        const CreateUserScreen())),
-                    background: kDarkOrange,
-                    borderColor: kDarkOrange,
-                    textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: Colors.white, fontWeight: FontWeight.bold),),
+                child: Semantics(
+                  label: AppLocalizations.of(context)!.registerButton,
+                  button: true,
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                      const CreateUserScreen())),
+                  child: MainFlatButton(title: AppLocalizations.of(context)!.registerButton,
+                      pressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                          const CreateUserScreen())),
+                      background: kDarkOrange,
+                      borderColor: kDarkOrange,
+                      textStyle: Theme.of(context).textTheme.titleMedium!.copyWith(color: Colors.white, fontWeight: FontWeight.bold),),
+                ),
               ),
 
             ]

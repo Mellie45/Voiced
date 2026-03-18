@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class VoicedUser {
+class WolpzUser {
   final String userID;
   final String firstName;
   final String lastName;
@@ -9,7 +9,7 @@ class VoicedUser {
   bool isSubscribed;
   final String? registeredDeviceId;
 
-  VoicedUser({
+  WolpzUser({
     required this.userID,
     required this.firstName,
     required this.lastName,
@@ -30,8 +30,8 @@ class VoicedUser {
     };
   }
 
-  factory VoicedUser.fromJson(Map<String, dynamic> doc) {
-    VoicedUser user = VoicedUser(
+  factory WolpzUser.fromJson(Map<String, dynamic> doc) {
+    WolpzUser user = WolpzUser(
       userID: doc['userID'] as String? ?? '',
       firstName: doc['firstName'] as String? ?? '',
       lastName: doc['lastName'] as String? ?? '',
@@ -44,8 +44,8 @@ class VoicedUser {
     return user;
   }
 
-  factory VoicedUser.fromDocument(DocumentSnapshot doc) {
-    return VoicedUser.fromJson(doc.data() as Map<String, dynamic>);
+  factory WolpzUser.fromDocument(DocumentSnapshot doc) {
+    return WolpzUser.fromJson(doc.data() as Map<String, dynamic>);
   }
 
   @override
